@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shonchoy — Your savings plan, in your own bKash rhythm</title>
+<meta name="description" content="A personal savings assistant for Bangladesh. Enter your salary for a realistic budget breakdown, set savings goals, and track deposits — no email needed, just your phone number.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230E6B4E'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='white' font-family='sans-serif'%3E৳%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #F7F4EC;
+    --surface: #FFFFFF;
+    --surface-2: #F1EDE1;
+    --ink: #1B2420;
+    --ink-soft: #5B6660;
+    --line: #DED5C0;
+    --accent: #0E6B4E;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #DCEEE3;
+    --accent-soft-ink: #0B4A36;
+    --warn: #B1501F;
+    --warn-soft: #F6E4D6;
+    --danger: #A8341F;
+    --danger-soft: #F7E2DC;
+    --shadow: 0 1px 2px rgba(27,36,32,0.04), 0 8px 24px -12px rgba(27,36,32,0.18);
+    --radius: 14px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #10140F;
+      --surface: #191F19;
+      --surface-2: #1F2620;
+      --ink: #ECEAE0;
+      --ink-soft: #A3ADA3;
+      --line: #2C352C;
+      --accent: #3FBF8F;
+      --accent-ink: #06251A;
+      --accent-soft: #1B3A2C;
+      --accent-soft-ink: #A7EBCB;
+      --warn: #E29255;
+      --warn-soft: #3A2A1B;
+      --danger: #E2705A;
+      --danger-soft: #3B211C;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #10140F;
+    --surface: #191F19;
+    --surface-2: #1F2620;
+    --ink: #ECEAE0;
+    --ink-soft: #A3ADA3;
+    --line: #2C352C;
+    --accent: #3FBF8F;
+    --accent-ink: #06251A;
+    --accent-soft: #1B3A2C;
+    --accent-soft-ink: #A7EBCB;
+    --warn: #E29255;
+    --warn-soft: #3A2A1B;
+    --danger: #E2705A;
+    --danger-soft: #3B211C;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', 'Hind Siliguri', system-ui, sans-serif;
+    margin: 0;
+    padding: 0 20px 64px;
+    line-height: 1.5;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+  h1, h2, h3 { font-family: 'Hind Siliguri', 'Inter', system-ui, sans-serif; text-wrap: balance; margin: 0; }
+  .num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  a { color: inherit; }
+  button { font-family: inherit; }
+
+  .wrap { max-width: 880px; margin: 0 auto; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0 18px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+    gap: 12px; flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 10px;
+    background: var(--accent); color: var(--accent-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 17px; font-family: 'Hind Siliguri', sans-serif;
+    flex-shrink: 0;
+  }
+  .brand-name { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .brand-tag { font-size: 12.5px; color: var(--ink-soft); }
+  .who { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink-soft); }
+  .who button {
+    background: none; border: 1px solid var(--line); color: var(--ink-soft);
+    padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 13px;
+  }
+  .who button:hover { border-color: var(--accent); color: var(--accent); }
+
+  .auth-shell { display: flex; justify-content: center; padding-top: 40px; }
+  .auth-card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 32px; width: 100%; max-width: 380px;
+  }
+  .auth-card h2 { font-size: 22px; margin-bottom: 6px; }
+  .auth-card p.sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 22px; }
+  .tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 10px; margin-bottom: 20px; }
+  .tabs button {
+    flex: 1; border: none; background: none; padding: 8px; border-radius: 7px;
+    font-size: 13.5px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
+  }
+  .tabs button.active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin: 14px 0 6px; }
+  label:first-of-type { margin-top: 0; }
+  input, select, textarea {
+    width: 100%; padding: 11px 13px; border-radius: 9px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink); font-size: 15px; font-family: inherit;
+  }
+  input.num-input { font-family: 'JetBrains Mono', monospace; }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: var(--accent-ink); border: none;
+    padding: 11px 18px; border-radius: 9px; font-size: 14.5px; font-weight: 700;
+    cursor: pointer; width: 100%; margin-top: 20px;
+  }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn.ghost { background: none; border: 1px solid var(--line); color: var(--ink); }
+  .btn.small { width: auto; padding: 8px 14px; font-size: 13.5px; margin-top: 0; }
+  .err { color: var(--danger); font-size: 13px; margin-top: 10px; min-height: 0; }
+  .hint { color: var(--ink-soft); font-size: 12.5px; margin-top: 10px; }
+
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(12, 1fr); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 22px;
+  }
+  .span-12 { grid-column: span 12; }
+  .span-7 { grid-column: span 7; }
+  .span-5 { grid-column: span 5; }
+  @media (max-width: 720px) { .span-7, .span-5 { grid-column: span 12; } }
+
+  .card h3 { font-size: 15.5px; letter-spacing: 0.01em; }
+  .card .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 10px; flex-wrap: wrap; }
+  .eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+
+  .salary-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+  .salary-row .field { flex: 1; min-width: 160px; }
+  .salary-row label { margin: 0 0 6px; }
+
+  .budget-list { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+  .budget-row {
+    display: flex; align-items: center; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .budget-row:last-child { border-bottom: none; }
+  .budget-row .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .budget-row .name { flex: 1; min-width: 0; }
+  .budget-row .cat-name { font-size: 14.5px; font-weight: 600; }
+  .budget-row .cat-note { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+  .budget-row .amt { font-size: 15px; font-weight: 700; white-space: nowrap; }
+  .budget-bar-track { height: 6px; background: var(--surface-2); border-radius: 4px; margin-top: 18px; overflow: hidden; display: flex; }
+  .budget-bar-seg { height: 100%; }
+  .budget-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
+  .budget-total .label { font-size: 13px; color: var(--ink-soft); }
+  .budget-total .val { font-size: 20px; font-weight: 800; }
+  .budget-total .val.over { color: var(--danger); }
+  .budget-total .val.good { color: var(--accent); }
+
+  .stat-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
+  .stat { flex: 1; min-width: 120px; background: var(--surface-2); border-radius: 10px; padding: 14px 16px; }
+  .stat .stat-label { font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
+  .stat .stat-val { font-size: 19px; font-weight: 800; }
+
+  .goal-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .goal-item:last-child { border-bottom: none; }
+  .goal-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+  .goal-title { font-weight: 700; font-size: 14.5px; }
+  .goal-date { font-size: 12px; color: var(--ink-soft); }
+  .goal-track { height: 8px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
+  .goal-fill { height: 100%; background: var(--accent); border-radius: 5px; transition: width 0.4s ease; }
+  .goal-meta { display: flex; justify-content: space-between; margin-top: 6px; font-size: 12.5px; color: var(--ink-soft); }
+  .goal-meta .num { color: var(--ink); font-weight: 600; }
+
+  .tx-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .tx-item:last-child { border-bottom: none; }
+  .tx-badge { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .tx-badge.deposit { background: var(--accent-soft); color: var(--accent-soft-ink); }
+  .tx-badge.expense { background: var(--warn-soft); color: var(--warn); }
+  .tx-body { flex: 1; min-width: 0; }
+  .tx-note { font-size: 13.5px; font-weight: 600; }
+  .tx-sub { font-size: 12px; color: var(--ink-soft); }
+  .tx-amt { font-weight: 700; font-size: 14px; white-space: nowrap; }
+  .tx-amt.deposit { color: var(--accent); }
+  .tx-amt.expense { color: var(--warn); }
+  .empty { color: var(--ink-soft); font-size: 13.5px; padding: 10px 0; }
+
+  .quick-form { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .quick-form input, .quick-form select { flex: 1; min-width: 100px; }
+  .seg { display: flex; gap: 6px; margin-bottom: 12px; }
+  .seg button {
+    flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface);
+    color: var(--ink-soft); font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  .seg button.active.deposit { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-soft-ink); }
+  .seg button.active.expense { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(20,24,20,0.45); display: flex; align-items: center; justify-content: center;
+    padding: 20px; z-index: 10;
+  }
+  .modal { background: var(--surface); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 380px; box-shadow: var(--shadow); }
+  .modal h3 { margin-bottom: 4px; }
+  .modal .close-row { display: flex; gap: 10px; margin-top: 20px; }
+  .modal .close-row .btn { margin-top: 0; }
+
+  footer.note { text-align: center; color: var(--ink-soft); font-size: 12px; margin-top: 32px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .goal-fill { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">সঞ</div>
+      <div>
+        <div class="brand-name">Shonchoy</div>
+        <div class="brand-tag">Your savings plan, in your own bKash rhythm</div>
+      </div>
+    </div>
+    <div class="who" id="whoBar" hidden>
+      <span id="whoName"></span>
+      <button id="logoutBtn" type="button">Log out</button>
+    </div>
+  </div>
+
+  <div id="authView" class="auth-shell">
+    <div class="auth-card">
+      <div class="tabs">
+        <button id="tabLogin" class="active" type="button">Log in</button>
+        <button id="tabRegister" type="button">Create account</button>
+      </div>
+
+      <form id="loginPane">
+        <h2>Welcome back</h2>
+        <p class="sub">Log in with your phone number and PIN.</p>
+        <label for="loginPhone">Phone number</label>
+        <input id="loginPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel">
+        <label for="loginPin">PIN (4+ digits)</label>
+        <input id="loginPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="current-password">
+        <button class="btn" id="loginBtn" type="submit">Log in</button>
+        <div class="err" id="loginErr" role="alert"></div>
+      </form>
+
+      <form id="registerPane" hidden>
+        <h2>Start saving</h2>
+        <p class="sub">No email needed — just your phone number.</p>
+        <label for="regName">Your name</label>
+        <input id="regName" placeholder="e.g. Rafiq Islam">
+        <label for="regPhone">Phone number</label>
+        <input id="regPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel">
+        <label for="regPin">Create a PIN (4+ digits)</label>
+        <input id="regPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="new-password">
+        <button class="btn" id="registerBtn" type="submit">Create account</button>
+        <div class="err" id="registerErr" role="alert"></div>
+        <p class="hint">Your PIN is stored securely — nobody else can see your data, and we never touch your bKash balance.</p>
+      </form>
+    </div>
+  </div>
+
+  <div id="appView" hidden>
+    <div class="grid">
+
+      <div class="card span-12">
+        <div class="card-head">
+          <div>
+            <div class="eyebrow">Step 1</div>
+            <h3>Your monthly income</h3>
+          </div>
+        </div>
+        <div class="salary-row">
+          <div class="field">
+            <label for="salaryInput">Monthly salary (৳)</label>
+            <input id="salaryInput" class="num-input" inputmode="numeric" placeholder="e.g. 35000">
+          </div>
+          <div class="field">
+            <label for="cityInput">City / area</label>
+            <input id="cityInput" placeholder="e.g. Mirpur, Dhaka">
+          </div>
+          <div class="field">
+            <label for="familyInput">Family size</label>
+            <input id="familyInput" class="num-input" inputmode="numeric" placeholder="e.g. 4">
+          </div>
+          <button class="btn small" id="genBudgetBtn" type="button" style="min-width:170px;">Suggest my budget</button>
+        </div>
+        <div class="err" id="budgetErr" role="alert"></div>
+      </div>
+
+      <div class="card span-7" id="budgetCard" hidden>
+        <div class="card-head">
+          <div>
+            <div class="eyebrow">Estimated breakdown</div>
+            <h3>Where your money likely goes</h3>
+          </div>
+        </div>
+        <div class="budget-list" id="budgetList"></div>
+        <div class="budget-bar-track" id="budgetBar"></div>
+        <div class="budget-total">
+          <div>
+            <div class="label">Suggested monthly savings</div>
+          </div>
+          <div class="val" id="savingsTargetVal">৳0</div>
+        </div>
+      </div>
+
+      <div class="card span-5" id="goalsCard" hidden>
+        <div class="card-head">
+          <div>
+            <div class="eyebrow">Step 2</div>
+            <h3>Your savings goals</h3>
+          </div>
+          <button class="btn ghost small" id="addGoalBtn" type="button">+ New goal</button>
+        </div>
+        <div id="goalsList"></div>
+      </div>
+
+      <div class="card span-12" id="logCard" hidden>
+        <div class="card-head">
+          <div>
+            <div class="eyebrow">Step 3</div>
+            <h3>Log a deposit or expense</h3>
+          </div>
+        </div>
+        <div class="seg">
+          <button class="active deposit" id="segDeposit" type="button" data-type="deposit">💰 Deposit / saved</button>
+          <button id="segExpense" type="button" data-type="expense">🧾 Expense</button>
+        </div>
+        <div class="quick-form">
+          <input id="txAmount" class="num-input" inputmode="numeric" placeholder="Amount (৳)">
+          <select id="txGoal"><option value="">No specific goal</option></select>
+          <input id="txNote" placeholder="Note (e.g. bKash send money)" style="flex:2;">
+          <button class="btn small" id="addTxBtn" type="button">Add</button>
+        </div>
+        <div class="err" id="txErr" role="alert"></div>
+
+        <div class="stat-row" style="margin-top:20px;">
+          <div class="stat">
+            <div class="stat-label">Total saved this month</div>
+            <div class="stat-val num" id="statSaved">৳0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Total logged expenses</div>
+            <div class="stat-val num" id="statSpent">৳0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">Entries</div>
+            <div class="stat-val num" id="statCount">0</div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:22px; margin-bottom:10px; font-size:14px; color:var(--ink-soft);">Recent activity</h3>
+        <div id="txList"></div>
+      </div>
+
+    </div>
+    <footer class="note">Shonchoy tracks your own numbers — your money always stays in your own bKash/Nagad account.</footer>
+  </div>
+</div>
+
+<div id="goalModalBackdrop" class="modal-backdrop" hidden>
+  <div class="modal">
+    <h3>New savings goal</h3>
+    <p class="sub" style="color:var(--ink-soft); font-size:13px; margin:4px 0 4px;">e.g. Eid clothes, a phone, tuition fee.</p>
+    <label for="goalTitle">What are you saving for?</label>
+    <input id="goalTitle" placeholder="e.g. Eid shopping">
+    <label for="goalAmount">Target amount (৳)</label>
+    <input id="goalAmount" class="num-input" inputmode="numeric" placeholder="e.g. 8000">
+    <label for="goalDate">Target date (optional)</label>
+    <input id="goalDate" type="date">
+    <div class="err" id="goalErr" role="alert"></div>
+    <div class="close-row">
+      <button class="btn ghost" id="goalCancelBtn" type="button">Cancel</button>
+      <button class="btn" id="goalSaveBtn" type="button">Create goal</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var SUPABASE_URL = "https://jrxomuilzjuqnunyvytk.supabase.co";
+  var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeG9tdWlsemp1cW51bnl2eXRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTM5NDQsImV4cCI6MjEwNDc4OTk0NH0.w3f4N63DsodEcqR8PxkBzVfsPbW_VhOOo0HPQkeU4Fo";
+
+  var TOKEN_KEY = "shonchoy_session_token";
+  var CATEGORY_COLORS = ["#0E6B4E", "#B1501F", "#3A6EA5", "#8C5A9E", "#C2914A", "#5B6660"];
+
+  var state = {
+    token: null,
+    profile: null,
+    budget: null,
+    goals: [],
+    txs: [],
+    txType: "deposit"
+  };
+
+  function $(id) { return document.getElementById(id); }
+  function fmtTaka(n) {
+    n = Math.round(Number(n) || 0);
+    return "৳" + n.toLocaleString("en-US");
+  }
+  function esc(s) {
+    var d = document.createElement("div");
+    d.textContent = s == null ? "" : String(s);
+    return d.innerHTML;
+  }
+
+  async function rpc(name, args) {
+    var res;
+    try {
+      res = await fetch(SUPABASE_URL + "/rest/v1/rpc/" + name, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY
+        },
+        body: JSON.stringify(args || {})
+      });
+    } catch (networkErr) {
+      throw new Error("Could not reach the server. Please check your internet connection and try again.");
+    }
+    var text = await res.text();
+    var data = null;
+    try { data = text ? JSON.parse(text) : null; } catch (e) { /* non-JSON body */ }
+    if (!res.ok) {
+      var msg = (data && (data.message || data.hint || data.error)) || text || ("HTTP " + res.status);
+      throw new Error(msg);
+    }
+    return data;
+  }
+
+  // ---------- Auth ----------
+  $("tabLogin").addEventListener("click", function () { switchTab("login"); });
+  $("tabRegister").addEventListener("click", function () { switchTab("register"); });
+  function switchTab(which) {
+    $("tabLogin").classList.toggle("active", which === "login");
+    $("tabRegister").classList.toggle("active", which === "register");
+    $("loginPane").hidden = which !== "login";
+    $("registerPane").hidden = which !== "register";
+  }
+
+  $("registerPane").addEventListener("submit", async function (evt) {
+    evt.preventDefault();
+    var phone = $("regPhone").value.trim();
+    var pin = $("regPin").value.trim();
+    var name = $("regName").value.trim();
+    $("registerErr").textContent = "";
+    if (!phone || pin.length < 4) {
+      $("registerErr").textContent = "Enter a phone number and a PIN of at least 4 digits.";
+      return;
+    }
+    $("registerBtn").disabled = true;
+    try {
+      var token = await rpc("register_user", { p_phone: phone, p_pin: pin, p_name: name || null });
+      localStorage.setItem(TOKEN_KEY, token);
+      try {
+        await bootApp(token);
+      } catch (bootErr) {
+        $("registerErr").textContent = "Account created, but something went wrong loading your dashboard. Please refresh the page and log in.";
+      }
+    } catch (e) {
+      var msg = (e && e.message) || String(e);
+      $("registerErr").textContent = /duplicate|unique/i.test(msg) ?
+        "That phone number already has an account — try logging in." : "Could not create account: " + msg;
+    } finally {
+      $("registerBtn").disabled = false;
+    }
+  });
+
+  $("loginPane").addEventListener("submit", async function (evt) {
+    evt.preventDefault();
+    var phone = $("loginPhone").value.trim();
+    var pin = $("loginPin").value.trim();
+    $("loginErr").textContent = "";
+    if (!phone || !pin) { $("loginErr").textContent = "Enter your phone number and PIN."; return; }
+    $("loginBtn").disabled = true;
+    try {
+      var token = await rpc("login_user", { p_phone: phone, p_pin: pin });
+      localStorage.setItem(TOKEN_KEY, token);
+      try {
+        await bootApp(token);
+      } catch (bootErr) {
+        $("loginErr").textContent = "Logged in, but something went wrong loading your dashboard. Please refresh the page.";
+      }
+    } catch (e) {
+      try {
+        var exists = await rpc("phone_exists", { p_phone: phone });
+        $("loginErr").textContent = exists ?
+          "That PIN doesn't match. Please try again." :
+          "No account found for that number — use “Create account” to sign up first.";
+      } catch (e2) {
+        $("loginErr").textContent = "Phone number or PIN is incorrect.";
+      }
+    } finally {
+      $("loginBtn").disabled = false;
+    }
+  });
+
+  $("logoutBtn").addEventListener("click", function () {
+    localStorage.removeItem(TOKEN_KEY);
+    location.reload();
+  });
+
+  // ---------- Boot ----------
+  async function bootApp(token) {
+    state.token = token;
+    var rows = await rpc("get_my_profile", { p_token: token });
+    if (!rows || !rows.length) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
+    state.profile = rows[0];
+
+    $("authView").hidden = true;
+    $("appView").hidden = false;
+    $("whoBar").hidden = false;
+    $("whoName").textContent = state.profile.name ? "Hi, " + state.profile.name : state.profile.phone;
+
+    if (state.profile.monthly_salary) $("salaryInput").value = state.profile.monthly_salary;
+    if (state.profile.city) $("cityInput").value = state.profile.city;
+    if (state.profile.family_size) $("familyInput").value = state.profile.family_size;
+
+    var budgetRows = await rpc("get_my_latest_budget", { p_token: token });
+    if (budgetRows && budgetRows.length) {
+      state.budget = budgetRows[0];
+      renderBudget();
+      $("goalsCard").hidden = false;
+      $("logCard").hidden = false;
+    }
+
+    await refreshGoals();
+    await refreshTxs();
+  }
+
+  // ---------- Budget generation ----------
+  $("genBudgetBtn").addEventListener("click", async function () {
+    var salary = Number($("salaryInput").value);
+    var city = $("cityInput").value.trim();
+    var family = Number($("familyInput").value) || null;
+    $("budgetErr").textContent = "";
+    if (!salary || salary <= 0) { $("budgetErr").textContent = "Enter your monthly salary first."; return; }
+
+    $("genBudgetBtn").disabled = true;
+    $("budgetCard").hidden = false;
+    $("budgetList").innerHTML = "";
+    $("budgetBar").innerHTML = "";
+    $("savingsTargetVal").textContent = "…";
+
+    var categories = fallbackBudget(salary);
+    var savingsTarget = fallbackSavings(salary, categories);
+
+    var budgetId = null;
+    try {
+      budgetId = await rpc("save_budget", {
+        p_token: state.token, p_monthly_salary: salary, p_categories: categories,
+        p_savings_target: savingsTarget, p_ai_generated: false
+      });
+    } catch (e) { $("budgetErr").textContent = "Your budget is shown below, but could not be saved: " + ((e && e.message) || e); }
+
+    try {
+      await rpc("update_my_profile", {
+        p_token: state.token, p_name: null, p_city: city || null,
+        p_monthly_salary: salary, p_family_size: family
+      });
+    } catch (e) { /* non-critical */ }
+
+    state.budget = { id: budgetId, monthly_salary: salary, categories: categories, savings_target: savingsTarget, ai_generated: false };
+    renderBudget();
+    $("goalsCard").hidden = false;
+    $("logCard").hidden = false;
+    $("genBudgetBtn").disabled = false;
+  });
+
+  function fallbackBudget(salary) {
+    return [
+      { name: "House rent", amount: Math.round(salary * 0.32), note: "Typical share of income for rent in most Bangladeshi cities." },
+      { name: "Bazar / groceries", amount: Math.round(salary * 0.20), note: "Rice, vegetables, fish, and daily kitchen needs." },
+      { name: "Eating out & snacks", amount: Math.round(salary * 0.06), note: "Tea stalls, occasional restaurant meals." },
+      { name: "Transport", amount: Math.round(salary * 0.06), note: "Rickshaw, bus, or CNG fares." },
+      { name: "Utilities", amount: Math.round(salary * 0.07), note: "Electricity, gas, water, and internet." },
+      { name: "Mobile / data", amount: Math.round(salary * 0.03), note: "Recharge and internet bundles." },
+      { name: "Family & social", amount: Math.round(salary * 0.06), note: "Gifts, events, and obligations." },
+      { name: "Other", amount: Math.round(salary * 0.05), note: "Clothing, medicine, and miscellaneous costs." }
+    ];
+  }
+  function fallbackSavings(salary, categories) {
+    var used = categories.reduce(function (s, c) { return s + c.amount; }, 0);
+    return Math.max(0, salary - used);
+  }
+
+  function renderBudget() {
+    var b = state.budget;
+    var list = $("budgetList");
+    var bar = $("budgetBar");
+    list.innerHTML = "";
+    bar.innerHTML = "";
+    var total = b.categories.reduce(function (s, c) { return s + c.amount; }, 0);
+
+    b.categories.forEach(function (c, i) {
+      var color = CATEGORY_COLORS[i % CATEGORY_COLORS.length];
+      var row = document.createElement("div");
+      row.className = "budget-row";
+      row.innerHTML =
+        '<span class="dot" style="background:' + color + '"></span>' +
+        '<div class="name"><div class="cat-name">' + esc(c.name) + '</div>' +
+        (c.note ? '<div class="cat-note">' + esc(c.note) + '</div>' : '') + '</div>' +
+        '<div class="amt num">' + fmtTaka(c.amount) + '</div>';
+      list.appendChild(row);
+
+      var seg = document.createElement("div");
+      seg.className = "budget-bar-seg";
+      var pct = total > 0 ? (c.amount / (total + (b.savings_target || 0))) * 100 : 0;
+      seg.style.width = pct + "%";
+      seg.style.background = color;
+      bar.appendChild(seg);
+    });
+
+    if (b.savings_target) {
+      var savingsSeg = document.createElement("div");
+      savingsSeg.className = "budget-bar-seg";
+      var totalAll = total + b.savings_target;
+      savingsSeg.style.width = ((b.savings_target / totalAll) * 100) + "%";
+      savingsSeg.style.background = "var(--accent)";
+      savingsSeg.style.opacity = "0.45";
+      bar.appendChild(savingsSeg);
+    }
+
+    var valEl = $("savingsTargetVal");
+    valEl.textContent = fmtTaka(b.savings_target || 0);
+    valEl.className = "val " + ((b.savings_target || 0) > 0 ? "good" : "over");
+  }
+
+  // ---------- Goals ----------
+  $("addGoalBtn").addEventListener("click", function () {
+    $("goalTitle").value = ""; $("goalAmount").value = ""; $("goalDate").value = ""; $("goalErr").textContent = "";
+    $("goalModalBackdrop").hidden = false;
+  });
+  $("goalCancelBtn").addEventListener("click", function () { $("goalModalBackdrop").hidden = true; });
+  $("goalSaveBtn").addEventListener("click", async function () {
+    var title = $("goalTitle").value.trim();
+    var amount = Number($("goalAmount").value);
+    var date = $("goalDate").value || null;
+    if (!title || !amount || amount <= 0) { $("goalErr").textContent = "Enter a goal name and a target amount."; return; }
+    $("goalSaveBtn").disabled = true;
+    try {
+      await rpc("create_goal", { p_token: state.token, p_title: title, p_target_amount: amount, p_target_date: date });
+      $("goalModalBackdrop").hidden = true;
+      await refreshGoals();
+    } catch (e) {
+      $("goalErr").textContent = "Could not create the goal: " + ((e && e.message) || e);
+    } finally {
+      $("goalSaveBtn").disabled = false;
+    }
+  });
+
+  async function refreshGoals() {
+    state.goals = await rpc("get_my_goals", { p_token: state.token }) || [];
+    var list = $("goalsList");
+    var sel = $("txGoal");
+    list.innerHTML = "";
+    sel.innerHTML = '<option value="">No specific goal</option>';
+
+    if (!state.goals.length) {
+      list.innerHTML = '<div class="empty">No goals yet. Add one — Eid clothes, a phone, tuition fee.</div>';
+      return;
+    }
+    state.goals.forEach(function (g) {
+      var pct = g.target_amount > 0 ? Math.min(100, (g.current_amount / g.target_amount) * 100) : 0;
+      var item = document.createElement("div");
+      item.className = "goal-item";
+      item.innerHTML =
+        '<div class="goal-top"><div class="goal-title">' + esc(g.title) + '</div>' +
+        (g.target_date ? '<div class="goal-date">by ' + esc(g.target_date) + '</div>' : '') + '</div>' +
+        '<div class="goal-track"><div class="goal-fill" style="width:' + pct.toFixed(0) + '%"></div></div>' +
+        '<div class="goal-meta"><span><span class="num">' + fmtTaka(g.current_amount) + '</span> saved</span>' +
+        '<span>Goal: <span class="num">' + fmtTaka(g.target_amount) + '</span></span></div>';
+      list.appendChild(item);
+
+      var opt = document.createElement("option");
+      opt.value = g.id;
+      opt.textContent = g.title;
+      sel.appendChild(opt);
+    });
+  }
+
+  // ---------- Transactions ----------
+  $("segDeposit").addEventListener("click", function () { setTxType("deposit"); });
+  $("segExpense").addEventListener("click", function () { setTxType("expense"); });
+  function setTxType(t) {
+    state.txType = t;
+    $("segDeposit").classList.toggle("active", t === "deposit");
+    $("segExpense").classList.toggle("active", t === "expense");
+  }
+
+  $("addTxBtn").addEventListener("click", async function () {
+    var amount = Number($("txAmount").value);
+    var goalId = $("txGoal").value || null;
+    var note = $("txNote").value.trim();
+    $("txErr").textContent = "";
+    if (!amount || amount <= 0) { $("txErr").textContent = "Enter an amount."; return; }
+    $("addTxBtn").disabled = true;
+    try {
+      await rpc("add_transaction", {
+        p_token: state.token, p_goal_id: goalId, p_type: state.txType,
+        p_amount: amount, p_category: null, p_note: note || null
+      });
+      $("txAmount").value = ""; $("txNote").value = "";
+      await refreshGoals();
+      await refreshTxs();
+    } catch (e) {
+      $("txErr").textContent = "Could not save that entry: " + ((e && e.message) || e);
+    } finally {
+      $("addTxBtn").disabled = false;
+    }
+  });
+
+  async function refreshTxs() {
+    state.txs = await rpc("get_my_transactions", { p_token: state.token, p_limit: 30 }) || [];
+    var list = $("txList");
+    list.innerHTML = "";
+    var saved = 0, spent = 0;
+    state.txs.forEach(function (t) {
+      if (t.type === "deposit") saved += Number(t.amount); else spent += Number(t.amount);
+    });
+    $("statSaved").textContent = fmtTaka(saved);
+    $("statSpent").textContent = fmtTaka(spent);
+    $("statCount").textContent = state.txs.length;
+
+    if (!state.txs.length) {
+      list.innerHTML = '<div class="empty">No activity yet — log your first deposit above.</div>';
+      return;
+    }
+    state.txs.forEach(function (t) {
+      var goal = state.goals.find(function (g) { return g.id === t.goal_id; });
+      var row = document.createElement("div");
+      row.className = "tx-item";
+      var when = new Date(t.created_at);
+      row.innerHTML =
+        '<div class="tx-badge ' + t.type + '">' + (t.type === "deposit" ? "৳" : "−") + '</div>' +
+        '<div class="tx-body"><div class="tx-note">' + esc(t.note || (t.type === "deposit" ? "Deposit" : "Expense")) + '</div>' +
+        '<div class="tx-sub">' + when.toLocaleDateString() + (goal ? " · " + esc(goal.title) : "") + '</div></div>' +
+        '<div class="tx-amt ' + t.type + ' num">' + (t.type === "deposit" ? "+" : "−") + fmtTaka(t.amount) + '</div>';
+      list.appendChild(row);
+    });
+  }
+
+  // ---------- Init ----------
+  var existingToken = localStorage.getItem(TOKEN_KEY);
+  if (existingToken) {
+    bootApp(existingToken).catch(function () {
+      localStorage.removeItem(TOKEN_KEY);
+    });
+  }
+})();
+</script>
+</body>
+</html>
