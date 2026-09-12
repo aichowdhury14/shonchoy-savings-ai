@@ -3,303 +3,303 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shonchoy — Your savings plan, in your own bKash rhythm</title>
-<meta name="description" content="A personal savings assistant for Bangladesh. Get a realistic budget grounded in real cost-of-living data, track goals and deposits, check if a loan is fair, and see how your spending compares — no email needed, just your phone number.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230B6E4F'/%3E%3Cpath d='M20 40 L28 24 L36 34 L44 18' stroke='%23D9A441' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ctext x='32' y='30' font-size='22' text-anchor='middle' fill='%23FBF7EE' font-family='Georgia,serif' font-weight='bold'%3E৳%3C/text%3E%3C/svg%3E">
+<title>Shonchoy</title>
+<meta name="description" content="A personal savings and investment assistant for Bangladesh. Budget from real cost-of-living data, track DPS, FDR, Sanchayapatra, SIP and business capital, project maturity value, and check whether a loan is fair.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230B6E4F'/%3E%3Cpath d='M32 0a32 32 0 0 1 0 64z' fill='%23C42B1C'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23F7F2E6'/%3E%3Ctext x='32' y='40' font-size='20' text-anchor='middle' fill='%230B6E4F' font-family='Georgia,serif' font-weight='bold'%3E৳%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <style>
   :root {
     color-scheme: light dark;
-    --paper: #FBF7EE;
+    --paper: #F8F4EA;
     --surface: #FFFFFF;
-    --surface-2: #F3EDDC;
-    --ink: #14201B;
-    --ink-soft: #5C6B60;
-    --line: #E1D6B8;
-    --accent: #0B6E4F;
-    --accent-ink: #FBF7EE;
-    --accent-soft: #DCEEE1;
-    --accent-soft-ink: #0A4B37;
-    --gold: #C68A26;
-    --gold-soft: #F3E3BE;
-    --gold-soft-ink: #7A5613;
-    --rose: #A8384A;
-    --rose-soft: #F5DFE1;
-    --shadow: 0 1px 2px rgba(20,32,27,0.05), 0 10px 28px -14px rgba(20,32,27,0.24);
+    --surface-2: #F1EBDB;
+    --ink: #1A1F1C;
+    --ink-soft: #5F6A61;
+    --line: #E0D6BF;
+
+    --green: #0B6E4F;
+    --green-ink: #F8F4EA;
+    --green-soft: #DCEDE2;
+    --green-soft-ink: #08533C;
+
+    --red: #C42B1C;
+    --red-ink: #FFF3F1;
+    --red-soft: #F8DED9;
+    --red-soft-ink: #8E1D12;
+
+    --gold: #B8860B;
+    --gold-soft: #F4E7C3;
+    --gold-soft-ink: #6E4F06;
+
+    --blue: #2C5F8A;
+    --plum: #7A3E7E;
+
+    --shadow: 0 1px 2px rgba(26,31,28,.05), 0 10px 26px -14px rgba(26,31,28,.22);
     --radius: 16px;
     --radius-sm: 10px;
   }
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #10160F;
-      --surface: #191F19;
-      --surface-2: #212A22;
-      --ink: #ECE7D8;
-      --ink-soft: #9FAA9F;
-      --line: #303B2E;
-      --accent: #38B385;
-      --accent-ink: #06251A;
-      --accent-soft: #1B3A2C;
-      --accent-soft-ink: #9FE3C4;
-      --gold: #E0B054;
-      --gold-soft: #3B2E13;
-      --gold-soft-ink: #F0CE86;
-      --rose: #E38596;
-      --rose-soft: #3B2027;
-      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.7);
+      --paper: #11150F;
+      --surface: #1A2018;
+      --surface-2: #222A20;
+      --ink: #EDE8D9;
+      --ink-soft: #A0AA9F;
+      --line: #323C2F;
+      --green: #3DBA8A;
+      --green-ink: #06251A;
+      --green-soft: #1C3B2C;
+      --green-soft-ink: #A2E5C6;
+      --red: #F0705C;
+      --red-ink: #2B0D08;
+      --red-soft: #3E1C16;
+      --red-soft-ink: #FBB3A5;
+      --gold: #DCAE4A;
+      --gold-soft: #3B2F13;
+      --gold-soft-ink: #F0D391;
+      --blue: #6FA3D0;
+      --plum: #BC8ABF;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 26px -14px rgba(0,0,0,.7);
     }
   }
   :root[data-theme="dark"] {
-    --paper: #10160F;
-    --surface: #191F19;
-    --surface-2: #212A22;
-    --ink: #ECE7D8;
-    --ink-soft: #9FAA9F;
-    --line: #303B2E;
-    --accent: #38B385;
-    --accent-ink: #06251A;
-    --accent-soft: #1B3A2C;
-    --accent-soft-ink: #9FE3C4;
-    --gold: #E0B054;
-    --gold-soft: #3B2E13;
-    --gold-soft-ink: #F0CE86;
-    --rose: #E38596;
-    --rose-soft: #3B2027;
-    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 28px -14px rgba(0,0,0,0.7);
+    --paper: #11150F;
+    --surface: #1A2018;
+    --surface-2: #222A20;
+    --ink: #EDE8D9;
+    --ink-soft: #A0AA9F;
+    --line: #323C2F;
+    --green: #3DBA8A;
+    --green-ink: #06251A;
+    --green-soft: #1C3B2C;
+    --green-soft-ink: #A2E5C6;
+    --red: #F0705C;
+    --red-ink: #2B0D08;
+    --red-soft: #3E1C16;
+    --red-soft-ink: #FBB3A5;
+    --gold: #DCAE4A;
+    --gold-soft: #3B2F13;
+    --gold-soft-ink: #F0D391;
+    --blue: #6FA3D0;
+    --plum: #BC8ABF;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 26px -14px rgba(0,0,0,.7);
   }
 
   * { box-sizing: border-box; }
-  html, body { height: 100%; }
   body {
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Inter', 'Hind Siliguri', system-ui, sans-serif;
+    font-family: 'Inter','Hind Siliguri',system-ui,sans-serif;
     margin: 0;
-    padding: 0 20px 72px;
+    padding-block: 0 72px;
+    padding-inline: 20px;
     line-height: 1.5;
   }
   img { max-width: 100%; }
   [hidden] { display: none !important; }
-  h1, h2, h3 { font-family: 'Hind Siliguri', 'Inter', system-ui, sans-serif; text-wrap: balance; margin: 0; }
-  .display { font-family: 'Tiro Bangla', 'Hind Siliguri', Georgia, serif; }
-  .num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-variant-numeric: tabular-nums; }
-  a { color: inherit; }
+  h1,h2,h3,h4 { font-family:'Hind Siliguri','Inter',system-ui,sans-serif; text-wrap:balance; margin:0; }
+  .display { font-family:'Tiro Bangla','Hind Siliguri',Georgia,serif; }
+  .num { font-family:'JetBrains Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+  a { color: var(--green); }
   button { font-family: inherit; }
   ::selection { background: var(--gold-soft); color: var(--ink); }
 
-  .wrap { max-width: 980px; margin: 0 auto; }
+  .wrap { max-width: 1060px; margin: 0 auto; }
 
-  /* ---------- Header / brand ---------- */
-  .topbar {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 24px 0 20px;
-    gap: 12px; flex-wrap: wrap;
-  }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .brand-mark {
-    width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
-    background: radial-gradient(circle at 32% 28%, #10855F, var(--accent) 70%);
-    color: var(--gold); display: flex; align-items: center; justify-content: center;
-    position: relative; box-shadow: var(--shadow);
-  }
-  .brand-mark svg { width: 24px; height: 24px; }
-  .brand-name { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
-  .brand-tag { font-size: 12.5px; color: var(--ink-soft); }
-  .who { display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: var(--ink-soft); }
-  .who button {
-    background: none; border: 1px solid var(--line); color: var(--ink-soft);
-    padding: 7px 13px; border-radius: 999px; cursor: pointer; font-size: 13px;
-  }
-  .who button:hover { border-color: var(--accent); color: var(--accent); }
+  /* ---------- Header ---------- */
+  .topbar { display:flex; align-items:center; justify-content:space-between; padding:24px 0 18px; gap:12px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:12px; }
+  .brand-mark { width:44px; height:44px; flex-shrink:0; box-shadow:var(--shadow); border-radius:50%; }
+  .brand-name { font-size:23px; font-weight:700; letter-spacing:-.01em; line-height:1.15; }
+  .brand-tag { font-size:12.5px; color:var(--ink-soft); }
+  .who { display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); }
+  .who button { background:none; border:1px solid var(--line); color:var(--ink-soft); padding:7px 13px; border-radius:999px; cursor:pointer; font-size:13px; }
+  .who button:hover { border-color:var(--red); color:var(--red); }
 
-  .nav {
-    display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 999px;
-    margin-bottom: 24px; overflow-x: auto; border: 1px solid var(--line);
-  }
-  .nav button {
-    flex: 1; white-space: nowrap; border: none; background: none; padding: 10px 16px; border-radius: 999px;
-    font-size: 13.5px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
-  }
-  .nav button.active { background: var(--accent); color: var(--accent-ink); }
+  .nav { display:flex; gap:4px; background:var(--surface-2); padding:4px; border-radius:999px; margin-bottom:22px; overflow-x:auto; border:1px solid var(--line); }
+  .nav button { flex:1; white-space:nowrap; border:none; background:none; padding:10px 15px; border-radius:999px; font-size:13.5px; font-weight:600; color:var(--ink-soft); cursor:pointer; }
+  .nav button.active { background:var(--green); color:var(--green-ink); }
+  .nav button.active[data-tone="red"] { background:var(--red); color:var(--red-ink); }
 
   /* ---------- Auth ---------- */
-  .auth-shell { display: flex; justify-content: center; padding-top: 32px; }
-  .auth-card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 32px; width: 100%; max-width: 400px;
-  }
-  .auth-card h2 { font-size: 23px; margin-bottom: 6px; }
-  .auth-card p.sub { color: var(--ink-soft); font-size: 14px; margin: 0 0 22px; }
-  .tabs { display: flex; gap: 4px; background: var(--surface-2); padding: 4px; border-radius: 10px; margin-bottom: 20px; }
-  .tabs button {
-    flex: 1; border: none; background: none; padding: 8px; border-radius: 7px;
-    font-size: 13.5px; font-weight: 600; color: var(--ink-soft); cursor: pointer;
-  }
-  .tabs button.active { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  .auth-shell { display:flex; justify-content:center; padding-top:28px; }
+  .auth-card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:32px; width:100%; max-width:400px; }
+  .auth-card h2 { font-size:23px; margin-bottom:6px; }
+  .auth-card p.sub { color:var(--ink-soft); font-size:14px; margin:0 0 22px; }
+  .tabs { display:flex; gap:4px; background:var(--surface-2); padding:4px; border-radius:10px; margin-bottom:20px; }
+  .tabs button { flex:1; border:none; background:none; padding:8px; border-radius:7px; font-size:13.5px; font-weight:600; color:var(--ink-soft); cursor:pointer; }
+  .tabs button.active { background:var(--surface); color:var(--ink); box-shadow:var(--shadow); }
 
-  label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin: 14px 0 6px; }
-  label:first-of-type { margin-top: 0; }
-  input, select, textarea {
-    width: 100%; padding: 11px 13px; border-radius: 9px; border: 1px solid var(--line);
-    background: var(--surface); color: var(--ink); font-size: 15px; font-family: inherit;
-  }
-  input.num-input { font-family: 'JetBrains Mono', monospace; }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  label { display:block; font-size:13px; font-weight:600; color:var(--ink-soft); margin:14px 0 6px; }
+  .field label { margin-top:0; }
+  input,select,textarea { width:100%; padding:11px 13px; border-radius:9px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:15px; font-family:inherit; }
+  input.num-input { font-family:'JetBrains Mono',monospace; }
+  input:focus,select:focus,textarea:focus { outline:2px solid var(--green); outline-offset:1px; border-color:var(--green); }
+  :focus-visible { outline:2px solid var(--green); outline-offset:2px; }
 
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    background: var(--accent); color: var(--accent-ink); border: none;
-    padding: 11px 18px; border-radius: 9px; font-size: 14.5px; font-weight: 700;
-    cursor: pointer; width: 100%; margin-top: 20px;
-  }
-  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
-  .btn.ghost { background: none; border: 1px solid var(--line); color: var(--ink); }
-  .btn.gold { background: var(--gold); color: #2B1D02; }
-  .btn.small { width: auto; padding: 8px 14px; font-size: 13.5px; margin-top: 0; }
-  .err { color: var(--rose); font-size: 13px; margin-top: 10px; min-height: 0; }
-  .hint { color: var(--ink-soft); font-size: 12.5px; margin-top: 10px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; background:var(--green); color:var(--green-ink); border:none; padding:11px 18px; border-radius:9px; font-size:14.5px; font-weight:700; cursor:pointer; width:100%; margin-top:20px; }
+  .btn:disabled { opacity:.55; cursor:not-allowed; }
+  .btn.ghost { background:none; border:1px solid var(--line); color:var(--ink); }
+  .btn.red { background:var(--red); color:var(--red-ink); }
+  .btn.small { width:auto; padding:8px 14px; font-size:13.5px; margin-top:0; }
+  .err { color:var(--red); font-size:13px; margin-top:10px; }
+  .hint { color:var(--ink-soft); font-size:12.5px; margin-top:10px; }
 
-  /* ---------- Dashboard grid ---------- */
-  .grid { display: grid; gap: 18px; grid-template-columns: repeat(12, 1fr); }
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    box-shadow: var(--shadow); padding: 22px;
-  }
-  .span-12 { grid-column: span 12; }
-  .span-7 { grid-column: span 7; }
-  .span-5 { grid-column: span 5; }
-  .span-6 { grid-column: span 6; }
-  @media (max-width: 720px) { .span-7, .span-5, .span-6 { grid-column: span 12; } }
+  /* ---------- Layout ---------- */
+  .grid { display:grid; gap:18px; grid-template-columns:repeat(12,1fr); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; }
+  .card.flag-green { border-top:3px solid var(--green); }
+  .card.flag-red { border-top:3px solid var(--red); }
+  .card.flag-gold { border-top:3px solid var(--gold); }
+  .span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}
+  .span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}
+  @media (max-width:820px){ .span-8,.span-7,.span-6,.span-5,.span-4{grid-column:span 12} }
 
-  .card h3 { font-size: 15.5px; letter-spacing: 0.01em; }
-  .card .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; gap: 10px; flex-wrap: wrap; }
-  .eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .card h3 { font-size:15.5px; }
+  .card-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; gap:10px; flex-wrap:wrap; }
+  .eyebrow { font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--green); }
+  .eyebrow.red { color:var(--red); }
+  .eyebrow.gold { color:var(--gold-soft-ink); }
 
-  .salary-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
-  .salary-row .field { flex: 1; min-width: 160px; }
-  .salary-row label { margin: 0 0 6px; }
+  .row-fields { display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; }
+  .row-fields .field { flex:1; min-width:150px; }
 
-  .budget-list { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
-  .budget-row {
-    display: flex; align-items: center; gap: 12px; padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .budget-row:last-child { border-bottom: none; }
-  .budget-row .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-  .budget-row .name { flex: 1; min-width: 0; }
-  .budget-row .cat-name { font-size: 14.5px; font-weight: 600; }
-  .budget-row .cat-note { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
-  .budget-row .amt { font-size: 15px; font-weight: 700; white-space: nowrap; }
-  .budget-bar-track { height: 8px; background: var(--surface-2); border-radius: 4px; margin-top: 18px; overflow: hidden; display: flex; }
-  .budget-bar-seg { height: 100%; }
-  .budget-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); }
-  .budget-total .label { font-size: 13px; color: var(--ink-soft); }
-  .budget-total .val { font-size: 21px; font-weight: 800; }
-  .budget-total .val.over { color: var(--rose); }
-  .budget-total .val.good { color: var(--accent); }
-  .basis-note {
-    font-size: 12px; color: var(--ink-soft); background: var(--surface-2); border-radius: var(--radius-sm);
-    padding: 10px 12px; margin-top: 14px; display: flex; gap: 8px; align-items: flex-start;
-  }
+  /* ---------- Budget ---------- */
+  .budget-row { display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px solid var(--line); }
+  .budget-row:last-child { border-bottom:none; }
+  .budget-row .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+  .budget-row .name { flex:1; min-width:0; }
+  .budget-row .cat-name { font-size:14.5px; font-weight:600; }
+  .budget-row .cat-note { font-size:12px; color:var(--ink-soft); margin-top:2px; }
+  .budget-row .amt { font-size:15px; font-weight:700; white-space:nowrap; }
+  .budget-row .share { font-size:11.5px; color:var(--ink-soft); text-align:right; }
+  .budget-bar-track { height:10px; background:var(--surface-2); border-radius:5px; margin-top:16px; overflow:hidden; display:flex; }
+  .budget-bar-seg { height:100%; }
+  .budget-total { display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); }
+  .budget-total .label { font-size:13px; color:var(--ink-soft); }
+  .budget-total .val { font-size:22px; font-weight:800; }
+  .budget-total .val.over { color:var(--red); }
+  .budget-total .val.good { color:var(--green); }
+  .basis-note { font-size:12px; color:var(--ink-soft); background:var(--surface-2); border-radius:var(--radius-sm); padding:10px 12px; margin-top:14px; }
+  .basis-note a { text-decoration:underline; }
 
-  .stat-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 4px; }
-  .stat { flex: 1; min-width: 130px; background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px; }
-  .stat .stat-label { font-size: 12px; color: var(--ink-soft); margin-bottom: 4px; }
-  .stat .stat-val { font-size: 19px; font-weight: 800; }
+  .stat-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .stat { flex:1; min-width:130px; background:var(--surface-2); border-radius:var(--radius-sm); padding:13px 15px; }
+  .stat.tone-green { background:var(--green-soft); color:var(--green-soft-ink); }
+  .stat.tone-red { background:var(--red-soft); color:var(--red-soft-ink); }
+  .stat.tone-gold { background:var(--gold-soft); color:var(--gold-soft-ink); }
+  .stat .stat-label { font-size:11.5px; opacity:.85; margin-bottom:3px; }
+  .stat .stat-val { font-size:19px; font-weight:800; }
+  .stat .stat-sub { font-size:11.5px; opacity:.8; margin-top:2px; }
 
-  .goal-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
-  .goal-item:last-child { border-bottom: none; }
-  .goal-top { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
-  .goal-title { font-weight: 700; font-size: 14.5px; }
-  .goal-date { font-size: 12px; color: var(--ink-soft); }
-  .goal-track { height: 8px; background: var(--surface-2); border-radius: 5px; overflow: hidden; }
-  .goal-fill { height: 100%; background: var(--accent); border-radius: 5px; transition: width 0.4s ease; }
-  .goal-meta { display: flex; justify-content: space-between; margin-top: 6px; font-size: 12.5px; color: var(--ink-soft); }
-  .goal-meta .num { color: var(--ink); font-weight: 600; }
-  .goal-eta { font-size: 12px; color: var(--gold-soft-ink); background: var(--gold-soft); border-radius: 999px; padding: 2px 9px; display: inline-block; margin-top: 6px; }
+  /* ---------- Goals ---------- */
+  .goal-item { padding:13px 0; border-bottom:1px solid var(--line); }
+  .goal-item:last-child { border-bottom:none; }
+  .goal-top { display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; }
+  .goal-title { font-weight:700; font-size:14.5px; }
+  .goal-date { font-size:12px; color:var(--ink-soft); white-space:nowrap; }
+  .goal-track { height:9px; background:var(--surface-2); border-radius:5px; overflow:hidden; }
+  .goal-fill { height:100%; border-radius:5px; transition:width .4s ease; }
+  .goal-meta { display:flex; justify-content:space-between; margin-top:6px; font-size:12.5px; color:var(--ink-soft); gap:8px; }
+  .goal-meta .num { color:var(--ink); font-weight:600; }
+  .pill { font-size:11.5px; border-radius:999px; padding:2px 9px; display:inline-block; margin-top:7px; }
+  .pill.good { background:var(--green-soft); color:var(--green-soft-ink); }
+  .pill.warn { background:var(--gold-soft); color:var(--gold-soft-ink); }
+  .pill.bad { background:var(--red-soft); color:var(--red-soft-ink); }
 
-  .tx-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
-  .tx-item:last-child { border-bottom: none; }
-  .tx-badge { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
-  .tx-badge.deposit { background: var(--accent-soft); color: var(--accent-soft-ink); }
-  .tx-badge.expense { background: var(--rose-soft); color: var(--rose); }
-  .tx-body { flex: 1; min-width: 0; }
-  .tx-note { font-size: 13.5px; font-weight: 600; }
-  .tx-sub { font-size: 12px; color: var(--ink-soft); }
-  .tx-amt { font-weight: 700; font-size: 14px; white-space: nowrap; }
-  .tx-amt.deposit { color: var(--accent); }
-  .tx-amt.expense { color: var(--rose); }
-  .empty { color: var(--ink-soft); font-size: 13.5px; padding: 10px 0; }
+  /* ---------- Ledger ---------- */
+  .tx-item { display:flex; align-items:center; gap:12px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .tx-item:last-child { border-bottom:none; }
+  .tx-badge { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; flex-shrink:0; }
+  .tx-badge.deposit { background:var(--green-soft); color:var(--green-soft-ink); }
+  .tx-badge.expense { background:var(--red-soft); color:var(--red-soft-ink); }
+  .tx-body { flex:1; min-width:0; }
+  .tx-note { font-size:13.5px; font-weight:600; }
+  .tx-sub { font-size:12px; color:var(--ink-soft); }
+  .tx-amt { font-weight:700; font-size:14px; white-space:nowrap; }
+  .tx-amt.deposit { color:var(--green); }
+  .tx-amt.expense { color:var(--red); }
+  .empty { color:var(--ink-soft); font-size:13.5px; padding:12px 0; }
 
-  .quick-form { display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
-  .quick-form input, .quick-form select { flex: 1; min-width: 100px; }
-  .seg { display: flex; gap: 6px; margin-bottom: 12px; }
-  .seg button {
-    flex: 1; padding: 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface);
-    color: var(--ink-soft); font-size: 13px; font-weight: 600; cursor: pointer;
-  }
-  .seg button.active.deposit { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-soft-ink); }
-  .seg button.active.expense { background: var(--rose-soft); border-color: var(--rose); color: var(--rose); }
+  .quick-form { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .quick-form input,.quick-form select { flex:1; min-width:110px; }
+  .seg { display:flex; gap:6px; margin-bottom:10px; }
+  .seg button { flex:1; padding:9px; border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font-size:13px; font-weight:600; cursor:pointer; }
+  .seg button.active.deposit { background:var(--green-soft); border-color:var(--green); color:var(--green-soft-ink); }
+  .seg button.active.expense { background:var(--red-soft); border-color:var(--red); color:var(--red-soft-ink); }
+
+  /* ---------- Charts ---------- */
+  .chart-wrap { width:100%; overflow-x:auto; }
+  svg.chart { display:block; width:100%; height:auto; }
+  .chart-legend { display:flex; flex-wrap:wrap; gap:10px 16px; margin-top:12px; font-size:12px; color:var(--ink-soft); }
+  .chart-legend span.key { display:inline-flex; align-items:center; gap:6px; }
+  .chart-legend i { width:10px; height:10px; border-radius:3px; display:inline-block; }
 
   /* ---------- Insights ---------- */
-  .insight-item {
-    display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); align-items: flex-start;
-  }
-  .insight-item:last-child { border-bottom: none; }
-  .insight-chip { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
-  .insight-chip.positive { background: var(--accent); }
-  .insight-chip.neutral { background: var(--gold); }
-  .insight-chip.caution { background: var(--rose); }
-  .insight-headline { font-weight: 700; font-size: 14px; }
-  .insight-detail { font-size: 13px; color: var(--ink-soft); margin-top: 3px; }
+  .insight-item { display:flex; gap:12px; padding:13px 0; border-bottom:1px solid var(--line); align-items:flex-start; }
+  .insight-item:last-child { border-bottom:none; }
+  .insight-chip { width:9px; height:9px; border-radius:50%; margin-top:6px; flex-shrink:0; }
+  .insight-chip.positive { background:var(--green); }
+  .insight-chip.neutral { background:var(--gold); }
+  .insight-chip.caution { background:var(--red); }
+  .insight-headline { font-weight:700; font-size:14px; }
+  .insight-detail { font-size:13px; color:var(--ink-soft); margin-top:3px; }
 
   /* ---------- Coach ---------- */
-  .coach-prompts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-  .coach-prompts button {
-    border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
-    padding: 8px 13px; border-radius: 999px; font-size: 13px; cursor: pointer;
-  }
-  .coach-prompts button:hover { border-color: var(--accent); }
-  .coach-log { display: flex; flex-direction: column; gap: 12px; max-height: 380px; overflow-y: auto; padding-right: 4px; }
-  .coach-msg { max-width: 88%; padding: 11px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; }
-  .coach-msg.user { align-self: flex-end; background: var(--accent); color: var(--accent-ink); border-bottom-right-radius: 4px; }
-  .coach-msg.bot { align-self: flex-start; background: var(--surface-2); border-bottom-left-radius: 4px; }
-  .coach-input-row { display: flex; gap: 8px; margin-top: 14px; }
-  .coach-input-row input { flex: 1; }
+  .coach-prompts { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
+  .coach-prompts button { border:1px solid var(--line); background:var(--surface-2); color:var(--ink); padding:8px 13px; border-radius:999px; font-size:13px; cursor:pointer; }
+  .coach-prompts button:hover { border-color:var(--green); }
+  .coach-log { display:flex; flex-direction:column; gap:11px; max-height:360px; overflow-y:auto; padding-right:4px; }
+  .coach-msg { max-width:88%; padding:11px 14px; border-radius:14px; font-size:13.5px; white-space:pre-wrap; }
+  .coach-msg.user { align-self:flex-end; background:var(--green); color:var(--green-ink); border-bottom-right-radius:4px; }
+  .coach-msg.bot { align-self:flex-start; background:var(--surface-2); border-bottom-left-radius:4px; }
+  .coach-input-row { display:flex; gap:8px; margin-top:12px; }
+  .coach-input-row input { flex:1; }
 
-  /* ---------- Loan calculator ---------- */
-  .loan-form label { margin-top: 12px; }
-  .loan-result {
-    margin-top: 18px; padding: 16px; border-radius: var(--radius-sm); background: var(--surface-2);
-  }
-  .loan-verdict {
-    display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
-    padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.03em;
-  }
-  .loan-verdict.fair { background: var(--accent-soft); color: var(--accent-soft-ink); }
-  .loan-verdict.expensive { background: var(--gold-soft); color: var(--gold-soft-ink); }
-  .loan-verdict.predatory { background: var(--rose-soft); color: var(--rose); }
-  .loan-apr { font-size: 30px; font-weight: 800; margin: 10px 0 4px; }
-  .loan-compare { font-size: 12.5px; color: var(--ink-soft); margin-top: 10px; }
+  /* ---------- Loan ---------- */
+  .loan-result { margin-top:16px; padding:16px; border-radius:var(--radius-sm); background:var(--surface-2); }
+  .loan-verdict { display:inline-flex; gap:6px; font-size:11.5px; font-weight:700; padding:4px 10px; border-radius:999px; text-transform:uppercase; letter-spacing:.04em; }
+  .loan-verdict.fair { background:var(--green-soft); color:var(--green-soft-ink); }
+  .loan-verdict.expensive { background:var(--gold-soft); color:var(--gold-soft-ink); }
+  .loan-verdict.predatory { background:var(--red-soft); color:var(--red-soft-ink); }
+  .loan-apr { font-size:32px; font-weight:800; margin:10px 0 4px; }
+  .loan-compare { font-size:12.5px; color:var(--ink-soft); margin-top:10px; }
 
-  .modal-backdrop {
-    position: fixed; inset: 0; background: rgba(20,32,27,0.5); display: flex; align-items: center; justify-content: center;
-    padding: 20px; z-index: 10;
-  }
-  .modal { background: var(--surface); border-radius: var(--radius); padding: 24px; width: 100%; max-width: 400px; box-shadow: var(--shadow); }
-  .modal h3 { margin-bottom: 4px; }
-  .modal .close-row { display: flex; gap: 10px; margin-top: 20px; }
-  .modal .close-row .btn { margin-top: 0; }
+  /* ---------- Investments ---------- */
+  .inv-item { border:1px solid var(--line); border-radius:var(--radius-sm); padding:14px; margin-bottom:10px; }
+  .inv-top { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; flex-wrap:wrap; }
+  .inv-name { font-weight:700; font-size:14.5px; }
+  .inv-inst { font-size:12px; color:var(--ink-soft); }
+  .inv-kind { font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap; }
+  .inv-figures { display:flex; gap:16px; flex-wrap:wrap; margin-top:10px; }
+  .inv-fig .k { font-size:11px; color:var(--ink-soft); }
+  .inv-fig .v { font-size:14px; font-weight:700; }
+  .inv-actions { display:flex; gap:8px; margin-top:10px; }
+  .inv-actions button { border:1px solid var(--line); background:none; color:var(--ink-soft); font-size:12px; padding:5px 11px; border-radius:7px; cursor:pointer; }
+  .inv-actions button:hover { border-color:var(--red); color:var(--red); }
+  .inv-progress { height:6px; background:var(--surface-2); border-radius:4px; margin-top:10px; overflow:hidden; }
+  .inv-progress i { display:block; height:100%; background:var(--green); }
 
-  footer.note { text-align: center; color: var(--ink-soft); font-size: 12px; margin-top: 36px; }
+  .rate-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .rate-table th,.rate-table td { text-align:left; padding:9px 8px; border-bottom:1px solid var(--line); }
+  .rate-table th { font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); font-weight:700; }
+  .rate-table td.r,.rate-table th.r { text-align:right; }
+  .rate-table tr:last-child td { border-bottom:none; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .goal-fill { transition: none; }
-  }
+  .modal-backdrop { position:fixed; inset:0; background:rgba(20,26,22,.55); display:flex; align-items:center; justify-content:center; padding:20px; z-index:20; overflow-y:auto; }
+  .modal { background:var(--surface); border-radius:var(--radius); padding:24px; width:100%; max-width:440px; box-shadow:var(--shadow); max-height:90vh; overflow-y:auto; }
+  .modal h3 { margin-bottom:4px; }
+  .modal .close-row { display:flex; gap:10px; margin-top:20px; }
+  .modal .close-row .btn { margin-top:0; }
+  .two-col { display:flex; gap:10px; }
+  .two-col > div { flex:1; }
+
+  footer.note { text-align:center; color:var(--ink-soft); font-size:12px; margin-top:34px; line-height:1.7; }
+
+  @media (prefers-reduced-motion:reduce){ .goal-fill{transition:none} }
 </style>
 </head>
 <body>
@@ -307,15 +307,15 @@
 <div class="wrap">
   <div class="topbar">
     <div class="brand">
-      <div class="brand-mark">
-        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M18 40 L27 23 L36 34 L46 16" stroke="#D9A441" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="32" y="34" font-size="24" text-anchor="middle" fill="#FBF7EE" font-family="Georgia, serif" font-weight="bold">৳</text>
-        </svg>
-      </div>
+      <svg class="brand-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Shonchoy">
+        <circle cx="32" cy="32" r="32" fill="#0B6E4F"/>
+        <path d="M32 0a32 32 0 0 1 0 64z" fill="#C42B1C"/>
+        <circle cx="32" cy="32" r="13.5" fill="#F8F4EA"/>
+        <text x="32" y="40" font-size="20" text-anchor="middle" fill="#0B6E4F" font-family="Georgia, serif" font-weight="bold">৳</text>
+      </svg>
       <div>
         <div class="brand-name display">Shonchoy</div>
-        <div class="brand-tag">Your savings plan, in your own bKash rhythm</div>
+        <div class="brand-tag">Savings, budget and investment tracker for Bangladesh</div>
       </div>
     </div>
     <div class="who" id="whoBar" hidden>
@@ -360,76 +360,184 @@
 
   <div id="appView" hidden>
     <div class="nav" role="tablist">
-      <button class="nav-btn active" data-panel="panelBudget" type="button">Budget</button>
-      <button class="nav-btn" data-panel="panelGoals" type="button">Goals &amp; activity</button>
+      <button class="nav-btn active" data-panel="panelOverview" type="button">Overview</button>
+      <button class="nav-btn" data-panel="panelBudget" type="button">Budget</button>
+      <button class="nav-btn" data-panel="panelGoals" type="button">Goals &amp; ledger</button>
+      <button class="nav-btn" data-panel="panelInvest" type="button">Investments</button>
       <button class="nav-btn" data-panel="panelInsights" type="button">Insights</button>
       <button class="nav-btn" data-panel="panelCoach" type="button">Coach</button>
-      <button class="nav-btn" data-panel="panelLoan" type="button">Loan check</button>
+      <button class="nav-btn" data-tone="red" data-panel="panelLoan" type="button">Loan check</button>
     </div>
 
-    <!-- ===== Budget panel ===== -->
-    <div id="panelBudget" class="panel">
+    <!-- ================= OVERVIEW ================= -->
+    <div id="panelOverview" class="panel">
       <div class="grid">
-        <div class="card span-12">
+        <div class="card span-12 flag-green">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow">Net position</div>
+              <h3 id="overviewGreeting">Your money at a glance</h3>
+            </div>
+            <span class="pill" id="healthPill">—</span>
+          </div>
+          <div class="stat-row">
+            <div class="stat tone-green">
+              <div class="stat-label">Total invested</div>
+              <div class="stat-val num" id="ovInvested">৳0</div>
+              <div class="stat-sub" id="ovInvestedSub">across 0 instruments</div>
+            </div>
+            <div class="stat tone-gold">
+              <div class="stat-label">Projected at maturity</div>
+              <div class="stat-val num" id="ovProjected">৳0</div>
+              <div class="stat-sub" id="ovProjectedSub">principal + profit</div>
+            </div>
+            <div class="stat tone-green">
+              <div class="stat-label">Goal savings</div>
+              <div class="stat-val num" id="ovGoalSaved">৳0</div>
+              <div class="stat-sub" id="ovGoalSub">0 active goals</div>
+            </div>
+            <div class="stat tone-red">
+              <div class="stat-label">Logged expenses</div>
+              <div class="stat-val num" id="ovSpent">৳0</div>
+              <div class="stat-sub" id="ovSpentSub">all time</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card span-7 flag-green">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow">Cash flow</div>
+              <h3>Money in vs money out</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="flowChart"></div></div>
+          <div class="chart-legend">
+            <span class="key"><i style="background:var(--green)"></i>Deposits / saved</span>
+            <span class="key"><i style="background:var(--red)"></i>Expenses</span>
+          </div>
+        </div>
+
+        <div class="card span-5 flag-gold">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold">Portfolio mix</div>
+              <h3>Where your money sits</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="mixChart"></div></div>
+          <div class="chart-legend" id="mixLegend"></div>
+        </div>
+
+        <div class="card span-12 flag-red">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow red">Next 12 months</div>
+              <h3>How your wealth grows if you keep this up</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="growthChart"></div></div>
+          <div class="chart-legend">
+            <span class="key"><i style="background:var(--green)"></i>Invested principal</span>
+            <span class="key"><i style="background:var(--gold)"></i>Profit earned</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= BUDGET ================= -->
+    <div id="panelBudget" class="panel" hidden>
+      <div class="grid">
+        <div class="card span-12 flag-green">
           <div class="card-head">
             <div>
               <div class="eyebrow">Household details</div>
               <h3>Your monthly income</h3>
             </div>
           </div>
-          <div class="salary-row">
+          <div class="row-fields">
             <div class="field">
-              <label for="salaryInput">Monthly salary (৳)</label>
-              <input id="salaryInput" class="num-input" inputmode="numeric" placeholder="e.g. 35000">
+              <label for="salaryInput">Monthly income (৳)</label>
+              <input id="salaryInput" class="num-input" inputmode="numeric" placeholder="35000">
             </div>
             <div class="field">
               <label for="cityInput">City / area</label>
-              <input id="cityInput" placeholder="e.g. Mirpur, Dhaka">
+              <input id="cityInput" list="cityList" placeholder="Mirpur, Dhaka">
+              <datalist id="cityList">
+                <option value="Dhaka"></option><option value="Chattogram"></option>
+                <option value="Sylhet"></option><option value="Khulna"></option>
+                <option value="Rajshahi"></option><option value="Barishal"></option>
+                <option value="Rangpur"></option><option value="Mymensingh"></option>
+                <option value="Cumilla"></option><option value="Gazipur"></option>
+                <option value="Narayanganj"></option>
+              </datalist>
             </div>
             <div class="field">
-              <label for="familyInput">Family size</label>
-              <input id="familyInput" class="num-input" inputmode="numeric" placeholder="e.g. 4">
+              <label for="familyInput">Household size</label>
+              <input id="familyInput" class="num-input" inputmode="numeric" placeholder="4">
             </div>
-            <button class="btn small" id="genBudgetBtn" type="button" style="min-width:170px;">Build my budget</button>
+            <div class="field">
+              <label for="earnersInput">Earning members</label>
+              <input id="earnersInput" class="num-input" inputmode="numeric" placeholder="1">
+            </div>
+            <button class="btn small" id="genBudgetBtn" type="button" style="min-width:160px;">Build my budget</button>
           </div>
           <div class="err" id="budgetErr" role="alert"></div>
         </div>
 
-        <div class="card span-7" id="budgetCard" hidden>
+        <div class="card span-7 flag-green" id="budgetCard" hidden>
           <div class="card-head">
             <div>
               <div class="eyebrow">Estimated breakdown</div>
               <h3>Where your money likely goes</h3>
             </div>
           </div>
-          <div class="budget-list" id="budgetList"></div>
+          <div id="budgetList"></div>
           <div class="budget-bar-track" id="budgetBar"></div>
           <div class="budget-total">
-            <div>
-              <div class="label">Suggested monthly savings</div>
-            </div>
+            <div class="label">Suggested monthly savings</div>
             <div class="val" id="savingsTargetVal">৳0</div>
           </div>
           <div class="basis-note" id="basisNote"></div>
         </div>
 
-        <div class="card span-5" id="goalsCardMini" hidden>
+        <div class="card span-5 flag-red" id="benchCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow">Quick view</div>
-              <h3>Your active goals</h3>
+              <div class="eyebrow red">Reality check</div>
+              <h3>You vs typical households</h3>
             </div>
-            <button class="btn ghost small" id="addGoalBtnMini" type="button">+ New goal</button>
           </div>
-          <div id="goalsListMini"></div>
+          <div class="chart-wrap"><div id="benchChart"></div></div>
+          <div class="chart-legend">
+            <span class="key"><i style="background:var(--green)"></i>Your budget</span>
+            <span class="key"><i style="background:var(--red)"></i>National average (HIES)</span>
+          </div>
+          <div class="basis-note" id="benchNote"></div>
+        </div>
+
+        <div class="card span-12 flag-gold" id="affordCard" hidden>
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold">Cost reference</div>
+              <h3>What things actually cost in your city</h3>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <table class="rate-table" id="costTable">
+              <thead><tr><th>Item</th><th class="r">Typical cost</th><th class="r">Share of your income</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="basis-note">Figures scaled from 2026 Dhaka cost-of-living data (Numbeo, Wise, nsave) using your city's cost tier. Treat them as a realistic reference, not a quote.</div>
         </div>
       </div>
     </div>
 
-    <!-- ===== Goals & activity panel ===== -->
+    <!-- ================= GOALS & LEDGER ================= -->
     <div id="panelGoals" class="panel" hidden>
       <div class="grid">
-        <div class="card span-5" id="goalsCard">
+        <div class="card span-5 flag-green" id="goalsCard">
           <div class="card-head">
             <div>
               <div class="eyebrow">Targets</div>
@@ -440,31 +548,32 @@
           <div id="goalsList"></div>
         </div>
 
-        <div class="card span-7" id="logCard">
+        <div class="card span-7 flag-red" id="logCard">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Ledger</div>
+              <div class="eyebrow red">Ledger</div>
               <h3>Log a deposit or expense</h3>
             </div>
           </div>
           <div class="seg">
-            <button class="active deposit" id="segDeposit" type="button" data-type="deposit">💰 Deposit / saved</button>
-            <button id="segExpense" type="button" data-type="expense">🧾 Expense</button>
+            <button class="active deposit" id="segDeposit" type="button">Deposit / saved</button>
+            <button id="segExpense" type="button">Expense</button>
           </div>
           <div class="quick-form">
             <input id="txAmount" class="num-input" inputmode="numeric" placeholder="Amount (৳)">
+            <select id="txCategory"></select>
             <select id="txGoal"><option value="">No specific goal</option></select>
             <input id="txNote" placeholder="Note (e.g. bKash send money)" style="flex:2;">
             <button class="btn small" id="addTxBtn" type="button">Add</button>
           </div>
           <div class="err" id="txErr" role="alert"></div>
 
-          <div class="stat-row" style="margin-top:20px;">
-            <div class="stat">
+          <div class="stat-row" style="margin-top:18px;">
+            <div class="stat tone-green">
               <div class="stat-label">Total saved</div>
               <div class="stat-val num" id="statSaved">৳0</div>
             </div>
-            <div class="stat">
+            <div class="stat tone-red">
               <div class="stat-label">Total expenses</div>
               <div class="stat-val num" id="statSpent">৳0</div>
             </div>
@@ -474,16 +583,91 @@
             </div>
           </div>
 
-          <h3 style="margin-top:22px; margin-bottom:10px; font-size:14px; color:var(--ink-soft);">Recent activity</h3>
+          <h4 style="margin-top:20px; margin-bottom:6px; font-size:13.5px; color:var(--ink-soft);">Recent activity</h4>
           <div id="txList"></div>
         </div>
       </div>
     </div>
 
-    <!-- ===== Insights panel ===== -->
+    <!-- ================= INVESTMENTS ================= -->
+    <div id="panelInvest" class="panel" hidden>
+      <div class="grid">
+        <div class="card span-12 flag-gold">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold">Portfolio</div>
+              <h3>DPS, FDR, Sanchayapatra, SIP &amp; business capital</h3>
+            </div>
+            <button class="btn small" id="addInvBtn" type="button">+ Add instrument</button>
+          </div>
+          <div class="stat-row" style="margin-bottom:16px;">
+            <div class="stat tone-green">
+              <div class="stat-label">Money in</div>
+              <div class="stat-val num" id="invTotalIn">৳0</div>
+              <div class="stat-sub">principal + contributions to date</div>
+            </div>
+            <div class="stat tone-gold">
+              <div class="stat-label">Value at maturity</div>
+              <div class="stat-val num" id="invTotalOut">৳0</div>
+              <div class="stat-sub" id="invProfitSub">—</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Monthly commitment</div>
+              <div class="stat-val num" id="invMonthly">৳0</div>
+              <div class="stat-sub" id="invMonthlySub">DPS + SIP instalments</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Blended return</div>
+              <div class="stat-val num" id="invBlended">—</div>
+              <div class="stat-sub">weighted by amount</div>
+            </div>
+          </div>
+          <div id="invList"></div>
+        </div>
+
+        <div class="card span-7 flag-green">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow">Maturity timeline</div>
+              <h3>When each instrument pays out</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="maturityChart"></div></div>
+        </div>
+
+        <div class="card span-5 flag-red">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow red">Compare</div>
+              <h3>Where 1 lakh grows fastest</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="compareChart"></div></div>
+          <div class="basis-note">5-year value of ৳1,00,000 at January 2026 published rates, before tax. Sanchayapatra profit is taxed 5% (investment ≤৳5 lakh) or 10% above; bank FDR/DPS interest is taxed 10% with a TIN, 15% without.</div>
+        </div>
+
+        <div class="card span-12 flag-gold">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold">Reference rates</div>
+              <h3>Bangladesh savings instruments, January 2026</h3>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <table class="rate-table" id="ratesTable">
+              <thead><tr><th>Instrument</th><th>Tenure</th><th class="r">Annual rate</th><th class="r">৳1 lakh becomes</th><th>Notes</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="basis-note">Government savings-certificate rates from the January 2026 revision (rates are reset every six months against 5-year and 2-year treasury yields). Bank FDR/DPS rates are market ranges and vary by bank — confirm with your branch before committing.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= INSIGHTS ================= -->
     <div id="panelInsights" class="panel" hidden>
       <div class="grid">
-        <div class="card span-12">
+        <div class="card span-7 flag-green">
           <div class="card-head">
             <div>
               <div class="eyebrow">Pattern check</div>
@@ -492,13 +676,36 @@
           </div>
           <div id="insightsList"></div>
         </div>
+        <div class="card span-5 flag-red">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow red">Spending mix</div>
+              <h3>What you actually spend on</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="spendChart"></div></div>
+          <div class="chart-legend" id="spendLegend"></div>
+        </div>
+        <div class="card span-12 flag-gold">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold">Planned vs actual</div>
+              <h3>Are you sticking to your budget?</h3>
+            </div>
+          </div>
+          <div class="chart-wrap"><div id="vsChart"></div></div>
+          <div class="chart-legend">
+            <span class="key"><i style="background:var(--green)"></i>Planned</span>
+            <span class="key"><i style="background:var(--red)"></i>Actually logged</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- ===== Coach panel ===== -->
+    <!-- ================= COACH ================= -->
     <div id="panelCoach" class="panel" hidden>
       <div class="grid">
-        <div class="card span-12">
+        <div class="card span-12 flag-green">
           <div class="card-head">
             <div>
               <div class="eyebrow">Ask Shonchoy</div>
@@ -508,36 +715,37 @@
           <div class="coach-prompts" id="coachPrompts"></div>
           <div class="coach-log" id="coachLog"></div>
           <div class="coach-input-row">
-            <input id="coachInput" placeholder="Ask about your goals, budget, or a purchase…">
+            <input id="coachInput" placeholder="Ask about your budget, goals, or an instrument…">
             <button class="btn small" id="coachSendBtn" type="button">Ask</button>
           </div>
+          <div class="hint">The coach answers from your own saved numbers using built-in rules — nothing is sent to any outside service.</div>
         </div>
       </div>
     </div>
 
-    <!-- ===== Loan check panel ===== -->
+    <!-- ================= LOAN ================= -->
     <div id="panelLoan" class="panel" hidden>
       <div class="grid">
-        <div class="card span-6 loan-form">
+        <div class="card span-6 flag-red">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Is this loan fair?</div>
+              <div class="eyebrow red">Is this loan fair?</div>
               <h3>Check an informal loan</h3>
             </div>
           </div>
           <label for="loanPrincipal">Amount borrowed (৳)</label>
-          <input id="loanPrincipal" class="num-input" inputmode="numeric" placeholder="e.g. 5000">
+          <input id="loanPrincipal" class="num-input" inputmode="numeric" placeholder="5000">
           <label for="loanRepay">Total you must pay back (৳)</label>
-          <input id="loanRepay" class="num-input" inputmode="numeric" placeholder="e.g. 6000">
+          <input id="loanRepay" class="num-input" inputmode="numeric" placeholder="6000">
           <label for="loanMonths">Repayment period (months)</label>
-          <input id="loanMonths" class="num-input" inputmode="numeric" placeholder="e.g. 2">
-          <button class="btn gold" id="loanCheckBtn" type="button">Check this loan</button>
+          <input id="loanMonths" class="num-input" inputmode="numeric" placeholder="2">
+          <button class="btn red" id="loanCheckBtn" type="button">Check this loan</button>
           <div class="err" id="loanErr" role="alert"></div>
         </div>
-        <div class="card span-6" id="loanResultCard" hidden>
+        <div class="card span-6 flag-gold" id="loanResultCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow">Result</div>
+              <div class="eyebrow gold">Result</div>
               <h3>What this loan really costs</h3>
             </div>
           </div>
@@ -547,22 +755,31 @@
             <div id="loanExplain" style="font-size:13.5px;"></div>
             <div class="loan-compare" id="loanCompare"></div>
           </div>
+          <div class="chart-wrap" style="margin-top:16px;"><div id="loanChart"></div></div>
+          <div class="chart-legend">
+            <span class="key"><i style="background:var(--red)"></i>This loan</span>
+            <span class="key"><i style="background:var(--green)"></i>Formal alternatives</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <footer class="note">Shonchoy tracks your own numbers — your money always stays in your own bKash/Nagad account.</footer>
+    <footer class="note">
+      Shonchoy tracks your own numbers — your money always stays in your own bKash, Nagad or bank account.<br>
+      Rates and cost figures are references compiled from public 2026 sources, not financial advice. Confirm with your bank, post office or the National Savings Bureau before investing.
+    </footer>
   </div>
 </div>
 
+<!-- Goal modal -->
 <div id="goalModalBackdrop" class="modal-backdrop" hidden>
   <div class="modal">
     <h3>New savings goal</h3>
-    <p class="sub" style="color:var(--ink-soft); font-size:13px; margin:4px 0 4px;">e.g. Eid clothes, a phone, tuition fee.</p>
+    <p class="hint" style="margin-top:2px;">e.g. Eid clothes, a phone, tuition fee.</p>
     <label for="goalTitle">What are you saving for?</label>
-    <input id="goalTitle" placeholder="e.g. Eid shopping">
+    <input id="goalTitle" placeholder="Eid shopping">
     <label for="goalAmount">Target amount (৳)</label>
-    <input id="goalAmount" class="num-input" inputmode="numeric" placeholder="e.g. 8000">
+    <input id="goalAmount" class="num-input" inputmode="numeric" placeholder="8000">
     <label for="goalDate">Target date (optional)</label>
     <input id="goalDate" type="date">
     <div class="err" id="goalErr" role="alert"></div>
@@ -573,74 +790,425 @@
   </div>
 </div>
 
+<!-- Investment modal -->
+<div id="invModalBackdrop" class="modal-backdrop" hidden>
+  <div class="modal">
+    <h3>Add an instrument</h3>
+    <p class="hint" style="margin-top:2px;">DPS, FDR, Sanchayapatra, SIP, business capital and more.</p>
+
+    <label for="invKind">Type</label>
+    <select id="invKind">
+      <option value="dps">DPS — monthly deposit scheme</option>
+      <option value="fdr">FDR — fixed deposit</option>
+      <option value="sanchayapatra">Sanchayapatra — savings certificate</option>
+      <option value="sip">SIP — mutual fund instalment</option>
+      <option value="business">Business capital</option>
+      <option value="gold">Gold</option>
+      <option value="property">Property / land</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="invName">Name it</label>
+    <input id="invName" placeholder="e.g. DBBL DPS 5 year">
+
+    <label for="invInstitution">Bank / issuer (optional)</label>
+    <input id="invInstitution" placeholder="e.g. Dutch-Bangla Bank, Post Office">
+
+    <div class="two-col">
+      <div>
+        <label for="invPrincipal">Lump sum (৳)</label>
+        <input id="invPrincipal" class="num-input" inputmode="numeric" placeholder="0">
+      </div>
+      <div>
+        <label for="invMonthlyIn">Monthly instalment (৳)</label>
+        <input id="invMonthlyIn" class="num-input" inputmode="numeric" placeholder="0">
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <label for="invRate">Annual rate (%)</label>
+        <input id="invRate" class="num-input" inputmode="decimal" placeholder="11.83">
+      </div>
+      <div>
+        <label for="invCurrent">Current value (৳, optional)</label>
+        <input id="invCurrent" class="num-input" inputmode="numeric" placeholder="leave blank to project">
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <label for="invStart">Started on</label>
+        <input id="invStart" type="date">
+      </div>
+      <div>
+        <label for="invMaturity">Matures on</label>
+        <input id="invMaturity" type="date">
+      </div>
+    </div>
+
+    <div class="hint" id="invRateHint"></div>
+    <div class="err" id="invErr" role="alert"></div>
+    <div class="close-row">
+      <button class="btn ghost" id="invCancelBtn" type="button">Cancel</button>
+      <button class="btn" id="invSaveBtn" type="button">Add instrument</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   "use strict";
 
   var SUPABASE_URL = "https://jrxomuilzjuqnunyvytk.supabase.co";
   var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeG9tdWlsemp1cW51bnl2eXRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTM5NDQsImV4cCI6MjEwNDc4OTk0NH0.w3f4N63DsodEcqR8PxkBzVfsPbW_VhOOo0HPQkeU4Fo";
-
   var TOKEN_KEY = "shonchoy_session_token";
-  var CATEGORY_COLORS = ["#0B6E4F", "#C68A26", "#3A6EA5", "#8C5A9E", "#A8384A", "#5C6B60", "#2E8B75"];
+
+  var C = {
+    green: "var(--green)", red: "var(--red)", gold: "var(--gold)",
+    blue: "var(--blue)", plum: "var(--plum)", soft: "var(--ink-soft)"
+  };
+  // Category palette alternates the two brand hues so the whole system reads red+green.
+  var CAT_COLORS = ["#0B6E4F", "#C42B1C", "#2C5F8A", "#B8860B", "#7A3E7E", "#158C6A", "#96351F", "#4E7C3F", "#8A6D3B"];
 
   var state = {
-    token: null,
-    profile: null,
-    budget: null,
-    goals: [],
-    txs: [],
-    txType: "deposit",
-    coachHistory: []
+    token: null, profile: null, budget: null,
+    goals: [], txs: [], investments: [], txType: "deposit"
   };
 
   function $(id) { return document.getElementById(id); }
   function fmtTaka(n) {
     n = Math.round(Number(n) || 0);
+    if (Math.abs(n) >= 10000000) return "৳" + (n / 10000000).toFixed(2).replace(/\.00$/, "") + " cr";
+    if (Math.abs(n) >= 100000) return "৳" + (n / 100000).toFixed(2).replace(/\.00$/, "") + " lakh";
     return "৳" + n.toLocaleString("en-US");
   }
-  function esc(s) {
-    var d = document.createElement("div");
-    d.textContent = s == null ? "" : String(s);
-    return d.innerHTML;
-  }
+  function fmtTakaFull(n) { return "৳" + Math.round(Number(n) || 0).toLocaleString("en-US"); }
+  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : String(s); return d.innerHTML; }
 
   async function rpc(name, args) {
     var res;
     try {
       res = await fetch(SUPABASE_URL + "/rest/v1/rpc/" + name, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "apikey": SUPABASE_KEY,
-          "Authorization": "Bearer " + SUPABASE_KEY
-        },
+        headers: { "Content-Type": "application/json", apikey: SUPABASE_KEY, Authorization: "Bearer " + SUPABASE_KEY },
         body: JSON.stringify(args || {})
       });
-    } catch (networkErr) {
-      throw new Error("Could not reach the server. Please check your internet connection and try again.");
-    }
-    var text = await res.text();
-    var data = null;
-    try { data = text ? JSON.parse(text) : null; } catch (e) { /* non-JSON body */ }
-    if (!res.ok) {
-      var msg = (data && (data.message || data.hint || data.error)) || text || ("HTTP " + res.status);
-      throw new Error(msg);
-    }
+    } catch (e) { throw new Error("Could not reach the server. Check your internet connection and try again."); }
+    var text = await res.text(), data = null;
+    try { data = text ? JSON.parse(text) : null; } catch (e) {}
+    if (!res.ok) throw new Error((data && (data.message || data.hint || data.error)) || text || ("HTTP " + res.status));
     return data;
   }
 
-  // ---------- Navigation ----------
-  var panels = ["panelBudget", "panelGoals", "panelInsights", "panelCoach", "panelLoan"];
+  /* ============ Bangladesh reference data (public 2026 sources) ============ */
+
+  // City cost tiers relative to Dhaka = 1.00 (Numbeo / Wise / nsave 2026).
+  var CITY_TIERS = {
+    dhaka:1.00, gulshan:1.15, banani:1.12, dhanmondi:1.08, uttara:1.00, mirpur:.88, mohammadpur:.92,
+    narayanganj:.80, gazipur:.75, chattogram:.72, chittagong:.72, sylhet:.65, khulna:.60,
+    rajshahi:.58, cumilla:.55, comilla:.55, barishal:.55, barisal:.55, rangpur:.52, mymensingh:.52,
+    bogura:.50, bogra:.50, jessore:.50, jashore:.50, dinajpur:.48, noakhali:.50
+  };
+  function cityTier(raw) {
+    if (!raw) return .55;
+    var c = String(raw).toLowerCase();
+    var best = null;
+    for (var k in CITY_TIERS) if (c.indexOf(k) !== -1 && (!best || k.length > best.length)) best = k;
+    return best ? CITY_TIERS[best] : .55;
+  }
+  function cityLabel(raw) {
+    var t = cityTier(raw);
+    if (!raw) return "an average Bangladeshi town";
+    if (t >= 1.0) return "Dhaka";
+    if (t >= .70) return "a major city (Chattogram / Gazipur tier)";
+    if (t >= .55) return "a mid-size divisional city";
+    return "a smaller district town";
+  }
+  // Rent by household size: Numbeo/Wise 2026 Dhaka — 1BHK city-centre ~৳14,400,
+  // 3BHK city-centre ~৳37,800, outside-centre roughly 55-60% of those.
+  function estimateRent(family, city) {
+    var size = family && family > 0 ? family : 4;
+    var tier = cityTier(city);
+    var base = size <= 1 ? 9000 : size <= 2 ? 13000 : size <= 4 ? 21000 : size <= 6 ? 31000 : 38000;
+    return Math.round((base * tier) / 500) * 500;
+  }
+
+  // Typical monthly costs in Dhaka (2026), scaled by city tier.
+  // Sources: Numbeo Dhaka Sep-2026, Wise 2026, nsave 2026 cost-of-living.
+  var COST_ITEMS = [
+    { label: "Utilities — 85m² flat (electricity, gas, water)", dhaka: 3735, per: "month" },
+    { label: "Mobile + broadband internet", dhaka: 1500, per: "month" },
+    { label: "Monthly bus / metro pass", dhaka: 2350, per: "month" },
+    { label: "1 kg chicken", dhaka: 219, per: "unit", flat: true },
+    { label: "12 eggs", dhaka: 150, per: "unit", flat: true },
+    { label: "LPG cylinder (12.5 kg, lasts 1-2 months)", dhaka: 1350, per: "unit", flat: true },
+    { label: "Bazar for a family of four", dhaka: 18000, per: "month" },
+    { label: "School fees per child (mid-range)", dhaka: 3500, per: "month" }
+  ];
+
+  // HIES 2022 (BBS): food 45.8% / non-food 54.2% of household consumption.
+  var HIES_FOOD_SHARE = 0.458;
+
+  // National savings instruments — January 2026 revision, plus market bank ranges.
+  var INSTRUMENTS = [
+    { key:"bsp5",  name:"5-year Bangladesh Sanchayapatra", tenure:"5 years", rate:11.83, note:"≤৳7.5 lakh; 11.80% above. Profit paid at maturity." },
+    { key:"pari",  name:"Paribar (Family) Sanchayapatra",  tenure:"5 years", rate:11.52, note:"Women, people 65+, and disabled investors. Monthly profit." },
+    { key:"pens",  name:"Pensioner Sanchayapatra",         tenure:"5 years", rate:11.98, note:"Retired government employees only. Quarterly profit." },
+    { key:"tmp",   name:"3-monthly Profit Sanchayapatra",  tenure:"3 years", rate:11.82, note:"Min ৳1 lakh, max ৳30 lakh single / ৳60 lakh joint." },
+    { key:"fdr",   name:"Bank FDR (1-3 years)",            tenure:"1-3 years", rate:10.50, note:"Market range ~9-12%; varies by bank and tenure." },
+    { key:"dps",   name:"Bank DPS (5-10 years)",           tenure:"5-10 years", rate:10.00, note:"Monthly instalment scheme; rate varies by bank." },
+    { key:"sip",   name:"Mutual fund SIP",                 tenure:"open-ended", rate:9.00, note:"Not guaranteed — market-linked, can fall as well as rise." }
+  ];
+
+  var DEFAULT_RATE_FOR_KIND = { dps:10.0, fdr:10.5, sanchayapatra:11.83, sip:9.0, business:null, gold:null, property:null, other:null };
+
+  /* ============ Chart helpers (hand-rolled SVG, theme-token colours) ============ */
+
+  function svgEl(w, h) {
+    return '<svg class="chart" viewBox="0 0 ' + w + ' ' + h + '" role="img" xmlns="http://www.w3.org/2000/svg">';
+  }
+  function niceMax(v) {
+    if (v <= 0) return 1;
+    var mag = Math.pow(10, Math.floor(Math.log10(v)));
+    var n = v / mag;
+    var step = n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10;
+    return step * mag;
+  }
+  function axisLabel(v) {
+    if (v >= 10000000) return (v / 10000000).toFixed(v % 10000000 ? 1 : 0) + "cr";
+    if (v >= 100000) return (v / 100000).toFixed(v % 100000 ? 1 : 0) + "L";
+    if (v >= 1000) return Math.round(v / 1000) + "k";
+    return String(Math.round(v));
+  }
+
+  // Grouped vertical bars. series = [{name,color,values:[]}], labels = []
+  function barChart(target, labels, series, opts) {
+    opts = opts || {};
+    var W = 640, H = opts.height || 240, padL = 46, padR = 12, padT = 12, padB = 34;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var maxV = 0;
+    series.forEach(function (s) { s.values.forEach(function (v) { if (v > maxV) maxV = v; }); });
+    maxV = niceMax(maxV);
+    var groups = labels.length || 1;
+    var groupW = plotW / groups;
+    var barW = Math.min(30, (groupW * .68) / series.length);
+    var out = svgEl(W, H);
+    // gridlines
+    for (var g = 0; g <= 4; g++) {
+      var y = padT + (plotH * g / 4);
+      var val = maxV * (1 - g / 4);
+      out += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - padR) + '" y2="' + y + '" stroke="currentColor" stroke-opacity=".12"/>';
+      out += '<text x="' + (padL - 7) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="currentColor" fill-opacity=".55">' + axisLabel(val) + '</text>';
+    }
+    labels.forEach(function (lab, i) {
+      var gx = padL + groupW * i + groupW / 2;
+      series.forEach(function (s, si) {
+        var v = s.values[i] || 0;
+        var h = maxV > 0 ? (v / maxV) * plotH : 0;
+        var x = gx - (barW * series.length) / 2 + si * barW;
+        var y = padT + plotH - h;
+        out += '<rect x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + (barW - 2).toFixed(1) + '" height="' + Math.max(0, h).toFixed(1) + '" rx="2" fill="' + s.color + '"><title>' + esc(lab) + ' — ' + esc(s.name) + ': ' + fmtTakaFull(v) + '</title></rect>';
+      });
+      out += '<text x="' + gx.toFixed(1) + '" y="' + (H - 12) + '" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".65">' + esc(lab) + '</text>';
+    });
+    out += "</svg>";
+    $(target).innerHTML = out;
+  }
+
+  // Horizontal bars — good for long category names.
+  function hBarChart(target, rows, opts) {
+    opts = opts || {};
+    var W = 640, rowH = 30, padL = opts.labelW || 150, padR = 60, padT = 8;
+    var H = padT + rows.length * rowH + 8;
+    var plotW = W - padL - padR;
+    var maxV = niceMax(Math.max.apply(null, rows.map(function (r) { return r.value; }).concat([1])));
+    var out = svgEl(W, H);
+    rows.forEach(function (r, i) {
+      var y = padT + i * rowH;
+      var w = maxV > 0 ? (r.value / maxV) * plotW : 0;
+      out += '<text x="' + (padL - 8) + '" y="' + (y + 15) + '" text-anchor="end" font-size="11" fill="currentColor" fill-opacity=".8">' + esc(r.label.length > 22 ? r.label.slice(0, 21) + "…" : r.label) + '<title>' + esc(r.label) + '</title></text>';
+      out += '<rect x="' + padL + '" y="' + (y + 5) + '" width="' + plotW + '" height="14" rx="7" fill="currentColor" fill-opacity=".07"/>';
+      out += '<rect x="' + padL + '" y="' + (y + 5) + '" width="' + Math.max(2, w).toFixed(1) + '" height="14" rx="7" fill="' + (r.color || C.green) + '"><title>' + esc(r.label) + ': ' + fmtTakaFull(r.value) + '</title></rect>';
+      out += '<text x="' + (W - padR + 6) + '" y="' + (y + 16) + '" font-size="10.5" fill="currentColor" fill-opacity=".75">' + esc(r.display || axisLabel(r.value)) + '</text>';
+    });
+    out += "</svg>";
+    $(target).innerHTML = out;
+  }
+
+  // Donut chart. slices = [{label,value,color}]
+  function donutChart(target, slices, legendTarget) {
+    var total = slices.reduce(function (s, x) { return s + x.value; }, 0);
+    var W = 260, H = 200, cx = W / 2, cy = H / 2, r = 74, ir = 46;
+    var out = svgEl(W, H);
+    if (total <= 0) {
+      out += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="currentColor" fill-opacity=".07"/>';
+      out += '<text x="' + cx + '" y="' + (cy + 4) + '" text-anchor="middle" font-size="11" fill="currentColor" fill-opacity=".6">No data yet</text>';
+    } else {
+      var a0 = -Math.PI / 2;
+      slices.forEach(function (s) {
+        if (s.value <= 0) return;
+        var a1 = a0 + (s.value / total) * Math.PI * 2;
+        var large = (a1 - a0) > Math.PI ? 1 : 0;
+        var x0 = cx + r * Math.cos(a0), y0 = cy + r * Math.sin(a0);
+        var x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+        var xi1 = cx + ir * Math.cos(a1), yi1 = cy + ir * Math.sin(a1);
+        var xi0 = cx + ir * Math.cos(a0), yi0 = cy + ir * Math.sin(a0);
+        out += '<path d="M' + x0.toFixed(1) + ' ' + y0.toFixed(1) +
+          ' A' + r + ' ' + r + ' 0 ' + large + ' 1 ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+          ' L' + xi1.toFixed(1) + ' ' + yi1.toFixed(1) +
+          ' A' + ir + ' ' + ir + ' 0 ' + large + ' 0 ' + xi0.toFixed(1) + ' ' + yi0.toFixed(1) + ' Z" fill="' + s.color + '">' +
+          '<title>' + esc(s.label) + ': ' + fmtTakaFull(s.value) + ' (' + ((s.value / total) * 100).toFixed(0) + '%)</title></path>';
+        a0 = a1;
+      });
+      out += '<text x="' + cx + '" y="' + (cy - 2) + '" text-anchor="middle" font-size="15" font-weight="700" fill="currentColor">' + esc(fmtTaka(total)) + '</text>';
+      out += '<text x="' + cx + '" y="' + (cy + 14) + '" text-anchor="middle" font-size="10" fill="currentColor" fill-opacity=".6">total</text>';
+    }
+    out += "</svg>";
+    $(target).innerHTML = out;
+    if (legendTarget) {
+      $(legendTarget).innerHTML = slices.filter(function (s) { return s.value > 0; }).map(function (s) {
+        return '<span class="key"><i style="background:' + s.color + '"></i>' + esc(s.label) + ' · ' + esc(fmtTaka(s.value)) + '</span>';
+      }).join("") || '<span>Nothing to show yet.</span>';
+    }
+  }
+
+  // Stacked area growth projection. points = [{label, principal, profit}]
+  function stackedAreaChart(target, points) {
+    var W = 900, H = 230, padL = 50, padR = 14, padT = 12, padB = 30;
+    var plotW = W - padL - padR, plotH = H - padT - padB;
+    var maxV = niceMax(Math.max.apply(null, points.map(function (p) { return p.principal + p.profit; }).concat([1])));
+    var n = points.length;
+    function X(i) { return padL + (n <= 1 ? plotW / 2 : (plotW * i) / (n - 1)); }
+    function Y(v) { return padT + plotH - (maxV > 0 ? (v / maxV) * plotH : 0); }
+    var out = svgEl(W, H);
+    for (var g = 0; g <= 4; g++) {
+      var y = padT + (plotH * g / 4), val = maxV * (1 - g / 4);
+      out += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - padR) + '" y2="' + y + '" stroke="currentColor" stroke-opacity=".12"/>';
+      out += '<text x="' + (padL - 7) + '" y="' + (y + 4) + '" text-anchor="end" font-size="10" fill="currentColor" fill-opacity=".55">' + axisLabel(val) + '</text>';
+    }
+    var topPath = "", basePath = "", prinPath = "";
+    points.forEach(function (p, i) {
+      topPath += (i ? " L" : "M") + X(i).toFixed(1) + " " + Y(p.principal + p.profit).toFixed(1);
+      prinPath += (i ? " L" : "M") + X(i).toFixed(1) + " " + Y(p.principal).toFixed(1);
+    });
+    for (var i = n - 1; i >= 0; i--) basePath += " L" + X(i).toFixed(1) + " " + Y(points[i].principal).toFixed(1);
+    out += '<path d="' + topPath + basePath + ' Z" fill="var(--gold)" fill-opacity=".45"/>';
+    var zero = "";
+    for (var j = n - 1; j >= 0; j--) zero += " L" + X(j).toFixed(1) + " " + Y(0).toFixed(1);
+    out += '<path d="' + prinPath + zero + ' Z" fill="var(--green)" fill-opacity=".55"/>';
+    out += '<path d="' + prinPath + '" fill="none" stroke="var(--green)" stroke-width="2"/>';
+    out += '<path d="' + topPath + '" fill="none" stroke="var(--gold)" stroke-width="2"/>';
+    points.forEach(function (p, i) {
+      if (n > 8 && i % 2) return;
+      out += '<text x="' + X(i).toFixed(1) + '" y="' + (H - 10) + '" text-anchor="middle" font-size="9.5" fill="currentColor" fill-opacity=".6">' + esc(p.label) + '</text>';
+    });
+    var last = points[n - 1];
+    out += '<circle cx="' + X(n - 1).toFixed(1) + '" cy="' + Y(last.principal + last.profit).toFixed(1) + '" r="4" fill="var(--gold)"/>';
+    out += "</svg>";
+    $(target).innerHTML = out;
+  }
+
+  // Horizontal timeline of maturities.
+  function timelineChart(target, items) {
+    if (!items.length) { $(target).innerHTML = '<div class="empty">Add an instrument with a maturity date to see the timeline.</div>'; return; }
+    var W = 640, rowH = 34, padL = 130, padR = 70, padT = 24;
+    var H = padT + items.length * rowH + 16;
+    var now = Date.now();
+    var maxT = Math.max.apply(null, items.map(function (i) { return i.maturity; }).concat([now + 86400000 * 365]));
+    var span = Math.max(1, maxT - now);
+    var plotW = W - padL - padR;
+    var out = svgEl(W, H);
+    out += '<line x1="' + padL + '" y1="' + (padT - 10) + '" x2="' + padL + '" y2="' + (H - 8) + '" stroke="currentColor" stroke-opacity=".3" stroke-dasharray="3 3"/>';
+    out += '<text x="' + padL + '" y="' + (padT - 14) + '" font-size="10" fill="currentColor" fill-opacity=".6">today</text>';
+    items.forEach(function (it, i) {
+      var y = padT + i * rowH;
+      var frac = Math.min(1, Math.max(0, (it.maturity - now) / span));
+      var x = padL + frac * plotW;
+      out += '<text x="' + (padL - 8) + '" y="' + (y + 14) + '" text-anchor="end" font-size="11" fill="currentColor" fill-opacity=".85">' + esc(it.name.length > 18 ? it.name.slice(0, 17) + "…" : it.name) + '<title>' + esc(it.name) + '</title></text>';
+      out += '<line x1="' + padL + '" y1="' + (y + 10) + '" x2="' + x.toFixed(1) + '" y2="' + (y + 10) + '" stroke="' + it.color + '" stroke-width="6" stroke-linecap="round" stroke-opacity=".35"/>';
+      out += '<circle cx="' + x.toFixed(1) + '" cy="' + (y + 10) + '" r="5.5" fill="' + it.color + '"><title>' + esc(it.name) + ' matures ' + esc(it.dateLabel) + ' — ' + esc(fmtTakaFull(it.value)) + '</title></circle>';
+      out += '<text x="' + Math.min(W - 6, x + 10).toFixed(1) + '" y="' + (y + 14) + '" font-size="10" fill="currentColor" fill-opacity=".7">' + esc(it.dateLabel) + '</text>';
+    });
+    out += "</svg>";
+    $(target).innerHTML = out;
+  }
+
+  /* ============ Finance maths ============ */
+
+  function monthsBetween(a, b) {
+    return (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth());
+  }
+  // Lump sum with annual compounding.
+  function futureLump(principal, annualRate, years) {
+    if (!principal) return 0;
+    if (!annualRate) return principal;
+    return principal * Math.pow(1 + annualRate / 100, years);
+  }
+  // Monthly instalments compounded monthly (ordinary annuity) — how DPS/SIP actually behave.
+  function futureAnnuity(monthly, annualRate, months) {
+    if (!monthly || months <= 0) return 0;
+    if (!annualRate) return monthly * months;
+    var r = annualRate / 100 / 12;
+    return monthly * ((Math.pow(1 + r, months) - 1) / r);
+  }
+  function investmentTenureMonths(inv) {
+    var start = inv.start_date ? new Date(inv.start_date) : new Date(inv.created_at);
+    var end = inv.maturity_date ? new Date(inv.maturity_date) : null;
+    if (!end) return null;
+    return Math.max(0, monthsBetween(start, end));
+  }
+  // Money the user has actually put in so far.
+  function contributedToDate(inv) {
+    var start = inv.start_date ? new Date(inv.start_date) : new Date(inv.created_at);
+    var elapsed = Math.max(0, monthsBetween(start, new Date()));
+    var tenure = investmentTenureMonths(inv);
+    if (tenure != null) elapsed = Math.min(elapsed, tenure);
+    return Number(inv.principal || 0) + Number(inv.monthly_contribution || 0) * elapsed;
+  }
+  // Value at maturity (or, without a maturity date, projected 12 months out).
+  function maturityValue(inv) {
+    if (inv.current_value != null && !inv.annual_rate) return Number(inv.current_value);
+    var months = investmentTenureMonths(inv);
+    if (months == null) months = 12;
+    var years = months / 12;
+    var rate = Number(inv.annual_rate || 0);
+    var base = inv.current_value != null ? Number(inv.current_value) : Number(inv.principal || 0);
+    return futureLump(base, rate, years) + futureAnnuity(Number(inv.monthly_contribution || 0), rate, months);
+  }
+  function investedTotal() { return state.investments.reduce(function (s, i) { return s + contributedToDate(i); }, 0); }
+  function maturityTotal() { return state.investments.reduce(function (s, i) { return s + maturityValue(i); }, 0); }
+  function monthlyCommitment() { return state.investments.reduce(function (s, i) { return s + Number(i.monthly_contribution || 0); }, 0); }
+  function blendedRate() {
+    var withRate = state.investments.filter(function (i) { return i.annual_rate; });
+    var weight = withRate.reduce(function (s, i) { return s + contributedToDate(i); }, 0);
+    if (!weight) return null;
+    return withRate.reduce(function (s, i) { return s + Number(i.annual_rate) * contributedToDate(i); }, 0) / weight;
+  }
+
+  function monthlySavingsRate() {
+    var deps = state.txs.filter(function (t) { return t.type === "deposit"; });
+    if (!deps.length) return 0;
+    var total = deps.reduce(function (s, t) { return s + Number(t.amount); }, 0);
+    var oldest = new Date(deps[deps.length - 1].created_at);
+    var days = Math.max(7, (Date.now() - oldest.getTime()) / 86400000);
+    return total / (days / 30);
+  }
+
+  /* ============ Navigation ============ */
+  var PANELS = ["panelOverview","panelBudget","panelGoals","panelInvest","panelInsights","panelCoach","panelLoan"];
   document.querySelectorAll(".nav-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       var target = btn.getAttribute("data-panel");
       document.querySelectorAll(".nav-btn").forEach(function (b) { b.classList.toggle("active", b === btn); });
-      panels.forEach(function (p) { $(p).hidden = p !== target; });
-      if (target === "panelInsights") loadInsights();
+      PANELS.forEach(function (p) { $(p).hidden = p !== target; });
+      if (target === "panelOverview") renderOverview();
+      if (target === "panelInsights") renderInsights();
+      if (target === "panelInvest") renderInvestments();
     });
   });
 
-  // ---------- Auth ----------
+  /* ============ Auth ============ */
   $("tabLogin").addEventListener("click", function () { switchTab("login"); });
   $("tabRegister").addEventListener("click", function () { switchTab("register"); });
   function switchTab(which) {
@@ -650,69 +1218,46 @@
     $("registerPane").hidden = which !== "register";
   }
 
-  $("registerPane").addEventListener("submit", async function (evt) {
-    evt.preventDefault();
-    var phone = $("regPhone").value.trim();
-    var pin = $("regPin").value.trim();
-    var name = $("regName").value.trim();
+  $("registerPane").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var phone = $("regPhone").value.trim(), pin = $("regPin").value.trim(), name = $("regName").value.trim();
     $("registerErr").textContent = "";
-    if (!phone || pin.length < 4) {
-      $("registerErr").textContent = "Enter a phone number and a PIN of at least 4 digits.";
-      return;
-    }
+    if (!phone || pin.length < 4) { $("registerErr").textContent = "Enter a phone number and a PIN of at least 4 digits."; return; }
     $("registerBtn").disabled = true;
     try {
       var token = await rpc("register_user", { p_phone: phone, p_pin: pin, p_name: name || null });
       localStorage.setItem(TOKEN_KEY, token);
-      try {
-        await bootApp(token);
-      } catch (bootErr) {
-        $("registerErr").textContent = "Account created, but something went wrong loading your dashboard. Please refresh the page and log in.";
-      }
-    } catch (e) {
-      var msg = (e && e.message) || String(e);
-      $("registerErr").textContent = /duplicate|unique/i.test(msg) ?
-        "That phone number already has an account — try logging in." : "Could not create account: " + msg;
-    } finally {
-      $("registerBtn").disabled = false;
-    }
+      try { await bootApp(token); }
+      catch (err) { $("registerErr").textContent = "Account created, but the dashboard did not load. Refresh the page and log in."; }
+    } catch (err) {
+      var msg = (err && err.message) || String(err);
+      $("registerErr").textContent = /duplicate|unique/i.test(msg) ? "That phone number already has an account — try logging in." : "Could not create account: " + msg;
+    } finally { $("registerBtn").disabled = false; }
   });
 
-  $("loginPane").addEventListener("submit", async function (evt) {
-    evt.preventDefault();
-    var phone = $("loginPhone").value.trim();
-    var pin = $("loginPin").value.trim();
+  $("loginPane").addEventListener("submit", async function (e) {
+    e.preventDefault();
+    var phone = $("loginPhone").value.trim(), pin = $("loginPin").value.trim();
     $("loginErr").textContent = "";
     if (!phone || !pin) { $("loginErr").textContent = "Enter your phone number and PIN."; return; }
     $("loginBtn").disabled = true;
     try {
       var token = await rpc("login_user", { p_phone: phone, p_pin: pin });
       localStorage.setItem(TOKEN_KEY, token);
-      try {
-        await bootApp(token);
-      } catch (bootErr) {
-        $("loginErr").textContent = "Logged in, but something went wrong loading your dashboard. Please refresh the page.";
-      }
-    } catch (e) {
+      try { await bootApp(token); }
+      catch (err) { $("loginErr").textContent = "Logged in, but the dashboard did not load. Please refresh the page."; }
+    } catch (err) {
       try {
         var exists = await rpc("phone_exists", { p_phone: phone });
-        $("loginErr").textContent = exists ?
-          "That PIN doesn't match. Please try again." :
-          "No account found for that number — use “Create account” to sign up first.";
-      } catch (e2) {
-        $("loginErr").textContent = "Phone number or PIN is incorrect.";
-      }
-    } finally {
-      $("loginBtn").disabled = false;
-    }
+        $("loginErr").textContent = exists ? "That PIN doesn't match. Please try again."
+          : "No account found for that number — use “Create account” to sign up first.";
+      } catch (e2) { $("loginErr").textContent = "Phone number or PIN is incorrect."; }
+    } finally { $("loginBtn").disabled = false; }
   });
 
-  $("logoutBtn").addEventListener("click", function () {
-    localStorage.removeItem(TOKEN_KEY);
-    location.reload();
-  });
+  $("logoutBtn").addEventListener("click", function () { localStorage.removeItem(TOKEN_KEY); location.reload(); });
 
-  // ---------- Boot ----------
+  /* ============ Boot ============ */
   async function bootApp(token) {
     state.token = token;
     var rows = await rpc("get_my_profile", { p_token: token });
@@ -723,76 +1268,38 @@
     $("appView").hidden = false;
     $("whoBar").hidden = false;
     $("whoName").textContent = state.profile.name ? "Hi, " + state.profile.name : state.profile.phone;
+    if (state.profile.name) $("overviewGreeting").textContent = state.profile.name.split(" ")[0] + "’s money at a glance";
 
     if (state.profile.monthly_salary) $("salaryInput").value = state.profile.monthly_salary;
     if (state.profile.city) $("cityInput").value = state.profile.city;
     if (state.profile.family_size) $("familyInput").value = state.profile.family_size;
 
     var budgetRows = await rpc("get_my_latest_budget", { p_token: token });
-    if (budgetRows && budgetRows.length) {
-      state.budget = budgetRows[0];
-      renderBudget();
-    }
+    if (budgetRows && budgetRows.length) { state.budget = budgetRows[0]; renderBudget(); }
 
     await refreshGoals();
     await refreshTxs();
+    await refreshInvestments();
+    populateTxCategories();
+    renderRatesTable();
+    renderCompareChart();
     renderCoachPrompts();
+    renderOverview();
   }
 
-  // ---------- Bangladesh cost-of-living model ----------
-  // City tiers grounded in 2026 cost-of-living data (Numbeo/Wise/nsave):
-  // Dhaka is the most expensive; Chattogram/Sylhet meaningfully cheaper;
-  // other divisional cities and small towns cheaper still.
-  var CITY_TIERS = {
-    dhaka: 1.0, chattogram: 0.72, chittagong: 0.72, sylhet: 0.65, khulna: 0.6,
-    rajshahi: 0.58, barishal: 0.55, barisal: 0.55, rangpur: 0.52, mymensingh: 0.52,
-    comilla: 0.55, cumilla: 0.55, gazipur: 0.75, narayanganj: 0.8
-  };
-  function cityTier(cityRaw) {
-    if (!cityRaw) return 0.5;
-    var c = cityRaw.toLowerCase();
-    for (var key in CITY_TIERS) { if (c.indexOf(key) !== -1) return CITY_TIERS[key]; }
-    return 0.5;
-  }
-  function cityLabel(cityRaw) {
-    var tier = cityTier(cityRaw);
-    if (!cityRaw) return "an average Bangladeshi town";
-    if (tier >= 0.95) return "Dhaka";
-    if (tier >= 0.68) return "a major divisional city like Chattogram or Gazipur";
-    if (tier >= 0.55) return "a mid-size city";
-    return "a smaller town";
-  }
-  // Rent tiers by household size, grounded in Numbeo/Wise 2026 Dhaka figures
-  // (1BHK city-centre ~14,400tk, 3BHK city-centre ~37,800tk), scaled by city
-  // tier. National average household size is 4.0 (BBS 2022 census).
-  function estimateRent(familySize, cityRaw) {
-    var size = familySize && familySize > 0 ? familySize : 4;
-    var tier = cityTier(cityRaw);
-    var baseDhaka;
-    if (size <= 2) baseDhaka = 12000;
-    else if (size <= 4) baseDhaka = 22000;
-    else if (size <= 6) baseDhaka = 32000;
-    else baseDhaka = 40000;
-    return Math.round((baseDhaka * tier) / 500) * 500;
-  }
-
-  // ---------- Budget generation ----------
+  /* ============ Budget ============ */
   $("genBudgetBtn").addEventListener("click", async function () {
     var salary = Number($("salaryInput").value);
     var city = $("cityInput").value.trim();
     var family = Number($("familyInput").value) || 4;
+    var earners = Number($("earnersInput").value) || 1;
     $("budgetErr").textContent = "";
-    if (!salary || salary <= 0) { $("budgetErr").textContent = "Enter your monthly salary first."; return; }
+    if (!salary || salary <= 0) { $("budgetErr").textContent = "Enter your monthly income first."; return; }
 
     $("genBudgetBtn").disabled = true;
-    $("budgetCard").hidden = false;
-    $("budgetList").innerHTML = "";
-    $("budgetBar").innerHTML = "";
-    $("savingsTargetVal").textContent = "…";
-
     var rent = estimateRent(family, city);
-    var categories = buildBudget(salary, rent, family, city);
-    var savingsTarget = fallbackSavings(salary, categories);
+    var categories = buildBudget(salary, rent, family, earners, city);
+    var savingsTarget = Math.max(0, salary - categories.reduce(function (s, c) { return s + c.amount; }, 0));
 
     var budgetId = null;
     try {
@@ -800,441 +1307,736 @@
         p_token: state.token, p_monthly_salary: salary, p_categories: categories,
         p_savings_target: savingsTarget, p_ai_generated: false
       });
-    } catch (e) { $("budgetErr").textContent = "Your budget is shown below, but could not be saved: " + ((e && e.message) || e); }
+    } catch (e) { $("budgetErr").textContent = "Budget shown below, but it could not be saved: " + ((e && e.message) || e); }
 
     try {
-      await rpc("update_my_profile", {
-        p_token: state.token, p_name: null, p_city: city || null,
-        p_monthly_salary: salary, p_family_size: family
-      });
-      state.profile.monthly_salary = salary;
-      state.profile.city = city;
-      state.profile.family_size = family;
-    } catch (e) { /* non-critical */ }
+      await rpc("update_my_profile", { p_token: state.token, p_name: null, p_city: city || null, p_monthly_salary: salary, p_family_size: family });
+      state.profile.monthly_salary = salary; state.profile.city = city; state.profile.family_size = family;
+    } catch (e) {}
 
-    state.budget = { id: budgetId, monthly_salary: salary, categories: categories, savings_target: savingsTarget, ai_generated: false };
+    state.budget = { id: budgetId, monthly_salary: salary, categories: categories, savings_target: savingsTarget };
     renderBudget();
+    populateTxCategories();
     $("genBudgetBtn").disabled = false;
-    $("goalsCardMini").hidden = false;
-    renderGoalsInto("goalsListMini");
   });
 
-  function buildBudget(salary, rent, family, city) {
-    var remaining = Math.max(0, salary - rent);
-    // Food share drops as income rises (Engel's law), grounded in HIES 2022
-    // where national food share is ~45.8% of total spend, higher for lower incomes.
-    var foodShare = salary < 20000 ? 0.42 : salary < 40000 ? 0.36 : salary < 80000 ? 0.30 : 0.24;
-    var groceries = Math.round(remaining * foodShare * 0.8);
-    var eatingOut = Math.round(remaining * foodShare * 0.2);
-    var educationShare = family >= 3 ? 0.12 : 0.04;
-    var cats = [
-      { name: "House rent", amount: rent, note: "Estimated for a household of " + family + " in " + cityLabel(city) + "." },
-      { name: "Bazar / groceries", amount: groceries, note: "Rice, vegetables, fish, and daily kitchen needs." },
-      { name: "Eating out & snacks", amount: eatingOut, note: "Tea stalls, occasional restaurant meals." },
-      { name: "Transport", amount: Math.round(remaining * 0.08), note: "Rickshaw, bus, or CNG fares." },
-      { name: "Utilities", amount: Math.round(remaining * 0.10), note: "Electricity, gas, water, and internet." },
-      { name: "Mobile / data", amount: Math.round(remaining * 0.04), note: "Recharge and internet bundles." },
-      { name: "Education", amount: Math.round(remaining * educationShare), note: family >= 3 ? "School fees, books, and coaching for children." : "Skills courses or self-study materials." },
-      { name: "Family & social", amount: Math.round(remaining * 0.07), note: "Gifts, events, and obligations." },
-      { name: "Other", amount: Math.round(remaining * 0.05), note: "Clothing, medicine, and miscellaneous costs." }
+  function buildBudget(salary, rent, family, earners, city) {
+    var afterRent = Math.max(0, salary - rent);
+    // Engel's law: food's share of the remaining budget falls as income rises.
+    // Anchored on HIES 2022's 45.8% national food share for a mid-income household.
+    var foodShare = salary < 15000 ? .52 : salary < 25000 ? .46 : salary < 45000 ? .38
+                  : salary < 90000 ? .30 : .23;
+    // Larger households spend more per taka on food and schooling, less proportionally on discretionary items.
+    var sizeAdj = 1 + Math.max(-0.08, Math.min(0.16, (family - 4) * 0.04));
+    foodShare = Math.min(.62, foodShare * sizeAdj);
+
+    var groceries = Math.round(afterRent * foodShare * .82);
+    var eatingOut = Math.round(afterRent * foodShare * .18);
+    var children = Math.max(0, family - earners - 1);
+    var eduShare = children >= 3 ? .16 : children === 2 ? .12 : children === 1 ? .07 : .03;
+    var transport = Math.round(afterRent * (.07 + (earners - 1) * .03));
+    var utilities = Math.round(Math.min(afterRent * .16, 3735 * cityTier(city) * (1 + (family - 4) * .07)));
+    var health = Math.round(afterRent * (family >= 5 ? .07 : .05));
+
+    return [
+      { name: "House rent", amount: rent, note: "For " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + "." },
+      { name: "Bazar / groceries", amount: groceries, note: "Rice, fish, vegetables and daily kitchen needs." },
+      { name: "Eating out & snacks", amount: eatingOut, note: "Tea stalls, iftar, occasional restaurant meals." },
+      { name: "Utilities", amount: utilities, note: "Electricity, gas or LPG, water and internet." },
+      { name: "Transport", amount: transport, note: earners > 1 ? earners + " commuters — bus, rickshaw or CNG." : "Bus, rickshaw or CNG fares." },
+      { name: "Education", amount: Math.round(afterRent * eduShare), note: children ? children + " child" + (children > 1 ? "ren" : "") + " — fees, books and coaching." : "Courses or self-study materials." },
+      { name: "Health & medicine", amount: health, note: "Routine medicine and clinic visits." },
+      { name: "Mobile / internet top-ups", amount: Math.round(afterRent * .035), note: "Recharge and data bundles." },
+      { name: "Family & social", amount: Math.round(afterRent * .06), note: "Gifts, weddings, Eid and obligations." },
+      { name: "Other", amount: Math.round(afterRent * .045), note: "Clothing and miscellaneous costs." }
     ];
-    return cats;
-  }
-  function fallbackSavings(salary, categories) {
-    var used = categories.reduce(function (s, c) { return s + c.amount; }, 0);
-    return Math.max(0, salary - used);
   }
 
   function renderBudget() {
     var b = state.budget;
-    var list = $("budgetList");
-    var bar = $("budgetBar");
-    list.innerHTML = "";
-    bar.innerHTML = "";
-    var total = b.categories.reduce(function (s, c) { return s + c.amount; }, 0);
+    if (!b) return;
+    $("budgetCard").hidden = false; $("benchCard").hidden = false; $("affordCard").hidden = false;
+    var list = $("budgetList"), bar = $("budgetBar");
+    list.innerHTML = ""; bar.innerHTML = "";
+    var salary = Number(b.monthly_salary) || 1;
+    var spend = b.categories.reduce(function (s, c) { return s + c.amount; }, 0);
 
     b.categories.forEach(function (c, i) {
-      var color = CATEGORY_COLORS[i % CATEGORY_COLORS.length];
+      var color = CAT_COLORS[i % CAT_COLORS.length];
       var row = document.createElement("div");
       row.className = "budget-row";
-      row.innerHTML =
-        '<span class="dot" style="background:' + color + '"></span>' +
+      row.innerHTML = '<span class="dot" style="background:' + color + '"></span>' +
         '<div class="name"><div class="cat-name">' + esc(c.name) + '</div>' +
         (c.note ? '<div class="cat-note">' + esc(c.note) + '</div>' : '') + '</div>' +
-        '<div class="amt num">' + fmtTaka(c.amount) + '</div>';
+        '<div><div class="amt num">' + fmtTakaFull(c.amount) + '</div>' +
+        '<div class="share num">' + ((c.amount / salary) * 100).toFixed(1) + '%</div></div>';
       list.appendChild(row);
 
       var seg = document.createElement("div");
       seg.className = "budget-bar-seg";
-      var pct = total > 0 ? (c.amount / (total + (b.savings_target || 0))) * 100 : 0;
-      seg.style.width = pct + "%";
+      seg.style.width = ((c.amount / salary) * 100) + "%";
       seg.style.background = color;
+      seg.title = c.name + " — " + fmtTakaFull(c.amount);
       bar.appendChild(seg);
     });
-
-    if (b.savings_target) {
-      var savingsSeg = document.createElement("div");
-      savingsSeg.className = "budget-bar-seg";
-      var totalAll = total + b.savings_target;
-      savingsSeg.style.width = ((b.savings_target / totalAll) * 100) + "%";
-      savingsSeg.style.background = "var(--accent)";
-      savingsSeg.style.opacity = "0.45";
-      bar.appendChild(savingsSeg);
+    if (b.savings_target > 0) {
+      var s2 = document.createElement("div");
+      s2.className = "budget-bar-seg";
+      s2.style.width = ((b.savings_target / salary) * 100) + "%";
+      s2.style.background = "repeating-linear-gradient(45deg, var(--green), var(--green) 4px, var(--green-soft) 4px, var(--green-soft) 8px)";
+      s2.title = "Savings — " + fmtTakaFull(b.savings_target);
+      bar.appendChild(s2);
     }
 
-    var valEl = $("savingsTargetVal");
-    valEl.textContent = fmtTaka(b.savings_target || 0);
-    valEl.className = "val " + ((b.savings_target || 0) > 0 ? "good" : "over");
+    var v = $("savingsTargetVal");
+    v.textContent = fmtTakaFull(b.savings_target || 0);
+    v.className = "val " + ((b.savings_target || 0) > 0 ? "good" : "over");
+    var savePct = ((b.savings_target || 0) / salary) * 100;
+    $("basisNote").innerHTML = "Rent is set from your household size and city using 2026 Bangladesh rental data (a Dhaka 1-bed averages ৳14,400/month, a 3-bed ৳37,800). " +
+      "The rest follows Household Income &amp; Expenditure Survey spending patterns, adjusted for your income level and household size. " +
+      "This plan saves <strong>" + savePct.toFixed(1) + "%</strong> of your income" +
+      (savePct < 10 ? " — tight, but every taka counts." : savePct < 20 ? " — a healthy, realistic rate." : " — strong, well above the national norm.");
 
-    $("basisNote").innerHTML = "📊 Rent is scaled to your household size and city using 2026 Bangladesh rental data; the rest follows spending patterns from the national Household Income &amp; Expenditure Survey (HIES).";
+    renderBenchChart();
+    renderCostTable();
   }
 
-  // ---------- Goals ----------
-  $("addGoalBtn").addEventListener("click", openGoalModal);
-  $("addGoalBtnMini").addEventListener("click", openGoalModal);
-  function openGoalModal() {
+  function renderBenchChart() {
+    var b = state.budget; if (!b) return;
+    var salary = Number(b.monthly_salary) || 1;
+    function share(name) {
+      var c = b.categories.find(function (x) { return x.name === name; });
+      return c ? (c.amount / salary) * 100 : 0;
+    }
+    var food = share("Bazar / groceries") + share("Eating out & snacks");
+    var rows = [
+      { label: "Food", you: food, avg: HIES_FOOD_SHARE * 100 * .72 },
+      { label: "Housing", you: share("House rent"), avg: 22 },
+      { label: "Utilities", you: share("Utilities"), avg: 8 },
+      { label: "Transport", you: share("Transport"), avg: 6 },
+      { label: "Education", you: share("Education"), avg: 6 },
+      { label: "Savings", you: ((b.savings_target || 0) / salary) * 100, avg: 9 }
+    ];
+    barChart("benchChart", rows.map(function (r) { return r.label; }), [
+      { name: "You", color: C.green, values: rows.map(function (r) { return +r.you.toFixed(1); }) },
+      { name: "Average", color: C.red, values: rows.map(function (r) { return +r.avg.toFixed(1); }) }
+    ], { height: 220 });
+    var foodDiff = food - HIES_FOOD_SHARE * 100 * .72;
+    $("benchNote").textContent = Math.abs(foodDiff) < 4
+      ? "Your food share sits close to the national pattern for households at your income level."
+      : foodDiff > 0
+        ? "Your plan puts " + foodDiff.toFixed(0) + " percentage points more into food than the national average — common for larger or lower-income households."
+        : "Your plan spends " + Math.abs(foodDiff).toFixed(0) + " points less on food than average, leaving more room for savings.";
+  }
+
+  function renderCostTable() {
+    var tier = cityTier(state.profile && state.profile.city);
+    var salary = (state.budget && Number(state.budget.monthly_salary)) || (state.profile && Number(state.profile.monthly_salary)) || 0;
+    var tbody = $("costTable").querySelector("tbody");
+    tbody.innerHTML = COST_ITEMS.map(function (it) {
+      var cost = Math.round(it.dhaka * tier);
+      var pct = salary > 0 && it.per === "month" ? ((cost / salary) * 100).toFixed(1) + "%" : "—";
+      return "<tr><td>" + esc(it.label) + '</td><td class="r num">' + fmtTakaFull(cost) + (it.per === "month" ? "/mo" : "") + '</td><td class="r num">' + pct + "</td></tr>";
+    }).join("");
+  }
+
+  /* ============ Goals ============ */
+  $("addGoalBtn").addEventListener("click", function () {
     $("goalTitle").value = ""; $("goalAmount").value = ""; $("goalDate").value = ""; $("goalErr").textContent = "";
     $("goalModalBackdrop").hidden = false;
-  }
+  });
   $("goalCancelBtn").addEventListener("click", function () { $("goalModalBackdrop").hidden = true; });
   $("goalSaveBtn").addEventListener("click", async function () {
-    var title = $("goalTitle").value.trim();
-    var amount = Number($("goalAmount").value);
-    var date = $("goalDate").value || null;
+    var title = $("goalTitle").value.trim(), amount = Number($("goalAmount").value), date = $("goalDate").value || null;
     if (!title || !amount || amount <= 0) { $("goalErr").textContent = "Enter a goal name and a target amount."; return; }
     $("goalSaveBtn").disabled = true;
     try {
       await rpc("create_goal", { p_token: state.token, p_title: title, p_target_amount: amount, p_target_date: date });
       $("goalModalBackdrop").hidden = true;
-      await refreshGoals();
-    } catch (e) {
-      $("goalErr").textContent = "Could not create the goal: " + ((e && e.message) || e);
-    } finally {
-      $("goalSaveBtn").disabled = false;
-    }
+      await refreshGoals(); renderOverview();
+    } catch (e) { $("goalErr").textContent = "Could not create the goal: " + ((e && e.message) || e); }
+    finally { $("goalSaveBtn").disabled = false; }
   });
 
   async function refreshGoals() {
-    state.goals = await rpc("get_my_goals", { p_token: state.token }) || [];
-    renderGoalsInto("goalsList");
-    if (!$("goalsCardMini").hidden) renderGoalsInto("goalsListMini");
-
-    var sel = $("txGoal");
-    sel.innerHTML = '<option value="">No specific goal</option>';
-    state.goals.forEach(function (g) {
-      var opt = document.createElement("option");
-      opt.value = g.id;
-      opt.textContent = g.title;
-      sel.appendChild(opt);
-    });
-  }
-
-  function monthlySavingsRate() {
-    if (!state.txs.length) return 0;
-    var deposits = state.txs.filter(function (t) { return t.type === "deposit"; });
-    if (!deposits.length) return 0;
-    var total = deposits.reduce(function (s, t) { return s + Number(t.amount); }, 0);
-    var oldest = new Date(deposits[deposits.length - 1].created_at);
-    var days = Math.max(1, (Date.now() - oldest.getTime()) / 86400000);
-    return total / (days / 30);
-  }
-
-  function renderGoalsInto(elId) {
-    var list = $(elId);
+    state.goals = (await rpc("get_my_goals", { p_token: state.token })) || [];
+    var list = $("goalsList"), sel = $("txGoal");
     list.innerHTML = "";
+    sel.innerHTML = '<option value="">No specific goal</option>';
     if (!state.goals.length) {
-      list.innerHTML = '<div class="empty">No goals yet. Add one — Eid clothes, a phone, tuition fee.</div>';
+      list.innerHTML = '<div class="empty">No goals yet. Add one — Eid clothes, a phone, tuition fees.</div>';
       return;
     }
     var rate = monthlySavingsRate();
     state.goals.forEach(function (g) {
       var pct = g.target_amount > 0 ? Math.min(100, (g.current_amount / g.target_amount) * 100) : 0;
-      var remaining = Math.max(0, g.target_amount - g.current_amount);
-      var eta = "";
-      if (remaining > 0 && rate > 20) {
-        var months = remaining / rate;
-        eta = months < 1 ? "On track within a month at your current pace" :
-          "About " + Math.ceil(months) + " month" + (Math.ceil(months) === 1 ? "" : "s") + " to go at your current pace";
-      } else if (remaining <= 0) {
-        eta = "Goal reached! 🎉";
-      }
+      var left = Math.max(0, g.target_amount - g.current_amount);
+      var pill = "", cls = "warn";
+      if (left <= 0) { pill = "Goal reached"; cls = "good"; }
+      else if (rate > 20) {
+        var months = Math.ceil(left / rate);
+        if (g.target_date) {
+          var need = Math.max(1, monthsBetween(new Date(), new Date(g.target_date)));
+          if (months <= need) { pill = "On track — about " + months + " month" + (months === 1 ? "" : "s") + " at your pace"; cls = "good"; }
+          else { pill = "Behind — needs " + fmtTakaFull(Math.ceil(left / need)) + "/month to hit the date"; cls = "bad"; }
+        } else { pill = "About " + months + " month" + (months === 1 ? "" : "s") + " to go at your pace"; }
+      } else { pill = "Log a few deposits to see a projection"; }
+
       var item = document.createElement("div");
       item.className = "goal-item";
-      item.innerHTML =
-        '<div class="goal-top"><div class="goal-title">' + esc(g.title) + '</div>' +
+      item.innerHTML = '<div class="goal-top"><div class="goal-title">' + esc(g.title) + '</div>' +
         (g.target_date ? '<div class="goal-date">by ' + esc(g.target_date) + '</div>' : '') + '</div>' +
-        '<div class="goal-track"><div class="goal-fill" style="width:' + pct.toFixed(0) + '%"></div></div>' +
-        '<div class="goal-meta"><span><span class="num">' + fmtTaka(g.current_amount) + '</span> saved</span>' +
-        '<span>Goal: <span class="num">' + fmtTaka(g.target_amount) + '</span></span></div>' +
-        (eta ? '<span class="goal-eta">' + esc(eta) + '</span>' : '');
+        '<div class="goal-track"><div class="goal-fill" style="width:' + pct.toFixed(0) + '%;background:' + (cls === "bad" ? "var(--red)" : "var(--green)") + '"></div></div>' +
+        '<div class="goal-meta"><span><span class="num">' + fmtTakaFull(g.current_amount) + '</span> saved</span>' +
+        '<span>of <span class="num">' + fmtTakaFull(g.target_amount) + '</span></span></div>' +
+        '<span class="pill ' + cls + '">' + esc(pill) + '</span>';
       list.appendChild(item);
+
+      var opt = document.createElement("option");
+      opt.value = g.id; opt.textContent = g.title;
+      sel.appendChild(opt);
     });
   }
 
-  // ---------- Transactions ----------
+  /* ============ Ledger ============ */
+  function populateTxCategories() {
+    var sel = $("txCategory");
+    var cats = state.budget ? state.budget.categories.map(function (c) { return c.name; }) : [];
+    sel.innerHTML = '<option value="">Category…</option>' +
+      cats.concat(["Savings deposit", "Investment", "Other"]).map(function (c) {
+        return '<option value="' + esc(c) + '">' + esc(c) + "</option>";
+      }).join("");
+  }
+
   $("segDeposit").addEventListener("click", function () { setTxType("deposit"); });
   $("segExpense").addEventListener("click", function () { setTxType("expense"); });
   function setTxType(t) {
     state.txType = t;
     $("segDeposit").classList.toggle("active", t === "deposit");
+    $("segDeposit").classList.add("deposit");
     $("segExpense").classList.toggle("active", t === "expense");
+    $("segExpense").classList.add("expense");
   }
+  setTxType("deposit");
 
   $("addTxBtn").addEventListener("click", async function () {
-    var amount = Number($("txAmount").value);
-    var goalId = $("txGoal").value || null;
-    var note = $("txNote").value.trim();
+    var amount = Number($("txAmount").value), goalId = $("txGoal").value || null;
+    var note = $("txNote").value.trim(), category = $("txCategory").value || null;
     $("txErr").textContent = "";
     if (!amount || amount <= 0) { $("txErr").textContent = "Enter an amount."; return; }
     $("addTxBtn").disabled = true;
     try {
-      await rpc("add_transaction", {
-        p_token: state.token, p_goal_id: goalId, p_type: state.txType,
-        p_amount: amount, p_category: null, p_note: note || null
-      });
+      await rpc("add_transaction", { p_token: state.token, p_goal_id: goalId, p_type: state.txType, p_amount: amount, p_category: category, p_note: note || null });
       $("txAmount").value = ""; $("txNote").value = "";
-      await refreshGoals();
-      await refreshTxs();
-    } catch (e) {
-      $("txErr").textContent = "Could not save that entry: " + ((e && e.message) || e);
-    } finally {
-      $("addTxBtn").disabled = false;
-    }
+      await refreshGoals(); await refreshTxs(); renderOverview();
+    } catch (e) { $("txErr").textContent = "Could not save that entry: " + ((e && e.message) || e); }
+    finally { $("addTxBtn").disabled = false; }
   });
 
   async function refreshTxs() {
-    state.txs = await rpc("get_my_transactions", { p_token: state.token, p_limit: 40 }) || [];
+    state.txs = (await rpc("get_my_transactions", { p_token: state.token, p_limit: 200 })) || [];
     var list = $("txList");
     list.innerHTML = "";
     var saved = 0, spent = 0;
-    state.txs.forEach(function (t) {
-      if (t.type === "deposit") saved += Number(t.amount); else spent += Number(t.amount);
-    });
-    $("statSaved").textContent = fmtTaka(saved);
-    $("statSpent").textContent = fmtTaka(spent);
+    state.txs.forEach(function (t) { if (t.type === "deposit") saved += Number(t.amount); else spent += Number(t.amount); });
+    $("statSaved").textContent = fmtTakaFull(saved);
+    $("statSpent").textContent = fmtTakaFull(spent);
     $("statCount").textContent = state.txs.length;
 
-    if (!state.txs.length) {
-      list.innerHTML = '<div class="empty">No activity yet — log your first deposit above.</div>';
-      return;
-    }
-    state.txs.slice(0, 30).forEach(function (t) {
+    if (!state.txs.length) { list.innerHTML = '<div class="empty">No activity yet — log your first deposit above.</div>'; return; }
+    state.txs.slice(0, 25).forEach(function (t) {
       var goal = state.goals.find(function (g) { return g.id === t.goal_id; });
       var row = document.createElement("div");
       row.className = "tx-item";
       var when = new Date(t.created_at);
-      row.innerHTML =
-        '<div class="tx-badge ' + t.type + '">' + (t.type === "deposit" ? "৳" : "−") + '</div>' +
-        '<div class="tx-body"><div class="tx-note">' + esc(t.note || (t.type === "deposit" ? "Deposit" : "Expense")) + '</div>' +
-        '<div class="tx-sub">' + when.toLocaleDateString() + (goal ? " · " + esc(goal.title) : "") + '</div></div>' +
-        '<div class="tx-amt ' + t.type + ' num">' + (t.type === "deposit" ? "+" : "−") + fmtTaka(t.amount) + '</div>';
+      var sub = when.toLocaleDateString() + (t.category ? " · " + t.category : "") + (goal ? " · " + goal.title : "");
+      row.innerHTML = '<div class="tx-badge ' + t.type + '">' + (t.type === "deposit" ? "৳" : "−") + "</div>" +
+        '<div class="tx-body"><div class="tx-note">' + esc(t.note || (t.type === "deposit" ? "Deposit" : "Expense")) + "</div>" +
+        '<div class="tx-sub">' + esc(sub) + "</div></div>" +
+        '<div class="tx-amt ' + t.type + ' num">' + (t.type === "deposit" ? "+" : "−") + fmtTakaFull(t.amount) + "</div>";
       list.appendChild(row);
     });
   }
 
-  // ---------- Insights (deterministic pattern analysis) ----------
-  function loadInsights() {
-    var list = $("insightsList");
-    list.innerHTML = "";
-    if (state.txs.length < 3) {
-      list.innerHTML = '<div class="empty">Log at least 3 deposits or expenses to see patterns here.</div>';
+  /* ============ Investments ============ */
+  var KIND_META = {
+    dps:{label:"DPS", color:"#0B6E4F"}, fdr:{label:"FDR", color:"#2C5F8A"},
+    sanchayapatra:{label:"Sanchayapatra", color:"#B8860B"}, sip:{label:"SIP", color:"#7A3E7E"},
+    business:{label:"Business", color:"#C42B1C"}, gold:{label:"Gold", color:"#96731F"},
+    property:{label:"Property", color:"#4E7C3F"}, other:{label:"Other", color:"#5F6A61"}
+  };
+
+  $("addInvBtn").addEventListener("click", function () {
+    ["invName","invInstitution","invPrincipal","invMonthlyIn","invRate","invCurrent","invStart","invMaturity"].forEach(function (id) { $(id).value = ""; });
+    $("invErr").textContent = "";
+    $("invKind").value = "dps";
+    applyKindDefaults();
+    $("invStart").value = new Date().toISOString().slice(0, 10);
+    $("invModalBackdrop").hidden = false;
+  });
+  $("invCancelBtn").addEventListener("click", function () { $("invModalBackdrop").hidden = true; });
+  $("invKind").addEventListener("change", applyKindDefaults);
+
+  function applyKindDefaults() {
+    var kind = $("invKind").value;
+    var r = DEFAULT_RATE_FOR_KIND[kind];
+    if (r != null && !$("invRate").value) $("invRate").value = r;
+    var hints = {
+      dps: "Typical bank DPS runs 5-10 years at roughly 9-11%. Enter your monthly instalment.",
+      fdr: "Bank FDR rates are running about 9-12% in 2026 as banks compete for deposits. Enter the lump sum.",
+      sanchayapatra: "January 2026 rates: 5-year BSP 11.83%, Paribar 11.52%, Pensioner 11.98%, 3-monthly 11.82%.",
+      sip: "Mutual fund SIPs are market-linked — returns are not guaranteed. 9% is an illustrative long-run assumption.",
+      business: "Leave the rate blank and update the current value yourself as the business grows.",
+      gold: "Leave the rate blank; update the current value when prices move.",
+      property: "Leave the rate blank; update the current value on revaluation.",
+      other: "Enter whatever figures you know — leave the rate blank if there is no fixed return."
+    };
+    $("invRateHint").textContent = hints[kind] || "";
+  }
+
+  $("invSaveBtn").addEventListener("click", async function () {
+    var kind = $("invKind").value;
+    var name = $("invName").value.trim();
+    var principal = Number($("invPrincipal").value) || 0;
+    var monthly = Number($("invMonthlyIn").value) || 0;
+    var rate = $("invRate").value === "" ? null : Number($("invRate").value);
+    var current = $("invCurrent").value === "" ? null : Number($("invCurrent").value);
+    $("invErr").textContent = "";
+    if (!name) { $("invErr").textContent = "Give this instrument a name."; return; }
+    if (!principal && !monthly && current == null) { $("invErr").textContent = "Enter a lump sum, a monthly instalment, or a current value."; return; }
+    $("invSaveBtn").disabled = true;
+    try {
+      await rpc("add_investment", {
+        p_token: state.token, p_kind: kind, p_name: name,
+        p_institution: $("invInstitution").value.trim() || null,
+        p_principal: principal, p_monthly: monthly, p_rate: rate,
+        p_start: $("invStart").value || null, p_maturity: $("invMaturity").value || null,
+        p_current: current, p_notes: null
+      });
+      $("invModalBackdrop").hidden = true;
+      await refreshInvestments(); renderOverview();
+    } catch (e) { $("invErr").textContent = "Could not save: " + ((e && e.message) || e); }
+    finally { $("invSaveBtn").disabled = false; }
+  });
+
+  async function refreshInvestments() {
+    state.investments = (await rpc("get_my_investments", { p_token: state.token })) || [];
+    renderInvestments();
+  }
+
+  function renderInvestments() {
+    var list = $("invList");
+    var totalIn = investedTotal(), totalOut = maturityTotal();
+    $("invTotalIn").textContent = fmtTakaFull(totalIn);
+    $("invTotalOut").textContent = fmtTakaFull(totalOut);
+    $("invProfitSub").textContent = totalOut > totalIn ? "+" + fmtTakaFull(totalOut - totalIn) + " profit" : "add rates to project profit";
+    $("invMonthly").textContent = fmtTakaFull(monthlyCommitment());
+    var br = blendedRate();
+    $("invBlended").textContent = br ? br.toFixed(2) + "%" : "—";
+
+    if (!state.investments.length) {
+      list.innerHTML = '<div class="empty">Nothing tracked yet. Add your DPS, FDR, Sanchayapatra, SIP or business capital to see projections.</div>';
+      timelineChart("maturityChart", []);
       return;
     }
-    var insights = [];
-    var deposits = state.txs.filter(function (t) { return t.type === "deposit"; });
-    var expenses = state.txs.filter(function (t) { return t.type === "expense"; });
-    var totalDep = deposits.reduce(function (s, t) { return s + Number(t.amount); }, 0);
-    var totalExp = expenses.reduce(function (s, t) { return s + Number(t.amount); }, 0);
 
-    if (state.budget && state.budget.savings_target) {
-      var rate = monthlySavingsRate();
-      if (rate >= state.budget.savings_target) {
-        insights.push({ tone: "positive", headline: "You're meeting your savings target", detail: "You're saving about " + fmtTaka(rate) + "/month, at or above your " + fmtTaka(state.budget.savings_target) + " target. Keep this pace up." });
-      } else if (rate > 0) {
-        var gap = state.budget.savings_target - rate;
-        insights.push({ tone: "caution", headline: "Slightly behind your savings target", detail: "You're averaging about " + fmtTaka(rate) + "/month, " + fmtTaka(gap) + " short of your " + fmtTaka(state.budget.savings_target) + " monthly target." });
-      }
+    list.innerHTML = "";
+    state.investments.forEach(function (inv) {
+      var meta = KIND_META[inv.kind] || KIND_META.other;
+      var inSoFar = contributedToDate(inv), atMaturity = maturityValue(inv);
+      var tenure = investmentTenureMonths(inv);
+      var elapsed = inv.start_date ? Math.max(0, monthsBetween(new Date(inv.start_date), new Date())) : 0;
+      var prog = tenure ? Math.min(100, (elapsed / tenure) * 100) : 0;
+      var el = document.createElement("div");
+      el.className = "inv-item";
+      el.innerHTML =
+        '<div class="inv-top"><div><div class="inv-name">' + esc(inv.name) + "</div>" +
+        (inv.institution ? '<div class="inv-inst">' + esc(inv.institution) + "</div>" : "") + "</div>" +
+        '<span class="inv-kind" style="background:' + meta.color + '22;color:' + meta.color + '">' + esc(meta.label) + "</span></div>" +
+        '<div class="inv-figures">' +
+        '<div class="inv-fig"><div class="k">Put in so far</div><div class="v num">' + fmtTakaFull(inSoFar) + "</div></div>" +
+        (inv.monthly_contribution > 0 ? '<div class="inv-fig"><div class="k">Monthly</div><div class="v num">' + fmtTakaFull(inv.monthly_contribution) + "</div></div>" : "") +
+        (inv.annual_rate ? '<div class="inv-fig"><div class="k">Rate</div><div class="v num">' + Number(inv.annual_rate).toFixed(2) + "%</div></div>" : "") +
+        '<div class="inv-fig"><div class="k">' + (inv.maturity_date ? "At maturity" : "In 12 months") + '</div><div class="v num" style="color:' + meta.color + '">' + fmtTakaFull(atMaturity) + "</div></div>" +
+        (inv.maturity_date ? '<div class="inv-fig"><div class="k">Matures</div><div class="v">' + esc(inv.maturity_date) + "</div></div>" : "") +
+        "</div>" +
+        (tenure ? '<div class="inv-progress"><i style="width:' + prog.toFixed(0) + '%;background:' + meta.color + '"></i></div>' : "") +
+        '<div class="inv-actions"><button type="button" data-del="' + esc(inv.id) + '">Remove</button></div>';
+      list.appendChild(el);
+    });
+
+    list.querySelectorAll("button[data-del]").forEach(function (btn) {
+      btn.addEventListener("click", async function () {
+        if (!confirm("Remove this instrument from your tracker? This cannot be undone.")) return;
+        try {
+          await rpc("delete_investment", { p_token: state.token, p_id: btn.getAttribute("data-del") });
+          await refreshInvestments(); renderOverview();
+        } catch (e) { alert("Could not remove it: " + ((e && e.message) || e)); }
+      });
+    });
+
+    var timeline = state.investments.filter(function (i) { return i.maturity_date; }).map(function (i) {
+      var meta = KIND_META[i.kind] || KIND_META.other;
+      return { name: i.name, maturity: new Date(i.maturity_date).getTime(), color: meta.color, value: maturityValue(i), dateLabel: i.maturity_date };
+    }).sort(function (a, b) { return a.maturity - b.maturity; });
+    timelineChart("maturityChart", timeline);
+  }
+
+  function renderRatesTable() {
+    var tbody = $("ratesTable").querySelector("tbody");
+    tbody.innerHTML = INSTRUMENTS.map(function (it) {
+      var yrs = it.key === "tmp" ? 3 : it.key === "fdr" ? 2 : 5;
+      var val = futureLump(100000, it.rate, yrs);
+      return "<tr><td><strong>" + esc(it.name) + "</strong></td><td>" + esc(it.tenure) +
+        '</td><td class="r num">' + it.rate.toFixed(2) + '%</td><td class="r num">' + fmtTakaFull(val) +
+        "</td><td style='color:var(--ink-soft);font-size:12px'>" + esc(it.note) + "</td></tr>";
+    }).join("");
+  }
+
+  function renderCompareChart() {
+    var rows = INSTRUMENTS.map(function (it, i) {
+      var v = futureLump(100000, it.rate, 5);
+      return { label: it.name.replace(/ Sanchayapatra/, "").replace(/^Bank /, ""), value: Math.round(v), color: CAT_COLORS[i % CAT_COLORS.length], display: fmtTaka(v) };
+    }).sort(function (a, b) { return b.value - a.value; });
+    hBarChart("compareChart", rows, { labelW: 128 });
+  }
+
+  /* ============ Overview ============ */
+  function renderOverview() {
+    var invested = investedTotal(), projected = maturityTotal();
+    var goalSaved = state.goals.reduce(function (s, g) { return s + Number(g.current_amount || 0); }, 0);
+    var spent = state.txs.filter(function (t) { return t.type === "expense"; }).reduce(function (s, t) { return s + Number(t.amount); }, 0);
+    var activeGoals = state.goals.filter(function (g) { return g.current_amount < g.target_amount; }).length;
+
+    $("ovInvested").textContent = fmtTakaFull(invested);
+    $("ovInvestedSub").textContent = "across " + state.investments.length + " instrument" + (state.investments.length === 1 ? "" : "s");
+    $("ovProjected").textContent = fmtTakaFull(projected);
+    $("ovProjectedSub").textContent = projected > invested ? "+" + fmtTakaFull(projected - invested) + " profit" : "principal + profit";
+    $("ovGoalSaved").textContent = fmtTakaFull(goalSaved);
+    $("ovGoalSub").textContent = activeGoals + " active goal" + (activeGoals === 1 ? "" : "s");
+    $("ovSpent").textContent = fmtTakaFull(spent);
+
+    // Health pill
+    var rate = monthlySavingsRate();
+    var target = state.budget && state.budget.savings_target;
+    var pill = $("healthPill");
+    if (!state.budget) { pill.textContent = "Build a budget to start"; pill.className = "pill warn"; }
+    else if (!rate) { pill.textContent = "Log a deposit to track your pace"; pill.className = "pill warn"; }
+    else if (target && rate >= target) { pill.textContent = "On target — saving " + fmtTakaFull(rate) + "/month"; pill.className = "pill good"; }
+    else if (target) { pill.textContent = fmtTakaFull(target - rate) + "/month behind target"; pill.className = "pill bad"; }
+    else { pill.textContent = "Saving " + fmtTakaFull(rate) + "/month"; pill.className = "pill good"; }
+
+    renderFlowChart();
+    renderMixChart();
+    renderGrowthChart();
+  }
+
+  function monthKey(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0"); }
+  function monthLabel(d) { return d.toLocaleDateString("en-US", { month: "short" }); }
+
+  function renderFlowChart() {
+    var months = [], now = new Date();
+    for (var i = 5; i >= 0; i--) {
+      var d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      months.push({ key: monthKey(d), label: monthLabel(d), dep: 0, exp: 0 });
+    }
+    state.txs.forEach(function (t) {
+      var k = monthKey(new Date(t.created_at));
+      var m = months.find(function (x) { return x.key === k; });
+      if (!m) return;
+      if (t.type === "deposit") m.dep += Number(t.amount); else m.exp += Number(t.amount);
+    });
+    barChart("flowChart", months.map(function (m) { return m.label; }), [
+      { name: "Deposits", color: C.green, values: months.map(function (m) { return m.dep; }) },
+      { name: "Expenses", color: C.red, values: months.map(function (m) { return m.exp; }) }
+    ], { height: 230 });
+  }
+
+  function renderMixChart() {
+    var byKind = {};
+    state.investments.forEach(function (i) {
+      var k = i.kind;
+      byKind[k] = (byKind[k] || 0) + contributedToDate(i);
+    });
+    var goalSaved = state.goals.reduce(function (s, g) { return s + Number(g.current_amount || 0); }, 0);
+    var slices = Object.keys(byKind).map(function (k) {
+      return { label: (KIND_META[k] || KIND_META.other).label, value: byKind[k], color: (KIND_META[k] || KIND_META.other).color };
+    });
+    if (goalSaved > 0) slices.push({ label: "Goal savings", value: goalSaved, color: "#158C6A" });
+    donutChart("mixChart", slices, "mixLegend");
+  }
+
+  function renderGrowthChart() {
+    var points = [];
+    var monthlyInv = monthlyCommitment();
+    var monthlySave = monthlySavingsRate();
+    var br = blendedRate() || 10;
+    var basePrincipal = investedTotal() + state.goals.reduce(function (s, g) { return s + Number(g.current_amount || 0); }, 0);
+    var now = new Date();
+    for (var m = 0; m <= 12; m++) {
+      var d = new Date(now.getFullYear(), now.getMonth() + m, 1);
+      var contributed = basePrincipal + (monthlyInv + monthlySave) * m;
+      var grown = futureLump(basePrincipal, br, m / 12) + futureAnnuity(monthlyInv, br, m) + monthlySave * m;
+      points.push({ label: monthLabel(d), principal: contributed, profit: Math.max(0, grown - contributed) });
+    }
+    stackedAreaChart("growthChart", points);
+  }
+
+  /* ============ Insights ============ */
+  function renderInsights() {
+    var list = $("insightsList");
+    list.innerHTML = "";
+    var ins = [];
+    var rate = monthlySavingsRate();
+    var target = state.budget && state.budget.savings_target;
+    var deps = state.txs.filter(function (t) { return t.type === "deposit"; });
+    var exps = state.txs.filter(function (t) { return t.type === "expense"; });
+    var totalDep = deps.reduce(function (s, t) { return s + Number(t.amount); }, 0);
+    var totalExp = exps.reduce(function (s, t) { return s + Number(t.amount); }, 0);
+
+    if (target && rate) {
+      if (rate >= target) ins.push({ tone: "positive", h: "You are meeting your savings target", d: "You are averaging " + fmtTakaFull(rate) + " a month against a " + fmtTakaFull(target) + " target. Over a year that is about " + fmtTakaFull(rate * 12) + "." });
+      else ins.push({ tone: "caution", h: "Slightly behind your savings target", d: "You are averaging " + fmtTakaFull(rate) + " a month, " + fmtTakaFull(target - rate) + " short. Closing that gap adds " + fmtTakaFull((target - rate) * 12) + " a year." });
     }
 
-    if (deposits.length >= 2) {
-      var sorted = deposits.slice().sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); });
+    if (state.investments.length) {
+      var br = blendedRate();
+      var best = INSTRUMENTS.slice().sort(function (a, b) { return b.rate - a.rate; })[0];
+      if (br != null && br < best.rate - 1) {
+        ins.push({ tone: "neutral", h: "A higher published rate exists", d: "Your blended return is " + br.toFixed(2) + "%. " + best.name + " is paying " + best.rate.toFixed(2) + "% at January 2026 rates — worth comparing for new money, keeping the tax difference in mind." });
+      } else if (br != null) {
+        ins.push({ tone: "positive", h: "Your portfolio rate is competitive", d: "A blended " + br.toFixed(2) + "% sits near the top of what Bangladeshi savings instruments pay right now." });
+      }
+      var soon = state.investments.filter(function (i) { return i.maturity_date && monthsBetween(new Date(), new Date(i.maturity_date)) <= 3 && new Date(i.maturity_date) > new Date(); });
+      if (soon.length) ins.push({ tone: "caution", h: "Maturity coming up within 3 months", d: soon.map(function (i) { return i.name; }).join(", ") + " matures soon. Plan where the money goes next so it does not sit idle in a current account." });
+    } else {
+      ins.push({ tone: "neutral", h: "Nothing invested yet", d: "Even ৳1,000 a month in a DPS at 10% becomes about " + fmtTakaFull(futureAnnuity(1000, 10, 60)) + " over five years. Add an instrument to start projecting." });
+    }
+
+    if (deps.length >= 2) {
+      var sorted = deps.slice().sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); });
       var gaps = [];
-      for (var i = 1; i < sorted.length; i++) {
-        gaps.push((new Date(sorted[i].created_at) - new Date(sorted[i - 1].created_at)) / 86400000);
-      }
-      var avgGap = gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length;
-      if (avgGap <= 8) {
-        insights.push({ tone: "positive", headline: "Consistent saving habit", detail: "You're depositing roughly every " + Math.round(avgGap) + " days — a steady rhythm builds savings faster than occasional large deposits." });
-      }
+      for (var i = 1; i < sorted.length; i++) gaps.push((new Date(sorted[i].created_at) - new Date(sorted[i - 1].created_at)) / 86400000);
+      var avg = gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length;
+      if (avg <= 10) ins.push({ tone: "positive", h: "Consistent saving habit", d: "You deposit roughly every " + Math.round(avg) + " days. Regular small deposits beat occasional large ones — they are far easier to sustain." });
     }
 
-    if (totalExp > 0 && totalDep > 0 && totalExp > totalDep * 1.5) {
-      insights.push({ tone: "caution", headline: "Logged expenses outpacing deposits", detail: "You've logged " + fmtTaka(totalExp) + " in expenses against " + fmtTaka(totalDep) + " in deposits recently. Worth reviewing where it's going." });
+    if (totalExp > totalDep * 1.5 && totalDep > 0) {
+      ins.push({ tone: "caution", h: "Expenses are outpacing deposits", d: "You have logged " + fmtTakaFull(totalExp) + " out against " + fmtTakaFull(totalDep) + " in. Check the spending mix chart to see where it is going." });
+    }
+
+    // Category overspend vs plan
+    if (state.budget && exps.length) {
+      var byCat = {};
+      exps.forEach(function (t) { if (t.category) byCat[t.category] = (byCat[t.category] || 0) + Number(t.amount); });
+      var months = Math.max(1, spanMonths());
+      var worst = null;
+      state.budget.categories.forEach(function (c) {
+        var actual = (byCat[c.name] || 0) / months;
+        if (actual > c.amount * 1.2 && actual - c.amount > 500) {
+          var over = actual - c.amount;
+          if (!worst || over > worst.over) worst = { name: c.name, over: over, actual: actual, planned: c.amount };
+        }
+      });
+      if (worst) ins.push({ tone: "caution", h: "Over plan on " + worst.name, d: "You are averaging " + fmtTakaFull(worst.actual) + " a month against a " + fmtTakaFull(worst.planned) + " plan — about " + fmtTakaFull(worst.over) + " over." });
     }
 
     if (state.goals.length) {
       var nearest = state.goals.filter(function (g) { return g.current_amount < g.target_amount; })
         .sort(function (a, b) { return (a.target_amount - a.current_amount) - (b.target_amount - b.current_amount); })[0];
-      if (nearest) {
-        var left = nearest.target_amount - nearest.current_amount;
-        insights.push({ tone: "neutral", headline: "Closest to finishing: " + nearest.title, detail: "Just " + fmtTaka(left) + " more to reach this goal." });
-      }
+      if (nearest) ins.push({ tone: "neutral", h: "Closest goal: " + nearest.title, d: "Only " + fmtTakaFull(nearest.target_amount - nearest.current_amount) + " left. Finishing it frees your attention for the next one." });
     }
 
-    if (!insights.length) {
-      insights.push({ tone: "neutral", headline: "Not enough pattern yet", detail: "Keep logging your deposits and expenses — insights get sharper with more history." });
-    }
+    if (!ins.length) ins.push({ tone: "neutral", h: "Not enough history yet", d: "Log deposits and expenses for a few weeks and this page will sharpen up." });
 
-    insights.forEach(function (ins) {
-      var item = document.createElement("div");
-      item.className = "insight-item";
-      item.innerHTML =
-        '<span class="insight-chip ' + ins.tone + '"></span>' +
-        '<div><div class="insight-headline">' + esc(ins.headline) + '</div>' +
-        '<div class="insight-detail">' + esc(ins.detail) + '</div></div>';
-      list.appendChild(item);
+    ins.forEach(function (x) {
+      var el = document.createElement("div");
+      el.className = "insight-item";
+      el.innerHTML = '<span class="insight-chip ' + x.tone + '"></span><div><div class="insight-headline">' + esc(x.h) + '</div><div class="insight-detail">' + esc(x.d) + "</div></div>";
+      list.appendChild(el);
     });
+
+    renderSpendChart();
+    renderVsChart();
   }
 
-  // ---------- Coach (templated smart Q&A over the user's real numbers) ----------
+  function spanMonths() {
+    if (!state.txs.length) return 1;
+    var oldest = new Date(state.txs[state.txs.length - 1].created_at);
+    return Math.max(1, monthsBetween(oldest, new Date()) + 1);
+  }
+
+  function renderSpendChart() {
+    var byCat = {};
+    state.txs.filter(function (t) { return t.type === "expense"; }).forEach(function (t) {
+      var k = t.category || "Uncategorised";
+      byCat[k] = (byCat[k] || 0) + Number(t.amount);
+    });
+    var slices = Object.keys(byCat).sort(function (a, b) { return byCat[b] - byCat[a]; }).slice(0, 7)
+      .map(function (k, i) { return { label: k, value: byCat[k], color: CAT_COLORS[i % CAT_COLORS.length] }; });
+    donutChart("spendChart", slices, "spendLegend");
+  }
+
+  function renderVsChart() {
+    if (!state.budget) { $("vsChart").innerHTML = '<div class="empty">Build a budget first to compare planned against actual.</div>'; return; }
+    var months = spanMonths();
+    var byCat = {};
+    state.txs.filter(function (t) { return t.type === "expense"; }).forEach(function (t) {
+      if (t.category) byCat[t.category] = (byCat[t.category] || 0) + Number(t.amount);
+    });
+    var cats = state.budget.categories.filter(function (c) { return byCat[c.name] != null; }).slice(0, 7);
+    if (!cats.length) { $("vsChart").innerHTML = '<div class="empty">Tag your expenses with a category when logging them, and this chart fills in.</div>'; return; }
+    barChart("vsChart", cats.map(function (c) { return c.name.split(" ")[0]; }), [
+      { name: "Planned", color: C.green, values: cats.map(function (c) { return c.amount; }) },
+      { name: "Actual", color: C.red, values: cats.map(function (c) { return Math.round(byCat[c.name] / months); }) }
+    ], { height: 230 });
+  }
+
+  /* ============ Coach ============ */
   var COACH_PROMPTS = [
     "How am I doing this month?",
-    "Can I afford a 5000 taka purchase?",
+    "Can I afford 15000 taka?",
+    "Where should I put 1 lakh?",
     "How do I reach my goal faster?",
-    "What should I cut back on?"
+    "What should I cut back on?",
+    "Is my rent too high?"
   ];
   function renderCoachPrompts() {
     var wrap = $("coachPrompts");
     wrap.innerHTML = "";
     COACH_PROMPTS.forEach(function (p) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = p;
-      btn.addEventListener("click", function () { askCoach(p); });
-      wrap.appendChild(btn);
+      var b = document.createElement("button");
+      b.type = "button"; b.textContent = p;
+      b.addEventListener("click", function () { askCoach(p); });
+      wrap.appendChild(b);
     });
+    if (!$("coachLog").childElementCount) {
+      addCoachMsg("bot", "Salaam! I answer from the numbers you have saved here — your budget, goals, ledger and investments. Tap a question above or type your own.");
+    }
   }
   $("coachSendBtn").addEventListener("click", function () {
-    var val = $("coachInput").value.trim();
-    if (val) { askCoach(val); $("coachInput").value = ""; }
+    var v = $("coachInput").value.trim();
+    if (v) { askCoach(v); $("coachInput").value = ""; }
   });
-  $("coachInput").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") { $("coachSendBtn").click(); }
-  });
+  $("coachInput").addEventListener("keydown", function (e) { if (e.key === "Enter") $("coachSendBtn").click(); });
 
   function addCoachMsg(role, text) {
     var log = $("coachLog");
-    var msg = document.createElement("div");
-    msg.className = "coach-msg " + (role === "user" ? "user" : "bot");
-    msg.textContent = text;
-    log.appendChild(msg);
+    var m = document.createElement("div");
+    m.className = "coach-msg " + (role === "user" ? "user" : "bot");
+    m.textContent = text;
+    log.appendChild(m);
     log.scrollTop = log.scrollHeight;
   }
-
-  function askCoach(question) {
-    addCoachMsg("user", question);
-    var reply = answerCoachQuestion(question);
-    setTimeout(function () { addCoachMsg("bot", reply); }, 250);
+  function askCoach(q) {
+    addCoachMsg("user", q);
+    var a = answerCoach(q);
+    setTimeout(function () { addCoachMsg("bot", a); }, 220);
   }
 
-  function answerCoachQuestion(q) {
-    var qlc = q.toLowerCase();
+  function answerCoach(q) {
+    var s = q.toLowerCase();
     var rate = monthlySavingsRate();
-    var salary = state.profile && state.profile.monthly_salary;
+    var salary = state.profile && Number(state.profile.monthly_salary);
     var target = state.budget && state.budget.savings_target;
+    var amountMatch = s.replace(/,/g, "").match(/(\d{3,9})/);
+    var amount = amountMatch ? Number(amountMatch[1]) : null;
 
-    var amountMatch = qlc.match(/(\d[\d,]*)\s*(?:taka|tk|৳)?/);
-    var mentionsAfford = /afford|buy|purchase|spend/.test(qlc);
-    if (mentionsAfford && amountMatch) {
-      var amt = Number(amountMatch[1].replace(/,/g, ""));
-      var totalSaved = state.goals.reduce(function (s, g) { return s + Number(g.current_amount); }, 0);
-      if (!salary) {
-        return "Set your monthly salary and build a budget first (in the Budget tab) so I can judge affordability accurately.";
-      }
-      if (amt <= rate && rate > 0) {
-        return "That's about " + fmtTaka(amt) + ", roughly one month of your current saving pace (" + fmtTaka(rate) + "/month). It looks manageable without touching your goal savings — just make sure it doesn't come out of money already earmarked for a goal.";
-      }
-      if (totalSaved >= amt) {
-        return "You have " + fmtTaka(totalSaved) + " saved across your goals. " + fmtTaka(amt) + " is within that, but spending it would set your goals back — worth deciding if this purchase matters more right now.";
-      }
-      return "That's " + fmtTaka(amt) + ", which is more than a typical month's savings for you right now. Consider saving toward it as its own goal instead of pulling from your other targets.";
+    if (/where.*(put|invest)|best.*(scheme|instrument|return)|dps or fdr|sanchayapatra|invest/.test(s)) {
+      var top = INSTRUMENTS.slice().sort(function (a, b) { return b.rate - a.rate; }).slice(0, 3);
+      var amt = amount || 100000;
+      var lines = top.map(function (it) {
+        var yrs = it.key === "tmp" ? 3 : 5;
+        return "• " + it.name + " — " + it.rate.toFixed(2) + "%, " + fmtTakaFull(amt) + " becomes about " + fmtTakaFull(futureLump(amt, it.rate, yrs)) + " in " + yrs + " years";
+      }).join("\n");
+      return "At January 2026 rates, the highest-paying options for " + fmtTakaFull(amt) + " are:\n\n" + lines +
+        "\n\nSanchayapatra profit is taxed 5% up to ৳5 lakh invested and 10% above; bank interest is taxed 10% with a TIN. Pensioner and Paribar certificates have eligibility rules. Confirm current rates at your bank or post office before committing.";
     }
 
-    if (/how am i doing|this month|progress/.test(qlc)) {
-      if (!rate) return "You haven't logged any deposits yet — add one from the Goals & activity tab and I can track your pace.";
-      var vsTarget = target ? (rate >= target ? "That meets or beats your " + fmtTaka(target) + " monthly target — well done." : "That's below your " + fmtTaka(target) + " monthly target, so there's room to push a bit harder.") : "Set a budget in the Budget tab to compare this against a target.";
-      return "You're saving about " + fmtTaka(rate) + " per month right now. " + vsTarget;
+    if (/rent.*(high|too much)|too high/.test(s)) {
+      if (!state.budget) return "Build a budget first (Budget tab) and I can compare your rent against real rental data for your city and household size.";
+      var rentCat = state.budget.categories.find(function (c) { return c.name === "House rent"; });
+      var pct = rentCat ? (rentCat.amount / salary) * 100 : 0;
+      return "Your plan puts " + fmtTakaFull(rentCat.amount) + " into rent, which is " + pct.toFixed(0) + "% of your income. " +
+        (pct > 35 ? "That is above the comfortable range — anything over about 30-35% squeezes everything else. Moving one area out from the centre typically cuts rent 40-45%."
+          : pct > 25 ? "That sits in the normal range for urban Bangladesh." : "That is comfortably low, leaving good room to save.");
     }
 
-    if (/faster|quicker|speed up/.test(qlc)) {
-      var activeGoal = state.goals.find(function (g) { return g.current_amount < g.target_amount; });
-      if (!activeGoal) return "You don't have an active goal yet — add one in the Goals tab so I can help you pace toward it.";
-      var left = activeGoal.target_amount - activeGoal.current_amount;
-      var boosted = rate > 0 ? rate * 1.25 : 500;
-      var monthsNow = rate > 0 ? Math.ceil(left / rate) : null;
-      var monthsBoost = Math.ceil(left / boosted);
-      return "For \"" + activeGoal.title + "\" (" + fmtTaka(left) + " left), saving just 25% more — about " + fmtTaka(boosted) + "/month instead of " + fmtTaka(rate) + " — would get you there in roughly " + monthsBoost + " month" + (monthsBoost === 1 ? "" : "s") + (monthsNow ? " instead of " + monthsNow : "") + ".";
+    if (/(afford|buy|purchase)/.test(s) && amount) {
+      if (!salary) return "Set your income and build a budget first so I can judge affordability properly.";
+      var goalPot = state.goals.reduce(function (x, g) { return x + Number(g.current_amount || 0); }, 0);
+      if (rate > 0 && amount <= rate) return fmtTakaFull(amount) + " is about one month of your current saving pace (" + fmtTakaFull(rate) + "/month). Manageable — just keep it out of money already promised to a goal.";
+      if (goalPot >= amount) return "You hold " + fmtTakaFull(goalPot) + " across your goals, so " + fmtTakaFull(amount) + " is technically within reach — but spending it sets those goals back. Is this worth more to you than what you were saving for?";
+      if (rate > 0) return fmtTakaFull(amount) + " is more than you typically save in a month. At " + fmtTakaFull(rate) + "/month it takes about " + Math.ceil(amount / rate) + " months to save up — better to make it its own goal than to borrow for it.";
+      return "Log a few deposits first so I can see your saving pace, then I can tell you how long " + fmtTakaFull(amount) + " would take.";
     }
 
-    if (/cut back|reduce|save more|spend less/.test(qlc)) {
-      if (!state.budget) return "Build a budget first (Budget tab) so I can point to your biggest categories.";
+    if (/how am i doing|this month|progress|pace/.test(s)) {
+      if (!rate) return "No deposits logged yet — add one in the Goals & ledger tab and I will start tracking your pace.";
+      var invLine = state.investments.length ? " On top of that you have " + fmtTakaFull(investedTotal()) + " invested, projected to reach " + fmtTakaFull(maturityTotal()) + "." : "";
+      return "You are saving about " + fmtTakaFull(rate) + " a month — roughly " + fmtTakaFull(rate * 12) + " a year. " +
+        (target ? (rate >= target ? "That meets your " + fmtTakaFull(target) + " target." : "That is " + fmtTakaFull(target - rate) + " short of your " + fmtTakaFull(target) + " target.") : "Build a budget to set a target.") + invLine;
+    }
+
+    if (/faster|quicker|speed up|reach.*goal/.test(s)) {
+      var g = state.goals.find(function (x) { return x.current_amount < x.target_amount; });
+      if (!g) return "You have no unfinished goals right now. Add one and I will help you pace it.";
+      var left = g.target_amount - g.current_amount;
+      var now = rate > 0 ? Math.ceil(left / rate) : null;
+      var boosted = rate > 0 ? rate * 1.25 : 1000;
+      return "\"" + g.title + "\" needs " + fmtTakaFull(left) + " more. " +
+        (now ? "At " + fmtTakaFull(rate) + "/month that is about " + now + " months. Raising it 25% to " + fmtTakaFull(boosted) + " cuts it to roughly " + Math.ceil(left / boosted) + " months."
+             : "Start logging deposits and I can project the finish date.") +
+        " Setting up a small automatic DPS instalment is the most reliable way to hold a higher pace.";
+    }
+
+    if (/cut back|reduce|save more|spend less/.test(s)) {
+      if (!state.budget) return "Build a budget first and I can point at your largest categories.";
       var sorted = state.budget.categories.slice().sort(function (a, b) { return b.amount - a.amount; });
-      var top = sorted.filter(function (c) { return c.name !== "House rent"; })[0];
-      return top ? "After rent, your largest planned category is \"" + top.name + "\" at " + fmtTaka(top.amount) + "/month. Even trimming 10-15% there (" + fmtTaka(Math.round(top.amount * 0.125)) + ") could meaningfully boost your savings without much lifestyle impact." : "Your budget looks lean already — the biggest lever left is usually rent, which is harder to change quickly.";
+      var top2 = sorted.filter(function (c) { return c.name !== "House rent"; }).slice(0, 2);
+      return "After rent, your biggest planned lines are " + top2.map(function (c) { return c.name + " (" + fmtTakaFull(c.amount) + ")"; }).join(" and ") +
+        ". Trimming 12% from both frees about " + fmtTakaFull(Math.round((top2[0].amount + (top2[1] ? top2[1].amount : 0)) * .12)) +
+        " a month — " + fmtTakaFull(Math.round((top2[0].amount + (top2[1] ? top2[1].amount : 0)) * .12 * 12)) + " a year if you keep it up.";
     }
 
-    return "I can help with: how you're pacing this month, whether you can afford something, how to reach a goal faster, or what to cut back on. Try asking one of those, or tap a suggestion above.";
+    return "I can help with: how you are pacing this month, whether you can afford something, where to put a lump sum, how to reach a goal faster, what to cut back on, or whether your rent is too high. Tap a suggestion above or ask in those terms.";
   }
 
-  // ---------- Loan interest calculator ----------
+  /* ============ Loan check ============ */
   $("loanCheckBtn").addEventListener("click", function () {
-    var principal = Number($("loanPrincipal").value);
-    var repay = Number($("loanRepay").value);
-    var months = Number($("loanMonths").value);
+    var p = Number($("loanPrincipal").value), r = Number($("loanRepay").value), m = Number($("loanMonths").value);
     $("loanErr").textContent = "";
-    if (!principal || !repay || !months || principal <= 0 || repay <= 0 || months <= 0) {
-      $("loanErr").textContent = "Fill in all three fields with numbers greater than zero.";
-      return;
-    }
-    if (repay < principal) {
-      $("loanErr").textContent = "The repayment amount should normally be at least what was borrowed.";
-      return;
-    }
-    var totalInterest = repay - principal;
-    var periodRate = totalInterest / principal;
-    var apr = periodRate * (12 / months) * 100;
+    if (!p || !r || !m || p <= 0 || r <= 0 || m <= 0) { $("loanErr").textContent = "Fill in all three fields with numbers above zero."; return; }
+    if (r < p) { $("loanErr").textContent = "The repayment should normally be at least the amount borrowed."; return; }
 
-    var verdict = "fair", label = "Fair";
-    if (apr > 100) { verdict = "predatory"; label = "Predatory"; }
-    else if (apr > 27) { verdict = "expensive"; label = "Expensive"; }
+    var interest = r - p;
+    var apr = (interest / p) * (12 / m) * 100;
+    var verdict = apr > 100 ? "predatory" : apr > 27 ? "expensive" : "fair";
+    var label = verdict.charAt(0).toUpperCase() + verdict.slice(1);
 
     $("loanResultCard").hidden = false;
-    var vEl = $("loanVerdict");
-    vEl.textContent = label;
-    vEl.className = "loan-verdict " + verdict;
-    $("loanApr").textContent = "~" + apr.toFixed(0) + "% APR";
+    var v = $("loanVerdict"); v.textContent = label; v.className = "loan-verdict " + verdict;
+    $("loanApr").textContent = "~" + apr.toFixed(0) + "% a year";
+    $("loanExplain").textContent = "Borrowing " + fmtTakaFull(p) + " and repaying " + fmtTakaFull(r) + " over " + m + " month" + (m === 1 ? "" : "s") +
+      " costs you " + fmtTakaFull(interest) + " in interest — about " + apr.toFixed(0) + "% annualised.";
+    $("loanCompare").textContent = verdict === "fair"
+      ? "That is in line with formal bank loans in Bangladesh (roughly 9-16% a year)."
+      : verdict === "expensive"
+        ? "That is above bank lending rates (9-16%) and around or above microfinance rates (20-27%). A bank or MFI loan would likely cost less if you qualify."
+        : "That is far above both bank loans (9-16%) and microfinance (20-27%). Rates this high trap borrowers in repeat cycles — try a bank, an MFI, or a community somiti before accepting.";
 
-    var explain = "Borrowing " + fmtTaka(principal) + " and repaying " + fmtTaka(repay) + " over " + months + " month" + (months === 1 ? "" : "s") + " works out to roughly " + apr.toFixed(0) + "% annualized interest.";
-    $("loanExplain").textContent = explain;
-
-    var compare;
-    if (verdict === "fair") {
-      compare = "This is in line with, or better than, typical formal bank loan rates in Bangladesh (about 9-16% APR).";
-    } else if (verdict === "expensive") {
-      compare = "This is higher than typical bank loans (9-16% APR) and closer to or above typical microfinance rates (20-27% APR). Worth comparing to a bank or MFI loan if one is available to you.";
-    } else {
-      compare = "This is far above both formal bank loans (9-16% APR) and microfinance loans (20-27% APR) — a rate this high can trap borrowers in repeating debt. If possible, look for a bank, MFI, or community (somiti) alternative.";
-    }
-    $("loanCompare").textContent = compare;
+    hBarChart("loanChart", [
+      { label: "This loan", value: Math.round(apr), color: C.red, display: apr.toFixed(0) + "%" },
+      { label: "Microfinance (MFI)", value: 24, color: "var(--gold)", display: "20-27%" },
+      { label: "Bank personal loan", value: 13, color: C.green, display: "9-16%" },
+      { label: "Sanchayapatra earns", value: 11.83, color: "var(--blue)", display: "11.83%" }
+    ], { labelW: 140 });
   });
 
-  // ---------- Init ----------
-  var existingToken = localStorage.getItem(TOKEN_KEY);
-  if (existingToken) {
-    bootApp(existingToken).catch(function () {
-      localStorage.removeItem(TOKEN_KEY);
-    });
-  }
+  /* ============ Init ============ */
+  applyKindDefaults();
+  var existing = localStorage.getItem(TOKEN_KEY);
+  if (existing) bootApp(existing).catch(function () { localStorage.removeItem(TOKEN_KEY); });
 })();
 </script>
 </body>
