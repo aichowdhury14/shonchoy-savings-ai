@@ -91,6 +91,12 @@
   .who { display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--ink-soft); }
   .who button { background:none; border:1px solid var(--line); color:var(--ink-soft); padding:7px 13px; border-radius:999px; cursor:pointer; font-size:13px; }
   .who button:hover { border-color:var(--red); color:var(--red); }
+  .lang-switch { display:inline-flex; border:1px solid var(--line); border-radius:999px; overflow:hidden; background:var(--surface-2); }
+  .lang-switch .lang-btn { border:none; background:none; padding:6px 13px; font-size:12.5px; font-weight:700; color:var(--ink-soft); cursor:pointer; border-radius:0; }
+  .lang-switch .lang-btn.active { background:var(--green); color:var(--green-ink); }
+  .lang-switch .lang-btn:hover:not(.active) { color:var(--green); border-color:transparent; }
+  .row-edit { border:none; background:none; color:var(--ink-soft); cursor:pointer; font-size:13px; padding:2px 6px; border-radius:6px; line-height:1; flex-shrink:0; }
+  .row-edit:hover { background:var(--surface-2); color:var(--green); }
 
   .nav { display:flex; gap:4px; background:var(--surface-2); padding:4px; border-radius:999px; margin-bottom:20px; overflow-x:auto; border:1px solid var(--line); }
   .nav button { flex:1; white-space:nowrap; border:none; background:none; padding:10px 15px; border-radius:999px; font-size:13.5px; font-weight:600; color:var(--ink-soft); cursor:pointer; position:relative; }
@@ -346,12 +352,16 @@
       </svg>
       <div>
         <div class="brand-name display">Shonchoy</div>
-        <div class="brand-tag">Savings, budget and investment tracker for Bangladesh</div>
+        <div class="brand-tag" data-i18n>Savings, budget and investment tracker for Bangladesh</div>
       </div>
     </div>
-    <div class="who" id="whoBar" hidden>
-      <span id="whoName"></span>
-      <button id="logoutBtn" type="button">Log out</button>
+    <div class="who">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+      </div>
+      <span id="whoName" hidden></span>
+      <button id="logoutBtn" type="button" data-i18n hidden>Log out</button>
     </div>
   </div>
 
@@ -369,10 +379,10 @@
         </div>
 
         <div class="trust-row">
-          <span class="trust-chip">No email needed</span>
-          <span class="trust-chip">Free to use</span>
-          <span class="trust-chip">Your money never leaves your own account</span>
-          <span class="trust-chip">Works on any phone</span>
+          <span class="trust-chip" data-i18n>No email needed</span>
+          <span class="trust-chip" data-i18n>Free to use</span>
+          <span class="trust-chip" data-i18n>Your money never leaves your own account</span>
+          <span class="trust-chip" data-i18n>Works on any phone</span>
         </div>
       </div>
 
@@ -380,21 +390,21 @@
         <div class="demo-card">
           <div class="demo-head">
             <div>
-              <div class="demo-title">Try it — no account needed</div>
-              <div class="demo-sub">Move the sliders to see a real budget</div>
+              <div class="demo-title" data-i18n>Try it — no account needed</div>
+              <div class="demo-sub" data-i18n>Move the sliders to see a real budget</div>
             </div>
           </div>
 
           <div class="demo-slider-row">
-            <div class="top"><label for="demoSalary">Monthly income</label><span class="val num" id="demoSalaryVal">৳30,000</span></div>
+            <div class="top"><label for="demoSalary" data-i18n>Monthly income</label><span class="val num" id="demoSalaryVal">৳30,000</span></div>
             <input type="range" id="demoSalary" min="8000" max="200000" step="1000" value="30000">
           </div>
           <div class="demo-slider-row">
-            <div class="top"><label for="demoFamily">Household size</label><span class="val num" id="demoFamilyVal">4</span></div>
+            <div class="top"><label for="demoFamily" data-i18n>Household size</label><span class="val num" id="demoFamilyVal">4</span></div>
             <input type="range" id="demoFamily" min="1" max="9" step="1" value="4">
           </div>
           <div class="demo-slider-row">
-            <div class="top"><label for="demoCity">City</label><span class="val" id="demoCityVal">Dhaka</span></div>
+            <div class="top"><label for="demoCity" data-i18n>City</label><span class="val" id="demoCityVal">Dhaka</span></div>
             <select id="demoCity">
               <option value="Dhaka">Dhaka</option>
               <option value="Chattogram">Chattogram</option>
@@ -411,11 +421,11 @@
             <div class="demo-rows" id="demoRows"></div>
             <div class="demo-save">
               <div>
-                <div class="k">You could save each month</div>
+                <div class="k" data-i18n>You could save each month</div>
                 <div class="v num" id="demoSave">৳0</div>
               </div>
               <div style="text-align:right">
-                <div class="k">In 5 years at 11.83%</div>
+                <div class="k" data-i18n>In 5 years at 11.83%</div>
                 <div class="v num" id="demoFuture">৳0</div>
               </div>
             </div>
@@ -430,24 +440,24 @@
             </div>
 
             <form id="loginPane">
-              <h2>Welcome back</h2>
+              <h2 data-i18n>Welcome back</h2>
               <p class="sub">Your phone number and PIN — that is all.</p>
-              <label for="loginPhone">Phone number</label>
-              <input id="loginPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel">
-              <label for="loginPin">PIN</label>
+              <label for="loginPhone" data-i18n>Phone number</label>
+              <input id="loginPhone" inputmode="tel" placeholder="01XXXXXXXXX" data-i18n-ph autocomplete="tel">
+              <label for="loginPin" data-i18n>PIN</label>
               <input id="loginPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="current-password">
               <button class="btn" id="loginBtn" type="submit">Log in</button>
               <div class="err" id="loginErr" role="alert"></div>
             </form>
 
             <form id="registerPane" hidden>
-              <h2>Start saving</h2>
+              <h2 data-i18n>Start saving</h2>
               <p class="sub">Takes about thirty seconds. No email, no documents.</p>
-              <label for="regName">Your name</label>
-              <input id="regName" placeholder="e.g. Rafiq Islam">
-              <label for="regPhone">Phone number</label>
-              <input id="regPhone" inputmode="tel" placeholder="01XXXXXXXXX" autocomplete="tel">
-              <label for="regPin">Create a PIN (4+ digits)</label>
+              <label for="regName" data-i18n>Your name</label>
+              <input id="regName" placeholder="e.g. Rafiq Islam" data-i18n-ph>
+              <label for="regPhone" data-i18n>Phone number</label>
+              <input id="regPhone" inputmode="tel" placeholder="01XXXXXXXXX" data-i18n-ph autocomplete="tel">
+              <label for="regPin" data-i18n>Create a PIN (4+ digits)</label>
               <input id="regPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="new-password">
               <button class="btn" id="registerBtn" type="submit">Create my account</button>
               <div class="err" id="registerErr" role="alert"></div>
@@ -462,13 +472,14 @@
   <!-- ================= APP ================= -->
   <div id="appView" hidden>
     <div class="nav" role="tablist">
-      <button class="nav-btn active" data-panel="panelOverview" type="button">Overview</button>
-      <button class="nav-btn" data-panel="panelBudget" type="button">Budget</button>
-      <button class="nav-btn" data-panel="panelGoals" type="button">Goals &amp; ledger</button>
-      <button class="nav-btn" data-panel="panelInvest" type="button">Investments</button>
-      <button class="nav-btn" data-panel="panelInsights" type="button">Insights</button>
-      <button class="nav-btn" data-panel="panelCoach" type="button">Coach</button>
-      <button class="nav-btn" data-tone="red" data-panel="panelLoan" type="button">Loan check</button>
+      <button class="nav-btn active" data-panel="panelOverview" type="button" data-i18n>Overview</button>
+      <button class="nav-btn" data-panel="panelBudget" type="button" data-i18n>Budget</button>
+      <button class="nav-btn" data-panel="panelGoals" type="button" data-i18n>Goals &amp; ledger</button>
+      <button class="nav-btn" data-panel="panelInvest" type="button" data-i18n>Investments</button>
+      <button class="nav-btn" data-panel="panelInsights" type="button" data-i18n>Insights</button>
+      <button class="nav-btn" data-panel="panelCoach" type="button" data-i18n>Coach</button>
+      <button class="nav-btn" data-tone="red" data-panel="panelLoan" type="button" data-i18n>Loan check</button>
+      <button class="nav-btn" data-panel="panelSettings" type="button" data-i18n>Settings</button>
     </div>
 
     <!-- ===== OVERVIEW ===== -->
@@ -477,8 +488,8 @@
         <div class="card span-12 flag-gold" id="setupCard">
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Get set up</div>
-              <h3 id="setupTitle">Three steps to a full picture</h3>
+              <div class="eyebrow gold" data-i18n>Get set up</div>
+              <h3 id="setupTitle" data-i18n>Three steps to a full picture</h3>
             </div>
             <span class="pill warn" id="setupProgress">0 of 3 done</span>
           </div>
@@ -488,31 +499,31 @@
         <div class="card span-12 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Net position</div>
-              <h3 id="overviewGreeting">Your money at a glance</h3>
+              <div class="eyebrow" data-i18n>Net position</div>
+              <h3 id="overviewGreeting" data-i18n>Your money at a glance</h3>
             </div>
             <span class="pill" id="healthPill">—</span>
           </div>
           <div class="stat-row">
             <div class="stat tone-green">
-              <div class="stat-label">Total invested</div>
+              <div class="stat-label" data-i18n>Total invested</div>
               <div class="stat-val num" id="ovInvested">৳0</div>
-              <div class="stat-sub" id="ovInvestedSub">across 0 instruments</div>
+              <div class="stat-sub" id="ovInvestedSub" data-i18n>across 0 instruments</div>
             </div>
             <div class="stat tone-gold">
-              <div class="stat-label">Projected at maturity</div>
+              <div class="stat-label" data-i18n>Projected at maturity</div>
               <div class="stat-val num" id="ovProjected">৳0</div>
-              <div class="stat-sub" id="ovProjectedSub">principal + profit</div>
+              <div class="stat-sub" id="ovProjectedSub" data-i18n>principal + profit</div>
             </div>
             <div class="stat tone-green">
-              <div class="stat-label">Goal savings</div>
+              <div class="stat-label" data-i18n>Goal savings</div>
               <div class="stat-val num" id="ovGoalSaved">৳0</div>
-              <div class="stat-sub" id="ovGoalSub">0 active goals</div>
+              <div class="stat-sub" id="ovGoalSub" data-i18n>0 active goals</div>
             </div>
             <div class="stat tone-red">
-              <div class="stat-label">Logged expenses</div>
+              <div class="stat-label" data-i18n>Logged expenses</div>
               <div class="stat-val num" id="ovSpent">৳0</div>
-              <div class="stat-sub">all time</div>
+              <div class="stat-sub" data-i18n>all time</div>
             </div>
           </div>
         </div>
@@ -520,8 +531,8 @@
         <div class="card span-7 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Cash flow</div>
-              <h3>Money in vs money out</h3>
+              <div class="eyebrow" data-i18n>Cash flow</div>
+              <h3 data-i18n>Money in vs money out</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="flowChart"></div></div>
@@ -534,8 +545,8 @@
         <div class="card span-5 flag-gold">
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Portfolio mix</div>
-              <h3>Where your money sits</h3>
+              <div class="eyebrow gold" data-i18n>Portfolio mix</div>
+              <h3 data-i18n>Where your money sits</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="mixChart"></div></div>
@@ -545,8 +556,8 @@
         <div class="card span-12 flag-red">
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Next 12 months</div>
-              <h3>How your wealth grows if you keep this up</h3>
+              <div class="eyebrow red" data-i18n>Next 12 months</div>
+              <h3 data-i18n>How your wealth grows if you keep this up</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="growthChart"></div></div>
@@ -564,18 +575,18 @@
         <div class="card span-12 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Household details</div>
-              <h3>Tell Shonchoy about your household</h3>
+              <div class="eyebrow" data-i18n>Household details</div>
+              <h3 data-i18n>Tell Shonchoy about your household</h3>
             </div>
           </div>
           <div class="row-fields">
             <div class="field">
-              <label for="salaryInput">Monthly income (৳)</label>
+              <label for="salaryInput" data-i18n>Monthly income (৳)</label>
               <input id="salaryInput" class="num-input" inputmode="numeric" placeholder="35000">
             </div>
             <div class="field">
-              <label for="cityInput">City / area</label>
-              <input id="cityInput" list="cityList" placeholder="Mirpur, Dhaka">
+              <label for="cityInput" data-i18n>City / area</label>
+              <input id="cityInput" list="cityList" placeholder="Mirpur, Dhaka" data-i18n-ph>
               <datalist id="cityList">
                 <option value="Dhaka"></option><option value="Chattogram"></option>
                 <option value="Sylhet"></option><option value="Khulna"></option>
@@ -586,11 +597,11 @@
               </datalist>
             </div>
             <div class="field">
-              <label for="familyInput">Household size</label>
+              <label for="familyInput" data-i18n>Household size</label>
               <input id="familyInput" class="num-input" inputmode="numeric" placeholder="4">
             </div>
             <div class="field">
-              <label for="earnersInput">Earning members</label>
+              <label for="earnersInput" data-i18n>Earning members</label>
               <input id="earnersInput" class="num-input" inputmode="numeric" placeholder="1">
             </div>
             <button class="btn small" id="genBudgetBtn" type="button" style="min-width:160px;">Build my budget</button>
@@ -601,14 +612,14 @@
         <div class="card span-7 flag-green" id="budgetCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow">Estimated breakdown</div>
-              <h3>Where your money likely goes</h3>
+              <div class="eyebrow" data-i18n>Estimated breakdown</div>
+              <h3 data-i18n>Where your money likely goes</h3>
             </div>
           </div>
           <div id="budgetList"></div>
           <div class="budget-bar-track" id="budgetBar"></div>
           <div class="budget-total">
-            <div class="label" id="savingsTargetLabel">Suggested monthly savings</div>
+            <div class="label" id="savingsTargetLabel" data-i18n>Suggested monthly savings</div>
             <div class="val" id="savingsTargetVal">৳0</div>
           </div>
           <div class="basis-note" id="basisNote"></div>
@@ -617,8 +628,8 @@
         <div class="card span-5 flag-red" id="benchCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Reality check</div>
-              <h3>You vs typical households</h3>
+              <div class="eyebrow red" data-i18n>Reality check</div>
+              <h3 data-i18n>You vs typical households</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="benchChart"></div></div>
@@ -632,8 +643,8 @@
         <div class="card span-12 flag-gold" id="affordCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Cost reference</div>
-              <h3>What things cost in your city right now</h3>
+              <div class="eyebrow gold" data-i18n>Cost reference</div>
+              <h3 data-i18n>What things cost in your city right now</h3>
             </div>
           </div>
           <div class="chart-wrap">
@@ -653,8 +664,8 @@
         <div class="card span-5 flag-green" id="goalsCard">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Targets</div>
-              <h3>Your savings goals</h3>
+              <div class="eyebrow" data-i18n>Targets</div>
+              <h3 data-i18n>Your savings goals</h3>
             </div>
             <button class="btn ghost small" id="addGoalBtn" type="button">+ New goal</button>
           </div>
@@ -664,8 +675,8 @@
         <div class="card span-7 flag-red" id="logCard">
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Ledger</div>
-              <h3>Log a deposit or expense</h3>
+              <div class="eyebrow red" data-i18n>Ledger</div>
+              <h3 data-i18n>Log a deposit or expense</h3>
             </div>
           </div>
           <div class="seg">
@@ -673,10 +684,10 @@
             <button class="expense" id="segExpense" type="button">Expense</button>
           </div>
           <div class="quick-form">
-            <input id="txAmount" class="num-input" inputmode="numeric" placeholder="Amount (৳)">
+            <input id="txAmount" class="num-input" inputmode="numeric" placeholder="Amount (৳)" data-i18n-ph>
             <select id="txCategory"></select>
             <select id="txGoal"><option value="">No specific goal</option></select>
-            <input id="txNote" placeholder="Note (e.g. bKash send money)" style="flex:2;">
+            <input id="txNote" placeholder="Note (e.g. bKash send money)" data-i18n-ph style="flex:2;">
             <button class="btn small" id="addTxBtn" type="button">Add</button>
           </div>
           <div class="chips" id="amountChips"></div>
@@ -684,20 +695,20 @@
 
           <div class="stat-row" style="margin-top:18px;">
             <div class="stat tone-green">
-              <div class="stat-label">Total saved</div>
+              <div class="stat-label" data-i18n>Total saved</div>
               <div class="stat-val num" id="statSaved">৳0</div>
             </div>
             <div class="stat tone-red">
-              <div class="stat-label">Total expenses</div>
+              <div class="stat-label" data-i18n>Total expenses</div>
               <div class="stat-val num" id="statSpent">৳0</div>
             </div>
             <div class="stat">
-              <div class="stat-label">Entries</div>
+              <div class="stat-label" data-i18n>Entries</div>
               <div class="stat-val num" id="statCount">0</div>
             </div>
           </div>
 
-          <h4 style="margin-top:20px; margin-bottom:6px; font-size:13.5px; color:var(--ink-soft);">Recent activity</h4>
+          <h4 style="margin-top:20px; margin-bottom:6px; font-size:13.5px; color:var(--ink-soft);" data-i18n>Recent activity</h4>
           <div id="txList"></div>
         </div>
       </div>
@@ -709,31 +720,31 @@
         <div class="card span-12 flag-gold">
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Portfolio</div>
-              <h3>DPS, FDR, Sanchayapatra, SIP &amp; business capital</h3>
+              <div class="eyebrow gold" data-i18n>Portfolio</div>
+              <h3 data-i18n>DPS, FDR, Sanchayapatra, SIP &amp; business capital</h3>
             </div>
             <button class="btn small" id="addInvBtn" type="button">+ Add instrument</button>
           </div>
           <div class="stat-row" style="margin-bottom:16px;">
             <div class="stat tone-green">
-              <div class="stat-label">Money in</div>
+              <div class="stat-label" data-i18n>Money in</div>
               <div class="stat-val num" id="invTotalIn">৳0</div>
-              <div class="stat-sub">principal + contributions to date</div>
+              <div class="stat-sub" data-i18n>principal + contributions to date</div>
             </div>
             <div class="stat tone-gold">
-              <div class="stat-label">Value at maturity</div>
+              <div class="stat-label" data-i18n>Value at maturity</div>
               <div class="stat-val num" id="invTotalOut">৳0</div>
               <div class="stat-sub" id="invProfitSub">—</div>
             </div>
             <div class="stat">
-              <div class="stat-label">Monthly commitment</div>
+              <div class="stat-label" data-i18n>Monthly commitment</div>
               <div class="stat-val num" id="invMonthly">৳0</div>
-              <div class="stat-sub">DPS + SIP instalments</div>
+              <div class="stat-sub" data-i18n>DPS + SIP instalments</div>
             </div>
             <div class="stat">
-              <div class="stat-label">Blended return</div>
+              <div class="stat-label" data-i18n>Blended return</div>
               <div class="stat-val num" id="invBlended">—</div>
-              <div class="stat-sub">weighted by amount</div>
+              <div class="stat-sub" data-i18n>weighted by amount</div>
             </div>
           </div>
           <div id="invList"></div>
@@ -742,8 +753,8 @@
         <div class="card span-7 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Maturity timeline</div>
-              <h3>When each instrument pays out</h3>
+              <div class="eyebrow" data-i18n>Maturity timeline</div>
+              <h3 data-i18n>When each instrument pays out</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="maturityChart"></div></div>
@@ -752,8 +763,8 @@
         <div class="card span-5 flag-red">
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Compare</div>
-              <h3>Where ৳1 lakh grows fastest</h3>
+              <div class="eyebrow red" data-i18n>Compare</div>
+              <h3 data-i18n>Where ৳1 lakh grows fastest</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="compareChart"></div></div>
@@ -763,8 +774,8 @@
         <div class="card span-12 flag-gold">
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Reference rates</div>
-              <h3>Bangladesh savings instruments, 2026</h3>
+              <div class="eyebrow gold" data-i18n>Reference rates</div>
+              <h3 data-i18n>Bangladesh savings instruments, 2026</h3>
             </div>
           </div>
           <div class="chart-wrap">
@@ -784,8 +795,8 @@
         <div class="card span-7 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Pattern check</div>
-              <h3>How your money is actually moving</h3>
+              <div class="eyebrow" data-i18n>Pattern check</div>
+              <h3 data-i18n>How your money is actually moving</h3>
             </div>
           </div>
           <div id="insightsList"></div>
@@ -793,8 +804,8 @@
         <div class="card span-5 flag-red">
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Spending mix</div>
-              <h3>What you actually spend on</h3>
+              <div class="eyebrow red" data-i18n>Spending mix</div>
+              <h3 data-i18n>What you actually spend on</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="spendChart"></div></div>
@@ -803,8 +814,8 @@
         <div class="card span-12 flag-gold">
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Planned vs actual</div>
-              <h3>Are you sticking to your budget?</h3>
+              <div class="eyebrow gold" data-i18n>Planned vs actual</div>
+              <h3 data-i18n>Are you sticking to your budget?</h3>
             </div>
           </div>
           <div class="chart-wrap"><div id="vsChart"></div></div>
@@ -822,14 +833,14 @@
         <div class="card span-12 flag-green">
           <div class="card-head">
             <div>
-              <div class="eyebrow">Ask Shonchoy</div>
-              <h3>Your savings coach</h3>
+              <div class="eyebrow" data-i18n>Ask Shonchoy</div>
+              <h3 data-i18n>Your savings coach</h3>
             </div>
           </div>
           <div class="coach-prompts" id="coachPrompts"></div>
           <div class="coach-log" id="coachLog"></div>
           <div class="coach-input-row">
-            <input id="coachInput" placeholder="Ask about your budget, goals, or an instrument…">
+            <input id="coachInput" placeholder="Ask about your budget, goals, or an instrument…" data-i18n-ph>
             <button class="btn small" id="coachSendBtn" type="button">Ask</button>
           </div>
           <div class="hint">The coach answers from your own saved numbers using built-in rules — nothing is sent to any outside service.</div>
@@ -843,15 +854,15 @@
         <div class="card span-6 flag-red">
           <div class="card-head">
             <div>
-              <div class="eyebrow red">Is this loan fair?</div>
-              <h3>Check an informal loan</h3>
+              <div class="eyebrow red" data-i18n>Is this loan fair?</div>
+              <h3 data-i18n>Check an informal loan</h3>
             </div>
           </div>
-          <label for="loanPrincipal">Amount borrowed (৳)</label>
+          <label for="loanPrincipal" data-i18n>Amount borrowed (৳)</label>
           <input id="loanPrincipal" class="num-input" inputmode="numeric" placeholder="5000">
-          <label for="loanRepay">Total you must pay back (৳)</label>
+          <label for="loanRepay" data-i18n>Total you must pay back (৳)</label>
           <input id="loanRepay" class="num-input" inputmode="numeric" placeholder="6000">
-          <label for="loanMonths">Repayment period (months)</label>
+          <label for="loanMonths" data-i18n>Repayment period (months)</label>
           <input id="loanMonths" class="num-input" inputmode="numeric" placeholder="2">
           <button class="btn red" id="loanCheckBtn" type="button">Check this loan</button>
           <div class="err" id="loanErr" role="alert"></div>
@@ -859,8 +870,8 @@
         <div class="card span-6 flag-gold" id="loanResultCard" hidden>
           <div class="card-head">
             <div>
-              <div class="eyebrow gold">Result</div>
-              <h3>What this loan really costs</h3>
+              <div class="eyebrow gold" data-i18n>Result</div>
+              <h3 data-i18n>What this loan really costs</h3>
             </div>
           </div>
           <div class="loan-result">
@@ -870,6 +881,48 @@
             <div class="loan-compare" id="loanCompare"></div>
           </div>
           <div class="chart-wrap" style="margin-top:16px;"><div id="loanChart"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SETTINGS ===== -->
+    <div id="panelSettings" class="panel" hidden>
+      <div class="grid">
+        <div class="card span-6 flag-green">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow" data-i18n>Your account</div>
+              <h3 data-i18n>Change your PIN</h3>
+            </div>
+          </div>
+          <label for="oldPin" data-i18n>Current PIN</label>
+          <input id="oldPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="current-password">
+          <label for="newPin" data-i18n>New PIN</label>
+          <input id="newPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="new-password">
+          <label for="confirmPin" data-i18n>Confirm new PIN</label>
+          <input id="confirmPin" type="password" inputmode="numeric" placeholder="••••" autocomplete="new-password">
+          <button class="btn" id="pinChangeBtn" type="button" data-i18n>Update PIN</button>
+          <div class="err" id="pinErr" role="alert"></div>
+          <p class="hint" id="pinHint" data-i18n>Changing your PIN signs you out on every other device.</p>
+        </div>
+
+        <div class="card span-6 flag-gold">
+          <div class="card-head">
+            <div>
+              <div class="eyebrow gold" data-i18n>Your data</div>
+              <h3 data-i18n>Download everything</h3>
+            </div>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-soft);margin:0 0 4px;" data-i18n>Download your ledger, goals and investments as a CSV file you can open in Excel.</p>
+          <button class="btn ghost" id="exportBtn" type="button" data-i18n>Download everything</button>
+
+          <div style="margin-top:26px;">
+            <div class="eyebrow" style="margin-bottom:8px;" data-i18n>Language</div>
+            <div class="lang-switch">
+              <button type="button" class="lang-btn active" data-lang="en">English</button>
+              <button type="button" class="lang-btn" data-lang="bn">বাংলা</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -884,14 +937,14 @@
 <!-- Goal modal -->
 <div id="goalModalBackdrop" class="modal-backdrop" hidden>
   <div class="modal">
-    <h3>New savings goal</h3>
+    <h3 data-i18n>New savings goal</h3>
     <p class="hint" style="margin-top:2px;">Give it a name you will recognise — Eid clothes, a phone, tuition fees.</p>
-    <label for="goalTitle">What are you saving for?</label>
-    <input id="goalTitle" placeholder="Eid shopping">
+    <label for="goalTitle" data-i18n>What are you saving for?</label>
+    <input id="goalTitle" placeholder="Eid shopping" data-i18n-ph>
     <div class="chips" id="goalPresets"></div>
-    <label for="goalAmount">Target amount (৳)</label>
+    <label for="goalAmount" data-i18n>Target amount (৳)</label>
     <input id="goalAmount" class="num-input" inputmode="numeric" placeholder="8000">
-    <label for="goalDate">Target date (optional)</label>
+    <label for="goalDate" data-i18n>Target date (optional)</label>
     <input id="goalDate" type="date">
     <div class="err" id="goalErr" role="alert"></div>
     <div class="close-row">
@@ -904,10 +957,10 @@
 <!-- Investment modal -->
 <div id="invModalBackdrop" class="modal-backdrop" hidden>
   <div class="modal">
-    <h3>Add an instrument</h3>
+    <h3 data-i18n>Add an instrument</h3>
     <p class="hint" style="margin-top:2px;">DPS, FDR, Sanchayapatra, SIP, business capital and more.</p>
 
-    <label for="invKind">Type</label>
+    <label for="invKind" data-i18n>Type</label>
     <select id="invKind">
       <option value="dps">DPS — monthly deposit scheme</option>
       <option value="fdr">FDR — fixed deposit</option>
@@ -919,41 +972,41 @@
       <option value="other">Other</option>
     </select>
 
-    <label for="invName">Name it</label>
-    <input id="invName" placeholder="e.g. DBBL DPS 5 year">
+    <label for="invName" data-i18n>Name it</label>
+    <input id="invName" placeholder="e.g. DBBL DPS 5 year" data-i18n-ph>
 
-    <label for="invInstitution">Bank / issuer (optional)</label>
-    <input id="invInstitution" placeholder="e.g. Dutch-Bangla Bank, Post Office">
+    <label for="invInstitution" data-i18n>Bank / issuer (optional)</label>
+    <input id="invInstitution" placeholder="e.g. Dutch-Bangla Bank, Post Office" data-i18n-ph>
 
     <div class="two-col">
       <div>
-        <label for="invPrincipal">Lump sum (৳)</label>
+        <label for="invPrincipal" data-i18n>Lump sum (৳)</label>
         <input id="invPrincipal" class="num-input" inputmode="numeric" placeholder="0">
       </div>
       <div>
-        <label for="invMonthlyIn">Monthly instalment (৳)</label>
+        <label for="invMonthlyIn" data-i18n>Monthly instalment (৳)</label>
         <input id="invMonthlyIn" class="num-input" inputmode="numeric" placeholder="0">
       </div>
     </div>
 
     <div class="two-col">
       <div>
-        <label for="invRate">Annual rate (%)</label>
-        <input id="invRate" class="num-input" inputmode="decimal" placeholder="11.83">
+        <label for="invRate" data-i18n>Annual rate (%)</label>
+        <input id="invRate" class="num-input" inputmode="decimal" placeholder="11.83" data-i18n-ph>
       </div>
       <div>
-        <label for="invCurrent">Current value (৳, optional)</label>
-        <input id="invCurrent" class="num-input" inputmode="numeric" placeholder="leave blank to project">
+        <label for="invCurrent" data-i18n>Current value (৳, optional)</label>
+        <input id="invCurrent" class="num-input" inputmode="numeric" placeholder="leave blank to project" data-i18n-ph>
       </div>
     </div>
 
     <div class="two-col">
       <div>
-        <label for="invStart">Started on</label>
+        <label for="invStart" data-i18n>Started on</label>
         <input id="invStart" type="date">
       </div>
       <div>
-        <label for="invMaturity">Matures on</label>
+        <label for="invMaturity" data-i18n>Matures on</label>
         <input id="invMaturity" type="date">
       </div>
     </div>
@@ -961,8 +1014,46 @@
     <div class="hint" id="invRateHint"></div>
     <div class="err" id="invErr" role="alert"></div>
     <div class="close-row">
-      <button class="btn ghost" id="invCancelBtn" type="button">Cancel</button>
-      <button class="btn" id="invSaveBtn" type="button">Add instrument</button>
+      <button class="btn ghost" id="invCancelBtn" type="button" data-i18n>Cancel</button>
+      <button class="btn" id="invSaveBtn" type="button" data-i18n>Add instrument</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit transaction modal -->
+<div id="txEditBackdrop" class="modal-backdrop" hidden>
+  <div class="modal">
+    <h3 data-i18n>Edit entry</h3>
+    <label for="editTxAmount" data-i18n>Amount (৳)</label>
+    <input id="editTxAmount" class="num-input" inputmode="numeric">
+    <label for="editTxCategory" data-i18n>Category…</label>
+    <select id="editTxCategory"></select>
+    <label for="editTxNote" data-i18n>Note</label>
+    <input id="editTxNote">
+    <div class="err" id="editTxErr" role="alert"></div>
+    <div class="close-row">
+      <button class="btn ghost" id="editTxDelete" type="button" style="color:var(--red);border-color:var(--red)" data-i18n>Delete</button>
+      <button class="btn ghost" id="editTxCancel" type="button" data-i18n>Cancel</button>
+      <button class="btn" id="editTxSave" type="button" data-i18n>Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit goal modal -->
+<div id="goalEditBackdrop" class="modal-backdrop" hidden>
+  <div class="modal">
+    <h3 data-i18n>Edit goal</h3>
+    <label for="editGoalTitle" data-i18n>What are you saving for?</label>
+    <input id="editGoalTitle">
+    <label for="editGoalAmount" data-i18n>Target amount (৳)</label>
+    <input id="editGoalAmount" class="num-input" inputmode="numeric">
+    <label for="editGoalDate" data-i18n>Target date (optional)</label>
+    <input id="editGoalDate" type="date">
+    <div class="err" id="editGoalErr" role="alert"></div>
+    <div class="close-row">
+      <button class="btn ghost" id="editGoalDelete" type="button" style="color:var(--red);border-color:var(--red)" data-i18n>Delete</button>
+      <button class="btn ghost" id="editGoalCancel" type="button" data-i18n>Cancel</button>
+      <button class="btn" id="editGoalSave" type="button" data-i18n>Save changes</button>
     </div>
   </div>
 </div>
@@ -975,6 +1066,234 @@
   var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyeG9tdWlsemp1cW51bnl2eXRrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMTM5NDQsImV4cCI6MjEwNDc4OTk0NH0.w3f4N63DsodEcqR8PxkBzVfsPbW_VhOOo0HPQkeU4Fo";
   var TOKEN_KEY = "shonchoy_session_token";
 
+  var LANG_KEY = "shonchoy_lang";
+  var lang = localStorage.getItem(LANG_KEY) || "en";
+
+  // Bangla strings. Keys mirror the English text they replace.
+  var BN = {
+    "Savings, budget and investment tracker for Bangladesh":"বাংলাদেশের জন্য সঞ্চয়, বাজেট ও বিনিয়োগ ট্র্যাকার",
+    "Log out":"লগ আউট",
+    "Overview":"সারসংক্ষেপ",
+    "Budget":"বাজেট",
+    "Goals & ledger":"লক্ষ্য ও খাতা",
+    "Investments":"বিনিয়োগ",
+    "Insights":"বিশ্লেষণ",
+    "Coach":"পরামর্শ",
+    "Loan check":"ঋণ যাচাই",
+    "Settings":"সেটিংস",
+    "Log in":"লগ ইন",
+    "Create account":"অ্যাকাউন্ট খুলুন",
+    "Welcome back":"আবার স্বাগতম",
+    "Your phone number and PIN — that is all.":"শুধু আপনার ফোন নম্বর ও পিন।",
+    "Phone number":"ফোন নম্বর",
+    "PIN":"পিন",
+    "Start saving":"সঞ্চয় শুরু করুন",
+    "Takes about thirty seconds. No email, no documents.":"মাত্র ত্রিশ সেকেন্ড। ইমেইল বা কাগজপত্র লাগবে না।",
+    "Your name":"আপনার নাম",
+    "Create a PIN (4+ digits)":"একটি পিন দিন (৪+ সংখ্যা)",
+    "Create my account":"আমার অ্যাকাউন্ট খুলুন",
+    "Your PIN is encrypted. Nobody else can see your data, and Shonchoy never touches your bKash or bank balance.":"আপনার পিন এনক্রিপ্ট করা। অন্য কেউ আপনার তথ্য দেখতে পারবে না, এবং সঞ্চয় কখনও আপনার বিকাশ বা ব্যাংক ব্যালেন্স স্পর্শ করে না।",
+    "Try it — no account needed":"পরখ করুন — অ্যাকাউন্ট লাগবে না",
+    "Move the sliders to see a real budget":"স্লাইডার সরিয়ে বাস্তব বাজেট দেখুন",
+    "Monthly income":"মাসিক আয়",
+    "Household size":"পরিবারের সদস্য",
+    "City":"শহর",
+    "You could save each month":"প্রতি মাসে সঞ্চয় করতে পারেন",
+    "In 5 years at 11.83%":"৫ বছরে ১১.৮৩% হারে",
+    "Everything else":"বাকি সব",
+    "No email needed":"ইমেইল লাগবে না",
+    "Free to use":"ব্যবহার বিনামূল্যে",
+    "Your money never leaves your own account":"আপনার টাকা আপনার নিজের অ্যাকাউন্টেই থাকে",
+    "Works on any phone":"যেকোনো ফোনে চলে",
+    "Get set up":"শুরু করুন",
+    "Three steps to a full picture":"পূর্ণ চিত্রের জন্য তিনটি ধাপ",
+    "Almost there":"প্রায় শেষ",
+    "Build your budget":"বাজেট তৈরি করুন",
+    "Takes one minute — we do the maths":"এক মিনিট — হিসাব আমরা করব",
+    "Set a savings goal":"একটি সঞ্চয় লক্ষ্য দিন",
+    "Eid, a phone, tuition fees":"ঈদ, ফোন, টিউশন ফি",
+    "Add your investments":"আপনার বিনিয়োগ যোগ করুন",
+    "DPS, FDR, Sanchayapatra, business":"ডিপিএস, এফডিআর, সঞ্চয়পত্র, ব্যবসা",
+    "Net position":"সার্বিক অবস্থা",
+    "Your money at a glance":"এক নজরে আপনার টাকা",
+    "Total invested":"মোট বিনিয়োগ",
+    "Projected at maturity":"মেয়াদ শেষে সম্ভাব্য",
+    "principal + profit":"আসল + মুনাফা",
+    "Goal savings":"লক্ষ্যের সঞ্চয়",
+    "Logged expenses":"লিপিবদ্ধ খরচ",
+    "all time":"সর্বমোট",
+    "Cash flow":"নগদ প্রবাহ",
+    "Money in vs money out":"আয় বনাম ব্যয়",
+    "Deposits / saved":"জমা / সঞ্চয়",
+    "Expenses":"খরচ",
+    "Portfolio mix":"বিনিয়োগ বণ্টন",
+    "Where your money sits":"আপনার টাকা কোথায় আছে",
+    "Next 12 months":"আগামী ১২ মাস",
+    "How your wealth grows if you keep this up":"এভাবে চললে আপনার সম্পদ যেভাবে বাড়বে",
+    "What you put in":"আপনি যা জমা দিচ্ছেন",
+    "Profit earned on top":"তার উপর অর্জিত মুনাফা",
+    "Household details":"পরিবারের তথ্য",
+    "Tell Shonchoy about your household":"আপনার পরিবারের কথা জানান",
+    "Monthly income (৳)":"মাসিক আয় (৳)",
+    "City / area":"শহর / এলাকা",
+    "Earning members":"উপার্জনক্ষম সদস্য",
+    "Build my budget":"আমার বাজেট তৈরি করুন",
+    "Estimated breakdown":"আনুমানিক বিভাজন",
+    "Where your money likely goes":"আপনার টাকা সম্ভবত যেখানে যায়",
+    "Suggested monthly savings":"প্রস্তাবিত মাসিক সঞ্চয়",
+    "Shortfall each month":"প্রতি মাসে ঘাটতি",
+    "Reality check":"বাস্তবতা যাচাই",
+    "You vs typical households":"আপনি বনাম সাধারণ পরিবার",
+    "Your budget":"আপনার বাজেট",
+    "National average":"জাতীয় গড়",
+    "Cost reference":"খরচের তালিকা",
+    "What things cost in your city right now":"এখন আপনার শহরে জিনিসপত্রের দাম",
+    "Item":"পণ্য",
+    "Typical cost":"সাধারণ দাম",
+    "Share of income":"আয়ের অংশ",
+    "Recent change":"সাম্প্রতিক পরিবর্তন",
+    "Targets":"লক্ষ্যসমূহ",
+    "Your savings goals":"আপনার সঞ্চয় লক্ষ্য",
+    "+ New goal":"+ নতুন লক্ষ্য",
+    "Ledger":"খাতা",
+    "Log a deposit or expense":"জমা বা খরচ লিখুন",
+    "Deposit / saved":"জমা / সঞ্চয়",
+    "Expense":"খরচ",
+    "Add":"যোগ করুন",
+    "Clear":"মুছুন",
+    "Total saved":"মোট সঞ্চয়",
+    "Total expenses":"মোট খরচ",
+    "Entries":"এন্ট্রি",
+    "Recent activity":"সাম্প্রতিক কার্যক্রম",
+    "Portfolio":"পোর্টফোলিও",
+    "DPS, FDR, Sanchayapatra, SIP & business capital":"ডিপিএস, এফডিআর, সঞ্চয়পত্র, এসআইপি ও ব্যবসার পুঁজি",
+    "+ Add instrument":"+ নতুন যোগ করুন",
+    "Money in":"জমা দেওয়া",
+    "principal + contributions to date":"আসল + এ পর্যন্ত কিস্তি",
+    "Value at maturity":"মেয়াদ শেষে মূল্য",
+    "Monthly commitment":"মাসিক কিস্তি",
+    "DPS + SIP instalments":"ডিপিএস + এসআইপি কিস্তি",
+    "Blended return":"গড় মুনাফার হার",
+    "weighted by amount":"পরিমাণ অনুযায়ী",
+    "Maturity timeline":"মেয়াদপূর্তির সময়রেখা",
+    "When each instrument pays out":"কোনটি কখন পরিশোধ হবে",
+    "Compare":"তুলনা",
+    "Where ৳1 lakh grows fastest":"১ লাখ টাকা কোথায় দ্রুত বাড়ে",
+    "Reference rates":"মুনাফার হার",
+    "Bangladesh savings instruments, 2026":"বাংলাদেশের সঞ্চয় স্কিম, ২০২৬",
+    "Instrument":"স্কিম",
+    "Tenure":"মেয়াদ",
+    "Annual rate":"বার্ষিক হার",
+    "৳1 lakh becomes":"১ লাখ হয়",
+    "Notes":"মন্তব্য",
+    "Pattern check":"ধরন যাচাই",
+    "How your money is actually moving":"আপনার টাকা আসলে কীভাবে চলছে",
+    "Spending mix":"খরচের বণ্টন",
+    "What you actually spend on":"আপনি আসলে কীসে খরচ করেন",
+    "Planned vs actual":"পরিকল্পনা বনাম বাস্তব",
+    "Are you sticking to your budget?":"আপনি কি বাজেট মেনে চলছেন?",
+    "Planned":"পরিকল্পিত",
+    "Actually logged":"বাস্তবে লিপিবদ্ধ",
+    "Ask Shonchoy":"সঞ্চয়কে জিজ্ঞাসা করুন",
+    "Your savings coach":"আপনার সঞ্চয় পরামর্শক",
+    "Ask":"জিজ্ঞাসা",
+    "The coach answers from your own saved numbers using built-in rules — nothing is sent to any outside service.":"পরামর্শক আপনার নিজের সংরক্ষিত তথ্য থেকে উত্তর দেয় — বাইরের কোনো সেবায় কিছু পাঠানো হয় না।",
+    "Is this loan fair?":"এই ঋণ কি ন্যায্য?",
+    "Check an informal loan":"অনানুষ্ঠানিক ঋণ যাচাই করুন",
+    "Amount borrowed (৳)":"ধার নেওয়া পরিমাণ (৳)",
+    "Total you must pay back (৳)":"মোট যা ফেরত দিতে হবে (৳)",
+    "Repayment period (months)":"পরিশোধের মেয়াদ (মাস)",
+    "Check this loan":"এই ঋণ যাচাই করুন",
+    "Result":"ফলাফল",
+    "What this loan really costs":"এই ঋণের আসল খরচ",
+    "New savings goal":"নতুন সঞ্চয় লক্ষ্য",
+    "What are you saving for?":"কীসের জন্য সঞ্চয়?",
+    "Target amount (৳)":"লক্ষ্য পরিমাণ (৳)",
+    "Target date (optional)":"লক্ষ্য তারিখ (ঐচ্ছিক)",
+    "Cancel":"বাতিল",
+    "Create goal":"লক্ষ্য তৈরি করুন",
+    "Save changes":"পরিবর্তন সংরক্ষণ",
+    "Delete":"মুছে ফেলুন",
+    "Edit":"সম্পাদনা",
+    "Add an instrument":"নতুন স্কিম যোগ করুন",
+    "Type":"ধরন",
+    "Name it":"একটি নাম দিন",
+    "Bank / issuer (optional)":"ব্যাংক / প্রতিষ্ঠান (ঐচ্ছিক)",
+    "Lump sum (৳)":"এককালীন (৳)",
+    "Monthly instalment (৳)":"মাসিক কিস্তি (৳)",
+    "Annual rate (%)":"বার্ষিক হার (%)",
+    "Started on":"শুরুর তারিখ",
+    "Matures on":"মেয়াদ শেষ",
+    "Add instrument":"যোগ করুন",
+    "Remove":"সরান",
+    "Your account":"আপনার অ্যাকাউন্ট",
+    "Change your PIN":"পিন পরিবর্তন",
+    "Current PIN":"বর্তমান পিন",
+    "New PIN":"নতুন পিন",
+    "Confirm new PIN":"নতুন পিন নিশ্চিত করুন",
+    "Update PIN":"পিন হালনাগাদ",
+    "Your data":"আপনার তথ্য",
+    "Download everything":"সব ডাউনলোড করুন",
+    "Download your ledger, goals and investments as a CSV file you can open in Excel.":"আপনার খাতা, লক্ষ্য ও বিনিয়োগ CSV ফাইলে নামান — এক্সেলে খোলা যাবে।",
+    "Language":"ভাষা",
+    "Edit entry":"এন্ট্রি সম্পাদনা",
+    "Amount (৳)":"পরিমাণ (৳)",
+    "Note":"মন্তব্য",
+    "Edit goal":"লক্ষ্য সম্পাদনা",
+    "No specific goal":"নির্দিষ্ট লক্ষ্য নেই",
+    "Category…":"খাত…",
+    "Savings deposit":"সঞ্চয় জমা",
+    "Investment":"বিনিয়োগ",
+    "Other":"অন্যান্য",
+    "Saved":"সংরক্ষিত হয়েছে",
+    "Deleted":"মুছে ফেলা হয়েছে",
+    "Downloaded":"ডাউনলোড হয়েছে",
+    "Enter an amount.":"একটি পরিমাণ লিখুন।",
+    "Enter a goal name and a target amount.":"লক্ষ্যের নাম ও পরিমাণ লিখুন।",
+    "Changing your PIN signs you out on every other device.":"পিন পরিবর্তন করলে অন্য সব ডিভাইস থেকে লগ আউট হয়ে যাবে।",
+    "House rent":"বাড়ি ভাড়া",
+    "Bazar / groceries":"বাজার / মুদি",
+    "Eating out & snacks":"বাইরে খাওয়া ও নাস্তা",
+    "Utilities":"ইউটিলিটি বিল",
+    "Transport":"যাতায়াত",
+    "Education":"শিক্ষা",
+    "Health & medicine":"স্বাস্থ্য ও ওষুধ",
+    "Mobile / internet top-ups":"মোবাইল / ইন্টারনেট",
+    "Family & social":"পরিবার ও সামাজিক",
+    "Food":"খাবার",
+    "Housing":"বাসস্থান",
+    "Savings":"সঞ্চয়",
+    "e.g. Rafiq Islam":"যেমন রফিক ইসলাম",
+    "Mirpur, Dhaka":"মিরপুর, ঢাকা",
+    "Note (e.g. bKash send money)":"মন্তব্য (যেমন বিকাশ সেন্ড মানি)",
+    "Ask about your budget, goals, or an instrument…":"আপনার বাজেট, লক্ষ্য বা বিনিয়োগ নিয়ে জিজ্ঞাসা করুন…",
+    "Eid shopping":"ঈদের কেনাকাটা",
+    "e.g. DBBL DPS 5 year":"যেমন ডিবিবিএল ডিপিএস ৫ বছর",
+    "e.g. Dutch-Bangla Bank, Post Office":"যেমন ডাচ-বাংলা ব্যাংক, ডাকঘর",
+    "leave blank to project":"খালি রাখলে হিসাব করে নেবে",
+    "Know exactly where your taka goes —":"আপনার টাকা ঠিক কোথায় যাচ্ছে জানুন —",
+    "and what it could become.":"এবং তা কী হতে পারে।",
+    "Emergency fund":"জরুরি তহবিল",
+    "New phone":"নতুন ফোন",
+    "Tuition fees":"টিউশন ফি",
+    "Hajj / Umrah":"হজ / ওমরাহ",
+    "Wedding":"বিয়ে",
+    "Deposit":"জমা"
+  };
+
+  function t(s) {
+    if (lang === "en") return s;
+    // textContent decodes entities, so "&amp;" arrives as "&" — normalise whitespace too.
+    var key = String(s).replace(/\s+/g, " ").trim();
+    return BN[key] || BN[s] || s;
+  }
+  // Bengali numerals — ৳ amounts read far more naturally to a Bangla speaker.
+  var BN_DIGITS = ["০","১","২","৩","৪","৫","৬","৭","৮","৯"];
+  function localizeDigits(str) {
+    if (lang !== "bn") return str;
+    return String(str).replace(/[0-9]/g, function(d){ return BN_DIGITS[+d]; });
+  }
+
   var C = { green:"var(--green)", red:"var(--red)", gold:"var(--gold)", blue:"var(--blue)" };
   var CAT_COLORS = ["#0B6E4F","#C42B1C","#2C5F8A","#B8860B","#7A3E7E","#158C6A","#96351F","#4E7C3F","#8A6D3B","#5F6A61"];
 
@@ -983,17 +1302,53 @@
   function $(id) { return document.getElementById(id); }
   function fmtTaka(n) {
     n = Math.round(Number(n) || 0);
-    if (Math.abs(n) >= 10000000) return "৳" + (n/10000000).toFixed(2).replace(/\.00$/,"") + " cr";
-    if (Math.abs(n) >= 100000) return "৳" + (n/100000).toFixed(2).replace(/\.00$/,"") + " lakh";
-    return "৳" + n.toLocaleString("en-US");
+    var s;
+    if (Math.abs(n) >= 10000000) s = "৳" + (n/10000000).toFixed(2).replace(/\.00$/,"") + (lang==="bn"?" কোটি":" cr");
+    else if (Math.abs(n) >= 100000) s = "৳" + (n/100000).toFixed(2).replace(/\.00$/,"") + (lang==="bn"?" লাখ":" lakh");
+    else s = "৳" + n.toLocaleString("en-US");
+    return localizeDigits(s);
   }
-  function fmtTakaFull(n) { return "৳" + Math.round(Number(n)||0).toLocaleString("en-US"); }
+  function fmtTakaFull(n) { return localizeDigits("৳" + Math.round(Number(n)||0).toLocaleString("en-US")); }
   function esc(s) { var d=document.createElement("div"); d.textContent = s==null?"":String(s); return d.innerHTML; }
   function toast(msg) {
-    var t = document.createElement("div");
-    t.className = "toast"; t.textContent = msg;
-    document.body.appendChild(t);
-    setTimeout(function(){ t.remove(); }, 2600);
+    var el = document.createElement("div");
+    el.className = "toast"; el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 2600);
+  }
+
+  // Walks the static markup and swaps in the active language. Each element keeps
+  // its original English in a data attribute so switching back is lossless.
+  function applyLanguage() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key = el.getAttribute("data-i18n-key");
+      if (!key) { key = el.textContent.trim(); el.setAttribute("data-i18n-key", key); }
+      el.textContent = t(key);
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
+      var key = el.getAttribute("data-i18n-ph-key");
+      if (!key) { key = el.getAttribute("placeholder") || ""; el.setAttribute("data-i18n-ph-key", key); }
+      el.setAttribute("placeholder", t(key));
+    });
+    document.querySelectorAll(".lang-btn").forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-lang") === lang);
+    });
+  }
+
+  function setLanguage(next) {
+    lang = next;
+    localStorage.setItem(LANG_KEY, next);
+    applyLanguage();
+    // Re-render everything that builds text in JavaScript.
+    renderDemo();
+    if (state.token) {
+      if (state.budget) renderBudget();
+      populateTxCategories(); renderAmountChips(); renderGoalPresets();
+      renderRatesTable(); renderCompareChart();
+      refreshGoalsView(); refreshTxsView(); renderInvestments(); renderOverview();
+      $("coachLog").innerHTML = ""; renderCoachPrompts();
+    }
   }
 
   async function rpc(name, args) {
@@ -1357,7 +1712,7 @@
   renderDemo();
 
   /* ================= Navigation ================= */
-  var PANELS = ["panelOverview","panelBudget","panelGoals","panelInvest","panelInsights","panelCoach","panelLoan"];
+  var PANELS = ["panelOverview","panelBudget","panelGoals","panelInvest","panelInsights","panelCoach","panelLoan","panelSettings"];
   function goPanel(target) {
     document.querySelectorAll(".nav-btn").forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-panel")===target); });
     PANELS.forEach(function(p){ $(p).hidden = p !== target; });
@@ -1431,8 +1786,11 @@
 
     $("authView").hidden = true;
     $("appView").hidden = false;
-    $("whoBar").hidden = false;
-    $("whoName").textContent = state.profile.name ? "Hi, "+state.profile.name : state.profile.phone;
+    $("whoName").hidden = false;
+    $("logoutBtn").hidden = false;
+    $("whoName").textContent = state.profile.name
+      ? (lang==="bn" ? state.profile.name : "Hi, "+state.profile.name)
+      : localizeDigits(state.profile.phone);
     if(state.profile.name) $("overviewGreeting").textContent = state.profile.name.split(" ")[0] + "’s money at a glance";
 
     if(state.profile.monthly_salary) $("salaryInput").value = state.profile.monthly_salary;
@@ -1527,7 +1885,7 @@
       var row=document.createElement("div");
       row.className="budget-row";
       row.innerHTML = '<span class="dot" style="background:'+color+'"></span>'+
-        '<div class="name"><div class="cat-name">'+esc(c.name)+'</div>'+
+        '<div class="name"><div class="cat-name">'+esc(t(c.name))+'</div>'+
         (c.note?'<div class="cat-note">'+esc(c.note)+'</div>':'')+'</div>'+
         '<div><div class="amt num">'+fmtTakaFull(c.amount)+'</div>'+
         '<div class="share num">'+((c.amount/salary)*100).toFixed(1)+'%</div></div>';
@@ -1599,7 +1957,7 @@
       { label:"Education", you:share("Education"), avg:6 },
       { label:"Savings", you:((b.savings_target||0)/salary)*100, avg:9 }
     ];
-    barChart("benchChart", rows.map(function(r){return r.label;}), [
+    barChart("benchChart", rows.map(function(r){return t(r.label);}), [
       { name:"You", color:C.green, values:rows.map(function(r){return +r.you.toFixed(1);}) },
       { name:"Average", color:C.red, values:rows.map(function(r){return +r.avg.toFixed(1);}) }
     ], { height:220 });
@@ -1633,8 +1991,8 @@
     $("goalPresets").innerHTML = "";
     GOAL_PRESETS.forEach(function(p){
       var b=document.createElement("button");
-      b.type="button"; b.textContent=p.t;
-      b.addEventListener("click", function(){ $("goalTitle").value=p.t; $("goalAmount").value=p.a; });
+      b.type="button"; b.textContent=t(p.t);
+      b.addEventListener("click", function(){ $("goalTitle").value=t(p.t); $("goalAmount").value=p.a; });
       $("goalPresets").appendChild(b);
     });
   }
@@ -1658,11 +2016,17 @@
 
   async function refreshGoals() {
     state.goals = (await rpc("get_my_goals",{ p_token:state.token })) || [];
+    refreshGoalsView();
+  }
+
+  function refreshGoalsView() {
     var list=$("goalsList"), sel=$("txGoal");
     list.innerHTML="";
-    sel.innerHTML='<option value="">No specific goal</option>';
+    sel.innerHTML='<option value="">'+esc(t("No specific goal"))+'</option>';
     if(!state.goals.length){
-      list.innerHTML='<div class="empty">No goals yet.<br>A goal makes saving concrete — “৳15,000 for Eid by March” works far better than “save more”.</div>';
+      list.innerHTML='<div class="empty">'+(lang==="bn"
+        ? "এখনও কোনো লক্ষ্য নেই।<br>লক্ষ্য থাকলে সঞ্চয় বাস্তব হয় — “মার্চের মধ্যে ঈদের জন্য ১৫,০০০ টাকা” “আরও সঞ্চয় করব”-এর চেয়ে অনেক ভালো কাজ করে।"
+        : "No goals yet.<br>A goal makes saving concrete — “৳15,000 for Eid by March” works far better than “save more”.")+'</div>';
       return;
     }
     var rate = monthlySavingsRate();
@@ -1670,23 +2034,36 @@
       var pct = g.target_amount>0 ? Math.min(100,(g.current_amount/g.target_amount)*100) : 0;
       var left = Math.max(0, g.target_amount-g.current_amount);
       var pill="", cls="warn";
-      if(left<=0){ pill="Goal reached 🎉"; cls="good"; }
+      if(left<=0){ pill = lang==="bn" ? "লক্ষ্য পূরণ হয়েছে 🎉" : "Goal reached 🎉"; cls="good"; }
       else if(rate>20){
         var months=Math.ceil(left/rate);
         if(g.target_date){
           var need=Math.max(1, monthsBetween(new Date(), new Date(g.target_date)));
-          if(months<=need){ pill="On track — about "+months+" month"+(months===1?"":"s")+" at your pace"; cls="good"; }
-          else { pill="Behind — needs "+fmtTakaFull(Math.ceil(left/need))+"/month to hit the date"; cls="bad"; }
-        } else pill="About "+months+" month"+(months===1?"":"s")+" to go at your pace";
-      } else pill="Log a few deposits to see a projection";
+          if(months<=need){
+            pill = lang==="bn" ? "ঠিক পথে — এই গতিতে প্রায় "+localizeDigits(months)+" মাস"
+                               : "On track — about "+months+" month"+(months===1?"":"s")+" at your pace";
+            cls="good";
+          } else {
+            pill = lang==="bn" ? "পিছিয়ে — তারিখ ধরতে মাসে "+fmtTakaFull(Math.ceil(left/need))+" লাগবে"
+                               : "Behind — needs "+fmtTakaFull(Math.ceil(left/need))+"/month to hit the date";
+            cls="bad";
+          }
+        } else {
+          pill = lang==="bn" ? "এই গতিতে আরও প্রায় "+localizeDigits(months)+" মাস"
+                             : "About "+months+" month"+(months===1?"":"s")+" to go at your pace";
+        }
+      } else {
+        pill = lang==="bn" ? "কয়েকটি জমা লিখলে সম্ভাব্য সময় দেখা যাবে" : "Log a few deposits to see a projection";
+      }
 
       var item=document.createElement("div");
       item.className="goal-item";
-      item.innerHTML = '<div class="goal-top"><div class="goal-title">'+esc(g.title)+'</div>'+
-        (g.target_date?'<div class="goal-date">by '+esc(g.target_date)+'</div>':'')+'</div>'+
+      item.innerHTML = '<div class="goal-top"><div class="goal-title">'+esc(g.title)+
+        ' <button class="row-edit" type="button" data-edit-goal="'+esc(g.id)+'" aria-label="'+esc(t("Edit"))+'">✎</button></div>'+
+        (g.target_date?'<div class="goal-date">'+(lang==="bn"?"":"by ")+esc(localizeDigits(g.target_date))+'</div>':'')+'</div>'+
         '<div class="goal-track"><div class="goal-fill" style="width:'+pct.toFixed(0)+'%;background:'+(cls==="bad"?"var(--red)":"var(--green)")+'"></div></div>'+
-        '<div class="goal-meta"><span><span class="num">'+fmtTakaFull(g.current_amount)+'</span> saved</span>'+
-        '<span>of <span class="num">'+fmtTakaFull(g.target_amount)+'</span></span></div>'+
+        '<div class="goal-meta"><span><span class="num">'+fmtTakaFull(g.current_amount)+'</span> '+esc(lang==="bn"?"জমা":"saved")+'</span>'+
+        '<span>'+esc(lang==="bn"?"লক্ষ্য":"of")+' <span class="num">'+fmtTakaFull(g.target_amount)+'</span></span></div>'+
         '<span class="pill '+cls+'">'+esc(pill)+'</span>';
       list.appendChild(item);
 
@@ -1694,14 +2071,56 @@
       opt.value=g.id; opt.textContent=g.title;
       sel.appendChild(opt);
     });
+
+    list.querySelectorAll("button[data-edit-goal]").forEach(function(btn){
+      btn.addEventListener("click", function(){ openGoalEdit(btn.getAttribute("data-edit-goal")); });
+    });
   }
+
+  /* ---- Edit / delete a goal ---- */
+  var editingGoalId = null;
+  function openGoalEdit(id) {
+    var g = state.goals.find(function(x){ return x.id === id; });
+    if (!g) return;
+    editingGoalId = id;
+    $("editGoalTitle").value = g.title;
+    $("editGoalAmount").value = Number(g.target_amount);
+    $("editGoalDate").value = g.target_date || "";
+    $("editGoalErr").textContent = "";
+    $("goalEditBackdrop").hidden = false;
+  }
+  $("editGoalCancel").addEventListener("click", function(){ $("goalEditBackdrop").hidden = true; });
+  $("editGoalSave").addEventListener("click", async function(){
+    var title = $("editGoalTitle").value.trim(), amount = Number($("editGoalAmount").value);
+    if (!title || !amount || amount <= 0) { $("editGoalErr").textContent = t("Enter a goal name and a target amount."); return; }
+    $("editGoalSave").disabled = true;
+    try {
+      await rpc("update_goal", { p_token:state.token, p_id:editingGoalId, p_title:title,
+        p_target_amount:amount, p_target_date:$("editGoalDate").value||null });
+      $("goalEditBackdrop").hidden = true;
+      await refreshGoals(); renderOverview();
+      toast(t("Saved"));
+    } catch(e){ $("editGoalErr").textContent = (e&&e.message)||String(e); }
+    finally { $("editGoalSave").disabled = false; }
+  });
+  $("editGoalDelete").addEventListener("click", async function(){
+    if (!confirm(lang==="bn" ? "এই লক্ষ্য মুছে ফেলবেন? জমার হিসাব থেকে যাবে।" : "Delete this goal? Your logged deposits are kept.")) return;
+    $("editGoalDelete").disabled = true;
+    try {
+      await rpc("delete_goal", { p_token:state.token, p_id:editingGoalId });
+      $("goalEditBackdrop").hidden = true;
+      await refreshGoals(); await refreshTxs(); renderOverview(); renderSteps();
+      toast(t("Deleted"));
+    } catch(e){ $("editGoalErr").textContent = (e&&e.message)||String(e); }
+    finally { $("editGoalDelete").disabled = false; }
+  });
 
   /* ================= Ledger ================= */
   function populateTxCategories() {
     var cats = state.budget ? state.budget.categories.map(function(c){return c.name;}) : [];
-    $("txCategory").innerHTML = '<option value="">Category…</option>' +
+    $("txCategory").innerHTML = '<option value="">'+esc(t("Category…"))+'</option>' +
       cats.concat(["Savings deposit","Investment","Other"]).map(function(c){
-        return '<option value="'+esc(c)+'">'+esc(c)+"</option>";
+        return '<option value="'+esc(c)+'">'+esc(t(c))+"</option>";
       }).join("");
   }
   function renderAmountChips() {
@@ -1745,6 +2164,10 @@
 
   async function refreshTxs() {
     state.txs = (await rpc("get_my_transactions",{ p_token:state.token, p_limit:200 })) || [];
+    refreshTxsView();
+  }
+
+  function refreshTxsView() {
     var list=$("txList");
     list.innerHTML="";
     var saved=0, spent=0;
@@ -1753,20 +2176,73 @@
     $("statSpent").textContent=fmtTakaFull(spent);
     $("statCount").textContent=state.txs.length;
 
-    if(!state.txs.length){ list.innerHTML='<div class="empty">No activity yet — log your first deposit above and your charts start filling in.</div>'; return; }
-    state.txs.slice(0,25).forEach(function(t){
-      var goal=state.goals.find(function(g){return g.id===t.goal_id;});
+    if(!state.txs.length){
+      list.innerHTML='<div class="empty">'+(lang==="bn"
+        ? "এখনও কিছু নেই — উপরে প্রথম জমা লিখুন, তারপর আপনার চার্ট ভরতে শুরু করবে।"
+        : "No activity yet — log your first deposit above and your charts start filling in.")+'</div>';
+      return;
+    }
+    state.txs.slice(0,25).forEach(function(tx){
+      var goal=state.goals.find(function(g){return g.id===tx.goal_id;});
       var row=document.createElement("div");
       row.className="tx-item";
-      var when=new Date(t.created_at);
-      var sub = when.toLocaleDateString() + (t.category?" · "+t.category:"") + (goal?" · "+goal.title:"");
-      row.innerHTML = '<div class="tx-badge '+t.type+'">'+(t.type==="deposit"?"৳":"−")+"</div>"+
-        '<div class="tx-body"><div class="tx-note">'+esc(t.note||(t.type==="deposit"?"Deposit":"Expense"))+"</div>"+
+      var when=new Date(tx.created_at);
+      var sub = localizeDigits(when.toLocaleDateString(lang==="bn"?"bn-BD":"en-US")) +
+        (tx.category?" · "+t(tx.category):"") + (goal?" · "+goal.title:"");
+      row.innerHTML = '<div class="tx-badge '+tx.type+'">'+(tx.type==="deposit"?"৳":"−")+"</div>"+
+        '<div class="tx-body"><div class="tx-note">'+esc(tx.note||t(tx.type==="deposit"?"Deposit / saved":"Expense"))+"</div>"+
         '<div class="tx-sub">'+esc(sub)+"</div></div>"+
-        '<div class="tx-amt '+t.type+' num">'+(t.type==="deposit"?"+":"−")+fmtTakaFull(t.amount)+"</div>";
+        '<div class="tx-amt '+tx.type+' num">'+(tx.type==="deposit"?"+":"−")+fmtTakaFull(tx.amount)+"</div>"+
+        '<button class="row-edit" type="button" data-edit-tx="'+esc(tx.id)+'" aria-label="'+esc(t("Edit"))+'">✎</button>';
       list.appendChild(row);
     });
+    list.querySelectorAll("button[data-edit-tx]").forEach(function(btn){
+      btn.addEventListener("click", function(){ openTxEdit(btn.getAttribute("data-edit-tx")); });
+    });
   }
+
+  /* ---- Edit / delete a ledger entry ---- */
+  var editingTxId = null;
+  function openTxEdit(id) {
+    var tx = state.txs.find(function(x){ return x.id === id; });
+    if (!tx) return;
+    editingTxId = id;
+    $("editTxAmount").value = Number(tx.amount);
+    $("editTxNote").value = tx.note || "";
+    var sel = $("editTxCategory");
+    var cats = state.budget ? state.budget.categories.map(function(c){return c.name;}) : [];
+    sel.innerHTML = '<option value="">'+esc(t("Category…"))+'</option>' +
+      cats.concat(["Savings deposit","Investment","Other"]).map(function(c){
+        return '<option value="'+esc(c)+'"'+(tx.category===c?" selected":"")+">"+esc(t(c))+"</option>";
+      }).join("");
+    $("editTxErr").textContent = "";
+    $("txEditBackdrop").hidden = false;
+  }
+  $("editTxCancel").addEventListener("click", function(){ $("txEditBackdrop").hidden = true; });
+  $("editTxSave").addEventListener("click", async function(){
+    var amount = Number($("editTxAmount").value);
+    if (!amount || amount <= 0) { $("editTxErr").textContent = t("Enter an amount."); return; }
+    $("editTxSave").disabled = true;
+    try {
+      await rpc("update_transaction", { p_token:state.token, p_id:editingTxId, p_amount:amount,
+        p_category:$("editTxCategory").value||null, p_note:$("editTxNote").value.trim()||null });
+      $("txEditBackdrop").hidden = true;
+      await refreshGoals(); await refreshTxs(); renderOverview();
+      toast(t("Saved"));
+    } catch(e){ $("editTxErr").textContent = (e&&e.message)||String(e); }
+    finally { $("editTxSave").disabled = false; }
+  });
+  $("editTxDelete").addEventListener("click", async function(){
+    if (!confirm(lang==="bn" ? "এই এন্ট্রি মুছে ফেলবেন? এটি ফেরানো যাবে না।" : "Delete this entry? This cannot be undone.")) return;
+    $("editTxDelete").disabled = true;
+    try {
+      await rpc("delete_transaction", { p_token:state.token, p_id:editingTxId });
+      $("txEditBackdrop").hidden = true;
+      await refreshGoals(); await refreshTxs(); renderOverview();
+      toast(t("Deleted"));
+    } catch(e){ $("editTxErr").textContent = (e&&e.message)||String(e); }
+    finally { $("editTxDelete").disabled = false; }
+  });
 
   /* ================= Investments ================= */
   var KIND_META = {
@@ -2079,25 +2555,29 @@
   }
 
   /* ================= Coach ================= */
+  // Each prompt carries its own Bangla label; the matcher below reads both languages.
   var COACH_PROMPTS = [
-    "How am I doing this month?",
-    "Can I afford 15000 taka?",
-    "Where should I put 1 lakh?",
-    "How do I reach my goal faster?",
-    "What should I cut back on?",
-    "Is my rent too high?",
-    "Is inflation eating my savings?"
+    { en:"How am I doing this month?", bn:"এ মাসে আমি কেমন করছি?" },
+    { en:"Can I afford 15000 taka?", bn:"১৫০০০ টাকা খরচ করার সামর্থ্য আছে?" },
+    { en:"Where should I put 1 lakh?", bn:"১ লাখ টাকা কোথায় রাখব?" },
+    { en:"How do I reach my goal faster?", bn:"লক্ষ্যে দ্রুত পৌঁছাব কীভাবে?" },
+    { en:"What should I cut back on?", bn:"কোথায় খরচ কমাব?" },
+    { en:"Is my rent too high?", bn:"আমার বাড়ি ভাড়া কি বেশি?" },
+    { en:"Is inflation eating my savings?", bn:"মূল্যস্ফীতি কি সঞ্চয় খেয়ে ফেলছে?" }
   ];
   function renderCoachPrompts() {
     $("coachPrompts").innerHTML="";
     COACH_PROMPTS.forEach(function(p){
+      var label = lang==="bn" ? p.bn : p.en;
       var b=document.createElement("button");
-      b.type="button"; b.textContent=p;
-      b.addEventListener("click", function(){ askCoach(p); });
+      b.type="button"; b.textContent=label;
+      b.addEventListener("click", function(){ askCoach(label, p.en); });
       $("coachPrompts").appendChild(b);
     });
     if(!$("coachLog").childElementCount){
-      addCoachMsg("bot","Salaam! I answer from the numbers you have saved here — your budget, goals, ledger and investments. Tap a question above or type your own.");
+      addCoachMsg("bot", lang==="bn"
+        ? "সালাম! আমি আপনার সংরক্ষিত তথ্য — বাজেট, লক্ষ্য, খাতা ও বিনিয়োগ — থেকে উত্তর দিই। উপরের কোনো প্রশ্নে চাপ দিন বা নিজে লিখুন।"
+        : "Salaam! I answer from the numbers you have saved here — your budget, goals, ledger and investments. Tap a question above or type your own.");
     }
   }
   $("coachSendBtn").addEventListener("click", function(){
@@ -2113,10 +2593,33 @@
     log.appendChild(m);
     log.scrollTop=log.scrollHeight;
   }
-  function askCoach(q){
+  function askCoach(q, intentOverride){
     addCoachMsg("user",q);
-    var a=answerCoach(q);
+    var a=answerCoach(intentOverride || normaliseIntent(q));
     setTimeout(function(){ addCoachMsg("bot",a); },220);
+  }
+
+  // Maps common Bangla phrasing onto the English keywords the matcher looks for,
+  // so a Bangla speaker typing freely still reaches the right answer.
+  var BN_INTENT = [
+    { re:/মূল্যস্ফীতি|ইনফ্লেশন|দাম\s*বাড়/, en:"inflation" },
+    { re:/কোথায়\s*(রাখ|বিনিয়োগ)|বিনিয়োগ\s*কর|সঞ্চয়পত্র|ডিপিএস|এফডিআর/, en:"where should i invest" },
+    { re:/ভাড়া/, en:"is my rent too high" },
+    { re:/সামর্থ্য|কিনতে\s*পার|খরচ\s*করতে\s*পার/, en:"can i afford" },
+    { re:/কেমন\s*করছি|এ\s*মাসে|অগ্রগতি/, en:"how am i doing this month" },
+    { re:/দ্রুত|তাড়াতাড়ি|লক্ষ্যে\s*পৌঁছ/, en:"reach goal faster" },
+    { re:/খরচ\s*কম|কমাব|সাশ্রয়/, en:"what should i cut back on" }
+  ];
+  function normaliseIntent(q) {
+    if (lang !== "bn") return q;
+    for (var i=0;i<BN_INTENT.length;i++) {
+      if (BN_INTENT[i].re.test(q)) {
+        // Keep any digits the user typed so amount-based answers still work.
+        var nums = q.replace(/[০-৯]/g, function(d){ return String(BN_DIGITS.indexOf(d)); }).match(/\d{3,9}/);
+        return BN_INTENT[i].en + (nums ? " " + nums[0] : "");
+      }
+    }
+    return q;
   }
 
   function answerCoach(q) {
@@ -2225,7 +2728,80 @@
     ], { labelW:140 });
   });
 
+  /* ================= Settings ================= */
+  $("pinChangeBtn").addEventListener("click", async function(){
+    var oldPin=$("oldPin").value.trim(), newPin=$("newPin").value.trim(), confirmPin=$("confirmPin").value.trim();
+    $("pinErr").textContent="";
+    if(!oldPin || !newPin){ $("pinErr").textContent = lang==="bn"?"সব ঘর পূরণ করুন।":"Fill in every field."; return; }
+    if(newPin.length<4){ $("pinErr").textContent = lang==="bn"?"নতুন পিন অন্তত ৪ সংখ্যার হতে হবে।":"The new PIN must be at least 4 digits."; return; }
+    if(newPin!==confirmPin){ $("pinErr").textContent = lang==="bn"?"নতুন পিন দুবার একরকম হয়নি।":"The two new PINs do not match."; return; }
+    $("pinChangeBtn").disabled=true;
+    try {
+      await rpc("change_pin",{ p_token:state.token, p_old_pin:oldPin, p_new_pin:newPin });
+      $("oldPin").value=""; $("newPin").value=""; $("confirmPin").value="";
+      toast(lang==="bn"?"পিন পরিবর্তন হয়েছে":"PIN changed");
+    } catch(e){
+      var msg=(e&&e.message)||String(e);
+      $("pinErr").textContent = /incorrect/i.test(msg)
+        ? (lang==="bn"?"বর্তমান পিন ভুল।":"Your current PIN is incorrect.")
+        : msg;
+    } finally { $("pinChangeBtn").disabled=false; }
+  });
+
+  function csvCell(v) {
+    if (v == null) return "";
+    var s = String(v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  $("exportBtn").addEventListener("click", function(){
+    var lines = [];
+    lines.push("Shonchoy export," + new Date().toISOString().slice(0,10));
+    lines.push("");
+    lines.push("TRANSACTIONS");
+    lines.push(["Date","Type","Amount","Category","Goal","Note"].join(","));
+    state.txs.forEach(function(tx){
+      var g = state.goals.find(function(x){ return x.id===tx.goal_id; });
+      lines.push([ new Date(tx.created_at).toISOString().slice(0,10), tx.type, tx.amount,
+        csvCell(tx.category), csvCell(g?g.title:""), csvCell(tx.note) ].join(","));
+    });
+    lines.push("");
+    lines.push("GOALS");
+    lines.push(["Title","Target","Saved","Target date","Status"].join(","));
+    state.goals.forEach(function(g){
+      lines.push([ csvCell(g.title), g.target_amount, g.current_amount, csvCell(g.target_date), g.status ].join(","));
+    });
+    lines.push("");
+    lines.push("INVESTMENTS");
+    lines.push(["Name","Type","Institution","Lump sum","Monthly","Rate %","Start","Maturity","Projected value"].join(","));
+    state.investments.forEach(function(i){
+      lines.push([ csvCell(i.name), i.kind, csvCell(i.institution), i.principal, i.monthly_contribution,
+        i.annual_rate==null?"":i.annual_rate, csvCell(i.start_date), csvCell(i.maturity_date),
+        Math.round(maturityValue(i)) ].join(","));
+    });
+    if (state.budget) {
+      lines.push("");
+      lines.push("BUDGET");
+      lines.push(["Category","Monthly amount"].join(","));
+      state.budget.categories.forEach(function(c){ lines.push([csvCell(c.name), c.amount].join(",")); });
+      lines.push(["Savings target", state.budget.savings_target].join(","));
+    }
+    // BOM keeps Bangla text and the taka sign readable when Excel opens the file.
+    var blob = new Blob(["﻿" + lines.join("\n")], { type:"text/csv;charset=utf-8;" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "shonchoy-" + new Date().toISOString().slice(0,10) + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    toast(lang==="bn"?"ফাইল নামানো হয়েছে":"Downloaded");
+  });
+
+  document.querySelectorAll(".lang-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){ setLanguage(btn.getAttribute("data-lang")); });
+  });
+
   /* ================= Init ================= */
+  applyLanguage();
   applyKindDefaults();
   setTxType("deposit");
   var existing = localStorage.getItem(TOKEN_KEY);
