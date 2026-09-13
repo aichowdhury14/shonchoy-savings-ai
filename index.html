@@ -185,6 +185,13 @@
 
   .row-fields { display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; }
   .row-fields .field { flex:1; min-width:150px; }
+  .check-row {
+    display:flex; align-items:center; gap:9px; margin:0;
+    border:1px solid var(--line); border-radius:9px; padding:11px 13px;
+    font-size:14px; font-weight:500; color:var(--ink); cursor:pointer; background:var(--surface);
+  }
+  .check-row:hover { border-color:var(--green); }
+  .check-row input { width:17px; height:17px; margin:0; flex-shrink:0; accent-color:var(--green); cursor:pointer; }
 
   /* Onboarding checklist */
   .steps { display:flex; gap:10px; flex-wrap:wrap; }
@@ -411,6 +418,15 @@
             <input type="range" id="demoFamily" min="1" max="9" step="1" value="4">
           </div>
           <div class="demo-slider-row">
+            <div class="top"><label for="demoStage" data-i18n>Your situation</label></div>
+            <select id="demoStage">
+              <option value="single_family">Single, living with family</option>
+              <option value="single_alone">Single, living alone or in a mess</option>
+              <option value="married">Married, no children</option>
+              <option value="married_kids" selected>Married with children</option>
+            </select>
+          </div>
+          <div class="demo-slider-row">
             <div class="top"><label for="demoCity" data-i18n>City</label><span class="val" id="demoCityVal">Dhaka</span></div>
             <select id="demoCity">
               <option value="Dhaka">Dhaka</option>
@@ -611,7 +627,25 @@
               <label for="earnersInput" data-i18n>Earning members</label>
               <input id="earnersInput" class="num-input" inputmode="numeric" placeholder="1">
             </div>
-            <button class="btn small" id="genBudgetBtn" type="button" style="min-width:160px;">Build my budget</button>
+          </div>
+          <div class="row-fields" style="margin-top:12px;">
+            <div class="field" style="min-width:270px;">
+              <label for="lifeStageInput" data-i18n>Your situation</label>
+              <select id="lifeStageInput">
+                <option value="single_family">Single, living with family</option>
+                <option value="single_alone">Single, living alone or in a mess</option>
+                <option value="married">Married, no children</option>
+                <option value="married_kids" selected>Married with children</option>
+              </select>
+            </div>
+            <div class="field" style="min-width:240px;">
+              <label data-i18n>Family responsibility</label>
+              <label class="check-row" for="supportsParents">
+                <input type="checkbox" id="supportsParents">
+                <span data-i18n>I send money to my parents</span>
+              </label>
+            </div>
+            <button class="btn small" id="genBudgetBtn" type="button" style="min-width:160px;" data-i18n>Build my budget</button>
           </div>
           <div class="err" id="budgetErr" role="alert"></div>
         </div>
@@ -1364,6 +1398,21 @@
     "Wedding":"বিয়ে",
     "Deposit":"জমা",
     "Designed and developed by":"পরিকল্পনা ও নির্মাণে",
+    "Your situation":"আপনার অবস্থা",
+    "Single, living with family":"অবিবাহিত, পরিবারের সাথে",
+    "Single, living alone or in a mess":"অবিবাহিত, একা বা মেসে",
+    "Married, no children":"বিবাহিত, সন্তান নেই",
+    "Married with children":"বিবাহিত, সন্তানসহ",
+    "Family responsibility":"পারিবারিক দায়িত্ব",
+    "I send money to my parents":"আমি বাবা-মাকে টাকা পাঠাই",
+    "Support for parents":"বাবা-মায়ের জন্য",
+    "Children's education":"সন্তানের শিক্ষা",
+    "Own flat deposit":"নিজের ফ্ল্যাটের জামানত",
+    "Higher study":"উচ্চশিক্ষা",
+    "Baby fund":"সন্তানের জন্য তহবিল",
+    "Active":"চলমান",
+    "Matured":"মেয়াদপূর্ণ",
+    "Closed":"বন্ধ",
     "Edit instrument":"স্কিম সম্পাদনা",
     "Correct any detail — the amount, rate, dates or name.":"যেকোনো তথ্য ঠিক করুন — পরিমাণ, হার, তারিখ বা নাম।",
     "Status":"অবস্থা",
@@ -1413,6 +1462,12 @@
   function applyLanguage() {
     document.documentElement.lang = lang;
     document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var key = el.getAttribute("data-i18n-key");
+      if (!key) { key = el.textContent.trim(); el.setAttribute("data-i18n-key", key); }
+      el.textContent = t(key);
+    });
+    // Static <option> labels in the situation and status selects.
+    document.querySelectorAll("#lifeStageInput option, #demoStage option, #eInvStatus option").forEach(function(el){
       var key = el.getAttribute("data-i18n-key");
       if (!key) { key = el.textContent.trim(); el.setAttribute("data-i18n-key", key); }
       el.textContent = t(key);
@@ -1496,6 +1551,23 @@
   // better area as they earn more. Anchored on 2026 Dhaka listings: a mid-range
   // 3-bed runs ~Tk23k, while Gulshan/Banani 2-3 beds go for Tk80k-150k and
   // luxury units above Tk170k.
+  /* Life stage reshapes the budget, not just its size. A single earner living with
+     parents pays a token share of rent and eats at home; one in a bachelor mess
+     pays Tk3,200-6,000 for a seat but eats out constantly; a married couple runs a
+     full household. Sources: 2026 bachelor mess listings (Tk3,200-6,000/seat) and
+     cost-of-living estimates putting a couple at roughly 1.5x a single person. */
+  var LIFE_STAGES = {
+    single_family: { rent:0.28, food:0.62, out:1.7, util:0.35, social:0.85, health:0.7, edu:0.5,
+                     defaultFamily:1, label:"Single, living with family" },
+    single_alone:  { rent:0.58, food:0.80, out:2.6, util:0.60, social:0.75, health:0.8, edu:0.8,
+                     defaultFamily:1, label:"Single, living alone or in a mess" },
+    married:       { rent:1.00, food:1.00, out:1.00, util:1.00, social:1.05, health:1.0, edu:0.4,
+                     defaultFamily:2, label:"Married, no children" },
+    married_kids:  { rent:1.00, food:1.05, out:0.80, util:1.10, social:1.15, health:1.2, edu:1.0,
+                     defaultFamily:4, label:"Married with children" }
+  };
+  function stageOf(key) { return LIFE_STAGES[key] || LIFE_STAGES.married; }
+
   // Interpolated so a small raise never jumps the household into a much pricier
   // flat and leaves them saving less than before.
   var HOUSING_TIERS = [
@@ -1519,11 +1591,12 @@
     }
     return 1;
   }
-  function estimateRent(family, city, salary) {
+  function estimateRent(family, city, salary, stageKey) {
     var size = family && family > 0 ? family : 4;
     var tier = cityTier(city);
+    var stage = stageOf(stageKey);
     var base = size <= 1 ? 9800 : size <= 2 ? 14200 : size <= 4 ? 22900 : size <= 6 ? 33800 : 41400;
-    var market = base * tier * incomeHousingFactor(salary);
+    var market = base * tier * incomeHousingFactor(salary) * stage.rent;
     if (salary && salary > 0) {
       // The cap scales with the city — squeezing into Dhaka costs a larger share
       // of income than the same compromise in a cheaper town — and eases at higher
@@ -1750,7 +1823,8 @@
   }
 
   /* ================= Budget model ================= */
-  function buildBudget(salary, rent, family, earners, city) {
+  function buildBudget(salary, rent, family, earners, city, stageKey, supportsParents) {
+    var stage = stageOf(stageKey);
     var afterRent = Math.max(0, salary - rent);
     // Engel's law, anchored on the HIES 2022 national food share (45.8%).
     var foodShare = salary<15000?.54 : salary<25000?.48 : salary<45000?.40 : salary<90000?.31 : .24;
@@ -1762,14 +1836,14 @@
     // protein per person per month at September 2026 TCB retail prices. Without this
     // floor a tight budget mathematically "spends" almost nothing on food, which is
     // never what actually happens — people cut rent, transport or savings instead.
-    var foodFloor = Math.round(1750 * family * Math.max(.85, tier));
+    var foodFloor = Math.round(1750 * family * Math.max(.85, tier) * stage.food);
     // Food spending rises with income but plateaus — better quality and more
     // eating out, not endlessly more food. Caps at roughly Tk9,000 per person.
-    var foodCeiling = Math.round(9000 * family * Math.max(.8, tier));
-    var foodBudget = Math.max(foodFloor, Math.min(Math.round(afterRent * foodShare), foodCeiling));
+    var foodCeiling = Math.round(9000 * family * Math.max(.8, tier) * stage.food);
+    var foodBudget = Math.max(foodFloor, Math.min(Math.round(afterRent * foodShare * stage.food), foodCeiling));
     foodBudget = Math.min(foodBudget, Math.max(0, afterRent)); // never exceed what is left
-    // Higher earners eat out a larger share of their food budget.
-    var outShare = salary >= 120000 ? .30 : salary >= 60000 ? .24 : .18;
+    // Higher earners eat out a larger share; singles eat out far more than families.
+    var outShare = Math.min(.62, (salary >= 120000 ? .30 : salary >= 60000 ? .24 : .18) * stage.out);
     var groceries = Math.round(foodBudget * (1 - outShare));
     var eatingOut = foodBudget - groceries;
     var children = Math.max(0, family - earners - 1);
@@ -1808,33 +1882,58 @@
     );
     // Utilities now anchored on the post-June-2026 tariff: ~৳4,360/mo in Dhaka
     // for an 85m² flat, scaled by city and household size.
-    var utilities = Math.round(Math.min(afterRent*.18, 4360 * tier * (1 + (family-4)*.07)));
-    var health = Math.round(afterRent * (family>=5?.075:.055));
+    var utilities = Math.round(Math.min(afterRent*.18, 4360 * tier * (1 + (family-4)*.07)) * stage.util);
+    var health = Math.round(afterRent * (family>=5?.075:.055) * stage.health);
 
     // When the market rate for this household size exceeds what the income can carry,
     // say so plainly rather than quietly showing an unaffordable figure.
     // Compare against the market rate for the housing tier this income would reach,
     // so the "beyond your income" note only appears when the cap actually binds.
     var baseForSize = family <= 1 ? 9800 : family <= 2 ? 14200 : family <= 4 ? 22900 : family <= 6 ? 33800 : 41400;
-    var marketRent = Math.round((baseForSize * cityTier(city) * incomeHousingFactor(salary)) / 500) * 500;
+    var marketRent = Math.round((baseForSize * cityTier(city) * incomeHousingFactor(salary) * stage.rent) / 500) * 500;
     var rentNote = rent < marketRent - 500
       ? "A typical " + family + "-person home in " + cityLabel(city) + " costs about " + fmtTakaFull(marketRent) + " — beyond this income, so this assumes a room, shared housing or an outer area."
       : (salary >= 90000
           ? "A better-area flat for " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + ", matching this income."
           : "For " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + ".");
 
-    return [
+    var cats = [
       { name:"House rent", amount:rent, note:rentNote },
-      { name:"Bazar / groceries", amount:groceries, note:"Rice at ৳55/kg, oil ৳166/L, fish and vegetables." },
-      { name:"Eating out & snacks", amount:eatingOut, note:"Tea stalls, iftar, occasional restaurant meals." },
-      { name:"Utilities", amount:utilities, note:"Electricity (up 16.7% in June), gas or LPG, water, internet." },
+      { name:"Bazar / groceries", amount:groceries, note:stage.food < 0.7
+          ? "Mostly meals at home or with family — rice ৳55/kg, oil ৳166/L."
+          : "Rice at ৳55/kg, oil ৳166/L, fish and vegetables." },
+      { name:"Eating out & snacks", amount:eatingOut, note:outShare > .35
+          ? "A large share of meals eaten out — common when living away from family."
+          : "Tea stalls, iftar, occasional restaurant meals." },
+      { name:"Utilities", amount:utilities, note:stage.util < 0.7
+          ? "Your share of electricity, gas and internet."
+          : "Electricity (up 16.7% in June), gas or LPG, water, internet." },
       { name:"Transport", amount:transport, note:(earners>1 ? earners+" commuters — " : "") + transportMode + "." },
-      { name:"Education", amount:Math.round(afterRent*eduShare), note:children ? children+" child"+(children>1?"ren":"")+" — fees, books and coaching." : "Courses or self-study materials." },
+      { name:"Education", amount:Math.round(afterRent*eduShare*stage.edu), note:children
+          ? children+" child"+(children>1?"ren":"")+" — fees, books and coaching."
+          : "Courses or self-study materials." },
       { name:"Health & medicine", amount:health, note:"Routine medicine and clinic visits." },
       { name:"Mobile / internet top-ups", amount:Math.round(afterRent*.04), note:"Recharge and data bundles." },
-      { name:"Family & social", amount:Math.round(afterRent*.06), note:"Gifts, weddings, Eid and obligations." },
+      { name:"Family & social", amount:Math.round(afterRent*.06*stage.social), note:stageKey === "married_kids"
+          ? "Gifts, weddings, Eid, and school and family events."
+          : "Gifts, weddings, Eid and obligations." },
       { name:"Other", amount:Math.round(afterRent*.045), note:"Clothing and miscellaneous costs." }
     ];
+
+    // Supporting parents is a real, culturally expected line for many earners —
+    // especially unmarried ones — and the budget is wrong without it.
+    if (supportsParents) {
+      var supportShare = stageKey === "single_family" ? .10
+                       : stageKey === "single_alone" ? .12
+                       : .07;
+      cats.push({
+        name: "Support for parents",
+        amount: Math.round(afterRent * supportShare),
+        note: "Money sent home each month."
+      });
+    }
+
+    return cats;
   }
 
   /* ================= Landing demo ================= */
@@ -1846,8 +1945,9 @@
     $("demoFamilyVal").textContent = family + (family === 1 ? " person" : " people");
     $("demoCityVal").textContent = city;
 
-    var rent = estimateRent(family, city, salary);
-    var cats = buildBudget(salary, rent, family, 1, city);
+    var stageKey = $("demoStage").value;
+    var rent = estimateRent(family, city, salary, stageKey);
+    var cats = buildBudget(salary, rent, family, 1, city, stageKey, false);
     var spend = cats.reduce(function(s,c){return s+c.amount;},0);
     var save = Math.max(0, salary - spend);
 
@@ -1868,8 +1968,13 @@
     // Five years of that monthly amount in a 5-year Sanchayapatra-rate instrument.
     $("demoFuture").textContent = fmtTaka(futureAnnuity(save, 11.83, 60));
   }
-  ["demoSalary","demoFamily","demoCity"].forEach(function(id){
+  ["demoSalary","demoFamily","demoCity","demoStage"].forEach(function(id){
     $(id).addEventListener("input", renderDemo);
+  });
+  // Picking a situation on the demo sets a matching household size.
+  $("demoStage").addEventListener("change", function(){
+    $("demoFamily").value = stageOf($("demoStage").value).defaultFamily;
+    renderDemo();
   });
   renderDemo();
 
@@ -1907,8 +2012,13 @@
       var token = await rpc("register_user",{ p_phone:phone, p_pin:pin, p_name:name||null });
       localStorage.setItem(TOKEN_KEY, token);
       // Carry whatever they set on the landing demo straight into their account.
-      var demoSalary = Number($("demoSalary").value), demoFamily = Number($("demoFamily").value), demoCity = $("demoCity").value;
-      try { await rpc("update_my_profile",{ p_token:token, p_name:null, p_city:demoCity, p_monthly_salary:demoSalary, p_family_size:demoFamily }); } catch(e2){}
+      var demoSalary = Number($("demoSalary").value), demoFamily = Number($("demoFamily").value);
+      var demoCity = $("demoCity").value, demoStage = $("demoStage").value;
+      try {
+        await rpc("update_my_profile_v2",{ p_token:token, p_name:null, p_city:demoCity,
+          p_monthly_salary:demoSalary, p_family_size:demoFamily,
+          p_life_stage:demoStage, p_supports_parents:false });
+      } catch(e2){}
       try { await bootApp(token); toast("Welcome to Shonchoy"); }
       catch(err){ $("registerErr").textContent="Account created, but the dashboard did not load. Refresh the page and log in."; }
     } catch(err) {
@@ -1942,7 +2052,7 @@
   /* ================= Boot ================= */
   async function bootApp(token) {
     state.token = token;
-    var rows = await rpc("get_my_profile",{ p_token:token });
+    var rows = await rpc("get_my_profile_v2",{ p_token:token });
     if(!rows||!rows.length){ localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
     state.profile = rows[0];
 
@@ -1958,6 +2068,8 @@
     if(state.profile.monthly_salary) $("salaryInput").value = state.profile.monthly_salary;
     if(state.profile.city) $("cityInput").value = state.profile.city;
     if(state.profile.family_size) $("familyInput").value = state.profile.family_size;
+    if(state.profile.life_stage) $("lifeStageInput").value = state.profile.life_stage;
+    $("supportsParents").checked = !!state.profile.supports_parents;
 
     var budgetRows = await rpc("get_my_latest_budget",{ p_token:token });
     if(budgetRows && budgetRows.length){ state.budget = budgetRows[0]; renderBudget(); }
@@ -2009,13 +2121,19 @@
   /* ================= Budget ================= */
   $("genBudgetBtn").addEventListener("click", async function(){
     var salary=Number($("salaryInput").value), city=$("cityInput").value.trim();
-    var family=Number($("familyInput").value)||4, earners=Number($("earnersInput").value)||1;
+    var stageKey = $("lifeStageInput").value;
+    var supportsParents = $("supportsParents").checked;
+    var family=Number($("familyInput").value) || stageOf(stageKey).defaultFamily;
+    var earners=Number($("earnersInput").value)||1;
     $("budgetErr").textContent="";
-    if(!salary||salary<=0){ $("budgetErr").textContent="Enter your monthly income first."; return; }
+    if(!salary||salary<=0){
+      $("budgetErr").textContent = lang==="bn" ? "প্রথমে আপনার মাসিক আয় লিখুন।" : "Enter your monthly income first.";
+      return;
+    }
 
     $("genBudgetBtn").disabled=true;
-    var rent = estimateRent(family, city, salary);
-    var categories = buildBudget(salary, rent, family, earners, city);
+    var rent = estimateRent(family, city, salary, stageKey);
+    var categories = buildBudget(salary, rent, family, earners, city, stageKey, supportsParents);
     var savingsTarget = Math.max(0, salary - categories.reduce(function(s,c){return s+c.amount;},0));
 
     var budgetId=null;
@@ -2024,8 +2142,10 @@
     } catch(e){ $("budgetErr").textContent="Budget shown below, but it could not be saved: "+((e&&e.message)||e); }
 
     try {
-      await rpc("update_my_profile",{ p_token:state.token, p_name:null, p_city:city||null, p_monthly_salary:salary, p_family_size:family });
+      await rpc("update_my_profile_v2",{ p_token:state.token, p_name:null, p_city:city||null,
+        p_monthly_salary:salary, p_family_size:family, p_life_stage:stageKey, p_supports_parents:supportsParents });
       state.profile.monthly_salary=salary; state.profile.city=city; state.profile.family_size=family;
+      state.profile.life_stage=stageKey; state.profile.supports_parents=supportsParents;
     } catch(e){}
 
     state.budget = { id:budgetId, monthly_salary:salary, categories:categories, savings_target:savingsTarget };
@@ -2144,14 +2264,37 @@
   }
 
   /* ================= Goals ================= */
-  var GOAL_PRESETS = [
-    { t:"Eid shopping", a:15000 }, { t:"Emergency fund", a:50000 },
-    { t:"New phone", a:25000 }, { t:"Tuition fees", a:20000 },
-    { t:"Hajj / Umrah", a:500000 }, { t:"Wedding", a:300000 }
-  ];
+  // Goal suggestions follow the life stage — a single earner is saving for very
+  // different things than a parent with school fees.
+  var GOAL_PRESETS_BY_STAGE = {
+    single_family: [
+      { t:"Emergency fund", a:50000 }, { t:"Wedding", a:300000 },
+      { t:"New phone", a:25000 }, { t:"Higher study", a:150000 },
+      { t:"Support for parents", a:60000 }
+    ],
+    single_alone: [
+      { t:"Emergency fund", a:60000 }, { t:"Wedding", a:300000 },
+      { t:"New phone", a:25000 }, { t:"Own flat deposit", a:500000 },
+      { t:"Higher study", a:150000 }
+    ],
+    married: [
+      { t:"Emergency fund", a:80000 }, { t:"Own flat deposit", a:500000 },
+      { t:"Hajj / Umrah", a:500000 }, { t:"Eid shopping", a:20000 },
+      { t:"Baby fund", a:120000 }
+    ],
+    married_kids: [
+      { t:"Children's education", a:200000 }, { t:"Emergency fund", a:100000 },
+      { t:"Eid shopping", a:25000 }, { t:"Hajj / Umrah", a:500000 },
+      { t:"Own flat deposit", a:500000 }
+    ]
+  };
+  function currentGoalPresets() {
+    var key = (state.profile && state.profile.life_stage) || $("lifeStageInput").value || "married_kids";
+    return GOAL_PRESETS_BY_STAGE[key] || GOAL_PRESETS_BY_STAGE.married_kids;
+  }
   function renderGoalPresets() {
     $("goalPresets").innerHTML = "";
-    GOAL_PRESETS.forEach(function(p){
+    currentGoalPresets().forEach(function(p){
       var b=document.createElement("button");
       b.type="button"; b.textContent=t(p.t);
       b.addEventListener("click", function(){ $("goalTitle").value=t(p.t); $("goalAmount").value=p.a; });
@@ -2970,6 +3113,18 @@
       { label:"Inflation", value:8.26, color:"var(--ink-soft)", display:"8.26%" },
       { label:"Sanchayapatra earns", value:11.83, color:C.green, display:"11.83%" }
     ], { labelW:140 });
+  });
+
+  // Changing the situation fills in a sensible household size, unless the user
+  // has already typed one that differs from the previous default.
+  $("lifeStageInput").addEventListener("change", function(){
+    var stage = stageOf($("lifeStageInput").value);
+    var current = Number($("familyInput").value);
+    var wasDefault = !current || Object.keys(LIFE_STAGES).some(function(k){
+      return LIFE_STAGES[k].defaultFamily === current;
+    });
+    if (wasDefault) $("familyInput").value = stage.defaultFamily;
+    renderGoalPresets();
   });
 
   /* ================= Settings ================= */
