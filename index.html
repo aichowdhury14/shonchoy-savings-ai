@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shonchoy</title>
 <meta name="description" content="A personal savings and investment assistant for Bangladesh. Budget from current 2026 cost-of-living data, track DPS, FDR, Sanchayapatra, SIP and business capital, project maturity value, and check whether a loan is fair.">
+<meta name="author" content="Atiqul Islam Chowdhury">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230B6E4F'/%3E%3Cpath d='M32 0a32 32 0 0 1 0 64z' fill='%23C42B1C'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23F7F2E6'/%3E%3Ctext x='32' y='40' font-size='20' text-anchor='middle' fill='%230B6E4F' font-family='Georgia,serif' font-weight='bold'%3E৳%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -335,6 +336,12 @@
   .toast { position:fixed; left:50%; transform:translateX(-50%); bottom:24px; background:var(--green); color:var(--green-ink); padding:11px 20px; border-radius:999px; font-size:13.5px; font-weight:600; box-shadow:var(--shadow-lg); z-index:40; }
 
   footer.note { text-align:center; color:var(--ink-soft); font-size:12px; margin-top:34px; line-height:1.7; }
+  footer.note .credit {
+    margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap;
+    font-size:12.5px;
+  }
+  footer.note .credit strong { color:var(--ink); font-weight:700; }
 
   @media (prefers-reduced-motion:reduce){ .goal-fill{transition:none} }
 </style>
@@ -928,8 +935,12 @@
     </div>
 
     <footer class="note">
-      Shonchoy tracks your own numbers — your money always stays in your own bKash, Nagad or bank account.<br>
-      Rates and cost figures are references compiled from public 2026 sources, not financial advice. Confirm with your bank, post office or the National Savings Bureau before investing.
+      <span data-i18n>Shonchoy tracks your own numbers — your money always stays in your own bKash, Nagad or bank account.</span><br>
+      <span data-i18n>Rates and cost figures are references compiled from public 2026 sources, not financial advice. Confirm with your bank, post office or the National Savings Bureau before investing.</span>
+      <div class="credit">
+        <span data-i18n>Designed and developed by</span>
+        <strong>Atiqul Islam Chowdhury</strong>
+      </div>
     </footer>
   </div>
 </div>
@@ -1278,7 +1289,10 @@
     "Tuition fees":"টিউশন ফি",
     "Hajj / Umrah":"হজ / ওমরাহ",
     "Wedding":"বিয়ে",
-    "Deposit":"জমা"
+    "Deposit":"জমা",
+    "Designed and developed by":"পরিকল্পনা ও নির্মাণে",
+    "Shonchoy tracks your own numbers — your money always stays in your own bKash, Nagad or bank account.":"সঞ্চয় শুধু আপনার নিজের হিসাব রাখে — আপনার টাকা সবসময় আপনার নিজের বিকাশ, নগদ বা ব্যাংক অ্যাকাউন্টেই থাকে।",
+    "Rates and cost figures are references compiled from public 2026 sources, not financial advice. Confirm with your bank, post office or the National Savings Bureau before investing.":"মুনাফার হার ও খরচের তথ্য ২০২৬ সালের প্রকাশ্য সূত্র থেকে সংগৃহীত, এটি আর্থিক পরামর্শ নয়। বিনিয়োগের আগে আপনার ব্যাংক, ডাকঘর বা জাতীয় সঞ্চয় অধিদপ্তরে যাচাই করে নিন।"
   };
 
   function t(s) {
