@@ -1031,6 +1031,79 @@
   </div>
 </div>
 
+<!-- Edit investment modal -->
+<div id="invEditBackdrop" class="modal-backdrop" hidden>
+  <div class="modal">
+    <h3 data-i18n>Edit instrument</h3>
+    <p class="hint" style="margin-top:2px;" data-i18n>Correct any detail — the amount, rate, dates or name.</p>
+
+    <label for="eInvKind" data-i18n>Type</label>
+    <select id="eInvKind">
+      <option value="dps">DPS — monthly deposit scheme</option>
+      <option value="fdr">FDR — fixed deposit</option>
+      <option value="sanchayapatra">Sanchayapatra — savings certificate</option>
+      <option value="sip">SIP — mutual fund instalment</option>
+      <option value="business">Business capital</option>
+      <option value="gold">Gold</option>
+      <option value="property">Property / land</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label for="eInvName" data-i18n>Name it</label>
+    <input id="eInvName">
+
+    <label for="eInvInstitution" data-i18n>Bank / issuer (optional)</label>
+    <input id="eInvInstitution">
+
+    <div class="two-col">
+      <div>
+        <label for="eInvPrincipal" data-i18n>Lump sum (৳)</label>
+        <input id="eInvPrincipal" class="num-input" inputmode="numeric">
+      </div>
+      <div>
+        <label for="eInvMonthly" data-i18n>Monthly instalment (৳)</label>
+        <input id="eInvMonthly" class="num-input" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <label for="eInvRate" data-i18n>Annual rate (%)</label>
+        <input id="eInvRate" class="num-input" inputmode="decimal">
+      </div>
+      <div>
+        <label for="eInvCurrent" data-i18n>Current value (৳, optional)</label>
+        <input id="eInvCurrent" class="num-input" inputmode="numeric">
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <label for="eInvStart" data-i18n>Started on</label>
+        <input id="eInvStart" type="date">
+      </div>
+      <div>
+        <label for="eInvMaturity" data-i18n>Matures on</label>
+        <input id="eInvMaturity" type="date">
+      </div>
+    </div>
+
+    <label for="eInvStatus" data-i18n>Status</label>
+    <select id="eInvStatus">
+      <option value="active">Active</option>
+      <option value="matured">Matured</option>
+      <option value="closed">Closed</option>
+    </select>
+
+    <div class="err" id="eInvErr" role="alert"></div>
+    <div class="close-row">
+      <button class="btn ghost" id="eInvDelete" type="button" style="color:var(--red);border-color:var(--red)" data-i18n>Delete</button>
+      <button class="btn ghost" id="eInvCancel" type="button" data-i18n>Cancel</button>
+      <button class="btn" id="eInvSave" type="button" data-i18n>Save changes</button>
+    </div>
+  </div>
+</div>
+
 <!-- Edit transaction modal -->
 <div id="txEditBackdrop" class="modal-backdrop" hidden>
   <div class="modal">
@@ -1291,6 +1364,10 @@
     "Wedding":"বিয়ে",
     "Deposit":"জমা",
     "Designed and developed by":"পরিকল্পনা ও নির্মাণে",
+    "Edit instrument":"স্কিম সম্পাদনা",
+    "Correct any detail — the amount, rate, dates or name.":"যেকোনো তথ্য ঠিক করুন — পরিমাণ, হার, তারিখ বা নাম।",
+    "Status":"অবস্থা",
+    "Current value (৳, optional)":"বর্তমান মূল্য (৳, ঐচ্ছিক)",
     "Shonchoy tracks your own numbers — your money always stays in your own bKash, Nagad or bank account.":"সঞ্চয় শুধু আপনার নিজের হিসাব রাখে — আপনার টাকা সবসময় আপনার নিজের বিকাশ, নগদ বা ব্যাংক অ্যাকাউন্টেই থাকে।",
     "Rates and cost figures are references compiled from public 2026 sources, not financial advice. Confirm with your bank, post office or the National Savings Bureau before investing.":"মুনাফার হার ও খরচের তথ্য ২০২৬ সালের প্রকাশ্য সূত্র থেকে সংগৃহীত, এটি আর্থিক পরামর্শ নয়। বিনিয়োগের আগে আপনার ব্যাংক, ডাকঘর বা জাতীয় সঞ্চয় অধিদপ্তরে যাচাই করে নিন।"
   };
@@ -1415,15 +1492,45 @@
   // room, share, or live further out rather than spending their whole income on rent.
   // CAB found 57% of Dhaka tenants spend about half their income on rent and 12%
   // spend 75%, so the cap is set at 45% of income with a floor for very low incomes.
+  // Housing quality rises with income — the same family rents a bigger flat in a
+  // better area as they earn more. Anchored on 2026 Dhaka listings: a mid-range
+  // 3-bed runs ~Tk23k, while Gulshan/Banani 2-3 beds go for Tk80k-150k and
+  // luxury units above Tk170k.
+  // Interpolated so a small raise never jumps the household into a much pricier
+  // flat and leaves them saving less than before.
+  var HOUSING_TIERS = [
+    { income: 0,      factor: 1.0 },
+    { income: 60000,  factor: 1.35 },
+    { income: 90000,  factor: 1.7 },
+    { income: 150000, factor: 2.4 },
+    { income: 250000, factor: 3.2 }
+  ];
+  function incomeHousingFactor(salary) {
+    if (!salary || salary <= 0) return 1;
+    var last = HOUSING_TIERS[HOUSING_TIERS.length - 1];
+    if (salary >= last.income) return last.factor;
+    for (var i = 0; i < HOUSING_TIERS.length - 1; i++) {
+      var lo = HOUSING_TIERS[i], hi = HOUSING_TIERS[i + 1];
+      if (salary < hi.income) {
+        var span = hi.income - lo.income;
+        var progress = span > 0 ? (Math.max(salary, lo.income) - lo.income) / span : 0;
+        return lo.factor + (hi.factor - lo.factor) * progress;
+      }
+    }
+    return 1;
+  }
   function estimateRent(family, city, salary) {
     var size = family && family > 0 ? family : 4;
     var tier = cityTier(city);
     var base = size <= 1 ? 9800 : size <= 2 ? 14200 : size <= 4 ? 22900 : size <= 6 ? 33800 : 41400;
-    var market = (base * tier);
+    var market = base * tier * incomeHousingFactor(salary);
     if (salary && salary > 0) {
-      // The cap itself scales with the city: squeezing into Dhaka costs a larger
-      // share of income than the same compromise in a cheaper town.
-      var affordable = salary * (0.30 + 0.17 * tier);
+      // The cap scales with the city — squeezing into Dhaka costs a larger share
+      // of income than the same compromise in a cheaper town — and eases at higher
+      // incomes, where rent stops being the binding constraint it is for the poor.
+      var ease = Math.min(1, Math.max(0, (salary - 60000) / 120000)); // 0 below Tk60k, 1 at Tk180k
+      var capShare = (0.30 - 0.08 * ease) + (0.17 - 0.07 * ease) * tier;
+      var affordable = salary * capShare;
       var floor = Math.min(market, 3500 * Math.max(1, tier));
       market = Math.max(floor, Math.min(market, affordable));
     }
@@ -1656,13 +1763,49 @@
     // floor a tight budget mathematically "spends" almost nothing on food, which is
     // never what actually happens — people cut rent, transport or savings instead.
     var foodFloor = Math.round(1750 * family * Math.max(.85, tier));
-    var foodBudget = Math.max(foodFloor, Math.round(afterRent * foodShare));
+    // Food spending rises with income but plateaus — better quality and more
+    // eating out, not endlessly more food. Caps at roughly Tk9,000 per person.
+    var foodCeiling = Math.round(9000 * family * Math.max(.8, tier));
+    var foodBudget = Math.max(foodFloor, Math.min(Math.round(afterRent * foodShare), foodCeiling));
     foodBudget = Math.min(foodBudget, Math.max(0, afterRent)); // never exceed what is left
-    var groceries = Math.round(foodBudget * .82);
+    // Higher earners eat out a larger share of their food budget.
+    var outShare = salary >= 120000 ? .30 : salary >= 60000 ? .24 : .18;
+    var groceries = Math.round(foodBudget * (1 - outShare));
     var eatingOut = foodBudget - groceries;
     var children = Math.max(0, family - earners - 1);
     var eduShare = children>=3?.16 : children===2?.12 : children===1?.07 : .03;
-    var transport = Math.round(afterRent * (.075 + (earners-1)*.03));
+    // Transport mode shifts with income: bus and rickshaw, then CNG, then daily
+    // ride-share, then a private car. Petrol reached Tk135/litre in early 2026 and
+    // a car with a driver runs Tk50,000-60,000 a month in Dhaka.
+    // Interpolated between tiers rather than stepped, so crossing a threshold does
+    // not swallow a whole raise and leave savings lower than before.
+    var TRANSPORT_TIERS = [
+      { income: 0,      cost: 1800 },
+      { income: 40000,  cost: 3500 },
+      { income: 70000,  cost: 7000 },
+      { income: 120000, cost: 15000 },
+      { income: 200000, cost: 28000 },
+      { income: 350000, cost: 42000 }
+    ];
+    var perEarner = TRANSPORT_TIERS[TRANSPORT_TIERS.length - 1].cost;
+    for (var ti = 0; ti < TRANSPORT_TIERS.length - 1; ti++) {
+      var lo = TRANSPORT_TIERS[ti], hi = TRANSPORT_TIERS[ti + 1];
+      if (salary < hi.income) {
+        var span = hi.income - lo.income;
+        var progress = span > 0 ? (Math.max(salary, lo.income) - lo.income) / span : 0;
+        perEarner = Math.round(lo.cost + (hi.cost - lo.cost) * progress);
+        break;
+      }
+    }
+    var transportMode = salary >= 200000 ? "car with a driver, fuel at ৳135/litre"
+                      : salary >= 120000 ? "own car, fuel at ৳135/litre"
+                      : salary >= 70000 ? "daily Uber or Pathao rides"
+                      : salary >= 40000 ? "CNG and bus, ৳2.53/km"
+                      : "bus at ৳2.53/km and rickshaw";
+    var transport = Math.min(
+      Math.round(perEarner * Math.max(1, earners) * Math.max(.7, tier)),
+      Math.round(afterRent * .30)
+    );
     // Utilities now anchored on the post-June-2026 tariff: ~৳4,360/mo in Dhaka
     // for an 85m² flat, scaled by city and household size.
     var utilities = Math.round(Math.min(afterRent*.18, 4360 * tier * (1 + (family-4)*.07)));
@@ -1670,17 +1813,22 @@
 
     // When the market rate for this household size exceeds what the income can carry,
     // say so plainly rather than quietly showing an unaffordable figure.
-    var marketRent = estimateRent(family, city, null);
+    // Compare against the market rate for the housing tier this income would reach,
+    // so the "beyond your income" note only appears when the cap actually binds.
+    var baseForSize = family <= 1 ? 9800 : family <= 2 ? 14200 : family <= 4 ? 22900 : family <= 6 ? 33800 : 41400;
+    var marketRent = Math.round((baseForSize * cityTier(city) * incomeHousingFactor(salary)) / 500) * 500;
     var rentNote = rent < marketRent - 500
       ? "A typical " + family + "-person home in " + cityLabel(city) + " costs about " + fmtTakaFull(marketRent) + " — beyond this income, so this assumes a room, shared housing or an outer area."
-      : "For " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + ".";
+      : (salary >= 90000
+          ? "A better-area flat for " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + ", matching this income."
+          : "For " + family + " " + (family === 1 ? "person" : "people") + " in " + cityLabel(city) + ".");
 
     return [
       { name:"House rent", amount:rent, note:rentNote },
       { name:"Bazar / groceries", amount:groceries, note:"Rice at ৳55/kg, oil ৳166/L, fish and vegetables." },
       { name:"Eating out & snacks", amount:eatingOut, note:"Tea stalls, iftar, occasional restaurant meals." },
       { name:"Utilities", amount:utilities, note:"Electricity (up 16.7% in June), gas or LPG, water, internet." },
-      { name:"Transport", amount:transport, note:earners>1 ? earners+" commuters — bus at ৳2.53/km, rickshaw or CNG." : "Bus at ৳2.53/km, rickshaw or CNG fares." },
+      { name:"Transport", amount:transport, note:(earners>1 ? earners+" commuters — " : "") + transportMode + "." },
       { name:"Education", amount:Math.round(afterRent*eduShare), note:children ? children+" child"+(children>1?"ren":"")+" — fees, books and coaching." : "Courses or self-study materials." },
       { name:"Health & medicine", amount:health, note:"Routine medicine and clinic visits." },
       { name:"Mobile / internet top-ups", amount:Math.round(afterRent*.04), note:"Recharge and data bundles." },
@@ -2357,17 +2505,25 @@
         (inv.maturity_date?'<div class="inv-fig"><div class="k">Matures</div><div class="v">'+esc(inv.maturity_date)+"</div></div>":"")+
         "</div>"+
         (tenure?'<div class="inv-progress"><i style="width:'+prog.toFixed(0)+'%;background:'+meta.color+'"></i></div>':"")+
-        '<div class="inv-actions"><button type="button" data-del="'+esc(inv.id)+'">Remove</button></div>';
+        '<div class="inv-actions">'+
+          '<button type="button" data-edit-inv="'+esc(inv.id)+'">'+esc(t("Edit"))+'</button>'+
+          '<button type="button" data-del="'+esc(inv.id)+'">'+esc(t("Remove"))+'</button>'+
+        '</div>';
       list.appendChild(el);
     });
 
+    list.querySelectorAll("button[data-edit-inv]").forEach(function(btn){
+      btn.addEventListener("click", function(){ openInvEdit(btn.getAttribute("data-edit-inv")); });
+    });
     list.querySelectorAll("button[data-del]").forEach(function(btn){
       btn.addEventListener("click", async function(){
-        if(!confirm("Remove this instrument from your tracker? This cannot be undone.")) return;
+        if(!confirm(lang==="bn"
+          ? "এই স্কিমটি ট্র্যাকার থেকে সরাবেন? এটি ফেরানো যাবে না।"
+          : "Remove this instrument from your tracker? This cannot be undone.")) return;
         try {
           await rpc("delete_investment",{ p_token:state.token, p_id:btn.getAttribute("data-del") });
           await refreshInvestments(); renderOverview(); renderSteps();
-          toast("Removed");
+          toast(t("Deleted"));
         } catch(e){ alert("Could not remove it: "+((e&&e.message)||e)); }
       });
     });
@@ -2378,6 +2534,80 @@
     }).sort(function(a,b){return a.maturity-b.maturity;});
     timelineChart("maturityChart", timeline);
   }
+
+  /* ---- Edit an existing instrument ---- */
+  var editingInvId = null;
+  function openInvEdit(id) {
+    var inv = state.investments.find(function(x){ return x.id === id; });
+    if (!inv) return;
+    editingInvId = id;
+    $("eInvKind").value = inv.kind;
+    $("eInvName").value = inv.name || "";
+    $("eInvInstitution").value = inv.institution || "";
+    $("eInvPrincipal").value = Number(inv.principal || 0);
+    $("eInvMonthly").value = Number(inv.monthly_contribution || 0);
+    $("eInvRate").value = inv.annual_rate == null ? "" : Number(inv.annual_rate);
+    $("eInvCurrent").value = inv.current_value == null ? "" : Number(inv.current_value);
+    $("eInvStart").value = inv.start_date || "";
+    $("eInvMaturity").value = inv.maturity_date || "";
+    $("eInvStatus").value = inv.status || "active";
+    $("eInvErr").textContent = "";
+    $("invEditBackdrop").hidden = false;
+  }
+  $("eInvCancel").addEventListener("click", function(){ $("invEditBackdrop").hidden = true; });
+  $("eInvSave").addEventListener("click", async function(){
+    var name = $("eInvName").value.trim();
+    var principal = Number($("eInvPrincipal").value) || 0;
+    var monthly = Number($("eInvMonthly").value) || 0;
+    var rateRaw = $("eInvRate").value.trim();
+    var currentRaw = $("eInvCurrent").value.trim();
+    var maturity = $("eInvMaturity").value || null;
+    $("eInvErr").textContent = "";
+    if (!name) { $("eInvErr").textContent = lang==="bn" ? "একটি নাম দিন।" : "Give this instrument a name."; return; }
+    if (!principal && !monthly && !currentRaw) {
+      $("eInvErr").textContent = lang==="bn"
+        ? "এককালীন, মাসিক কিস্তি বা বর্তমান মূল্য — যেকোনো একটি লিখুন।"
+        : "Enter a lump sum, a monthly instalment, or a current value.";
+      return;
+    }
+    $("eInvSave").disabled = true;
+    try {
+      await rpc("edit_investment", {
+        p_token: state.token, p_id: editingInvId,
+        p_kind: $("eInvKind").value,
+        p_name: name,
+        p_institution: $("eInvInstitution").value.trim() || null,
+        p_principal: principal,
+        p_monthly: monthly,
+        p_rate: rateRaw === "" ? null : Number(rateRaw),
+        p_start: $("eInvStart").value || null,
+        p_maturity: maturity,
+        p_current: currentRaw === "" ? null : Number(currentRaw),
+        p_status: $("eInvStatus").value,
+        // Explicit clears, so blanking a field genuinely blanks it.
+        p_clear_rate: rateRaw === "",
+        p_clear_maturity: !maturity,
+        p_clear_current: currentRaw === ""
+      });
+      $("invEditBackdrop").hidden = true;
+      await refreshInvestments(); renderOverview();
+      toast(t("Saved"));
+    } catch(e){ $("eInvErr").textContent = (e&&e.message)||String(e); }
+    finally { $("eInvSave").disabled = false; }
+  });
+  $("eInvDelete").addEventListener("click", async function(){
+    if (!confirm(lang==="bn"
+      ? "এই স্কিমটি মুছে ফেলবেন? এটি ফেরানো যাবে না।"
+      : "Delete this instrument? This cannot be undone.")) return;
+    $("eInvDelete").disabled = true;
+    try {
+      await rpc("delete_investment", { p_token:state.token, p_id:editingInvId });
+      $("invEditBackdrop").hidden = true;
+      await refreshInvestments(); renderOverview(); renderSteps();
+      toast(t("Deleted"));
+    } catch(e){ $("eInvErr").textContent = (e&&e.message)||String(e); }
+    finally { $("eInvDelete").disabled = false; }
+  });
 
   function renderRatesTable() {
     $("ratesTable").querySelector("tbody").innerHTML = INSTRUMENTS.map(function(it){
